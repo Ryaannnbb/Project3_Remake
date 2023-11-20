@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pesanan;
 use Illuminate\Http\Request;
 
 class PesananController extends Controller
@@ -34,7 +33,7 @@ class PesananController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(pesanan $pesanan)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class PesananController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(pesanan $pesanan)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class PesananController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, pesanan $pesanan)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class PesananController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(pesanan $pesanan)
+    public function destroy(string $id)
     {
         //
     }

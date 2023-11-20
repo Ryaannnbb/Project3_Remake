@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pembayaran;
 use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
@@ -34,7 +33,7 @@ class PembayaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(pembayaran $pembayaran)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class PembayaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(pembayaran $pembayaran)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class PembayaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, pembayaran $pembayaran)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class PembayaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(pembayaran $pembayaran)
+    public function destroy(string $id)
     {
         //
     }

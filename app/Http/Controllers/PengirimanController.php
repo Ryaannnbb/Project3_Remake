@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pengiriman;
 use Illuminate\Http\Request;
 
 class PengirimanController extends Controller
@@ -34,7 +33,7 @@ class PengirimanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(pengiriman $pengiriman)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class PengirimanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(pengiriman $pengiriman)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class PengirimanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, pengiriman $pengiriman)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class PengirimanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(pengiriman $pengiriman)
+    public function destroy(string $id)
     {
         //
     }

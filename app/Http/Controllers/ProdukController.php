@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\produk;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -34,7 +33,7 @@ class ProdukController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(produk $produk)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(produk $produk)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class ProdukController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, produk $produk)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class ProdukController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(produk $produk)
+    public function destroy(string $id)
     {
         //
     }
