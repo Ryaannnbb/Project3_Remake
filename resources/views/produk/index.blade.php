@@ -45,7 +45,7 @@
                                     <span class="text-secondary text-xs font-weight-bold">{{$pg->nama_produk}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span><img src="{{ $pg->path_produk }}" alt="" style="width: 150px;"></span>
+                                    <span><img src="{{ asset($pg->path_produk) }}" alt="" style="width: 150px;"></span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <span class="text-secondary text-xs font-weight-bold">{{$pg->harga}}</span>

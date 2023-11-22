@@ -25,21 +25,26 @@
               <div class="table-responsive p-0">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Product Image</label>
-                    <input class="form-control  @error('path_produk') is-invalid @enderror" name="path_produk"
-                      type="file" value="{{ old('nama_kategori') }}"
-                      id="example-text-input">
-                    @error('nama_kategori')
-                      <div class="invalid-feedback">
-                        {{ $message }}
+                    <div class="row">
+                      <div class="col">
+                        <label for="example-text-input" class="form-control-label">Product Image</label>
+                        <input class="form-control  @error('path_produk') is-invalid @enderror" id="imageInput"
+                          name="path_produk" type="file" id="example-text-input">
+                        @error('nama_kategori')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
-                    @enderror
+                      <div class="col-md-4">
+                        <img src="" id="preview-image" class="w-100">
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Name</label>
                     <input class="form-control  @error('nama_produk') is-invalid @enderror" name="nama_produk"
-                      type="text" placeholder="Category Name" value="{{ old('nama_produk') }}"
-                      id="example-text-input">
+                      type="text" value="{{ old('nama_produk') }}" id="example-text-input">
                     @error('nama_produk')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -48,9 +53,8 @@
                   </div>
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Price</label>
-                    <input class="form-control  @error('harga') is-invalid @enderror" name="harga"
-                      type="text" placeholder="Price" value="{{ old('harga') }}"
-                      id="example-text-input">
+                    <input class="form-control  @error('harga') is-invalid @enderror" name="harga" type="text"
+                      value="{{ old('harga') }}" id="example-text-input">
                     @error('harga')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -60,7 +64,7 @@
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Description</label>
                     <textarea class="form-control  @error('deskripsi') is-invalid @enderror" name="deskripsi" type="text"
-                      placeholder="Description" value="{{ old('deskripsi') }}" id="example-text-input"></textarea>
+                      value="{{ old('deskripsi') }}" id="example-text-input"></textarea>
                     @error('deskripsi')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -70,10 +74,9 @@
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Category Name</label>
                     <select class="form-select  @error('kategori_id') is-invalid @enderror" name="kategori_id"
-                      type="text" placeholder="Category Name" value="{{ old('kategori_id') }}"
-                      id="example-text-input">
+                      type="text" value="{{ old('kategori_id') }}" id="example-text-input">
                       @foreach ($kategoris as $kategori)
-                          <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                        <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                       @endforeach
                     </select>
                     @error('kategori_id')
@@ -88,7 +91,7 @@
                       type="text" placeholder="Category Name" value="{{ old('supplier_id') }}"
                       id="example-text-input">
                       @foreach ($suppliers as $supplier)
-                          <option value="{{ $supplier->id }}">{{ $supplier->nama_supplier }}</option>
+                        <option value="{{ $supplier->id }}">{{ $supplier->nama_supplier }}</option>
                       @endforeach
                     </select>
                     @error('supplier_id')
@@ -106,4 +109,17 @@
   </div>
   @include('layout.footer')
   </div>
+@endsection
+
+@section('script')
+  <script>
+    const imageInput = document.getElementById('imageInput')
+    const imagePreview = document.getElementById('preview-image')
+    imageInput.onchange = evt => {
+      const [file] = imageInput.files
+      if (file) { 
+        imagePreview.src = URL.createObjectURL(file)
+      }
+    }
+  </script>
 @endsection

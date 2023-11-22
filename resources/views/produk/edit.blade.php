@@ -29,7 +29,7 @@
                     <div class="row">
                       <div class="col">
                         <label for="example-text-input" class="form-control-label">Product Image</label>
-                        <input class="form-control  @error('path_produk') is-invalid @enderror" name="path_produk"
+                        <input class="form-control  @error('path_produk') is-invalid @enderror" name="path_produk" id="imageInput"
                           type="file" id="example-text-input">
                         @error('nama_kategori')
                           <div class="invalid-feedback">
@@ -117,4 +117,17 @@
   </div>
   @include('layout.footer')
   </div>
+@endsection
+
+@section('script')
+  <script>
+    const imageInput = document.getElementById('imageInput')
+    const imagePreview = document.getElementById('preview-image')
+    imageInput.onchange = evt => {
+      const [file] = imageInput.files
+      if (file) { 
+        imagePreview.src = URL.createObjectURL(file)
+      }
+    }
+  </script>
 @endsection

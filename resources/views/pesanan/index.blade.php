@@ -28,31 +28,35 @@
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">User</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Ordered Product</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Phone</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Amount</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Total</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
                   </tr>
                 </thead>
                     <tbody>
-                        @if ($supplier->count() > 0)
-                            @foreach ( $supplier as $splr )
+                        @if ($pesanans->count() > 0)
+                            @foreach ( $pesanans as $pesanan )
                             <tr>
                                 <td class="align-middle text-center text-sm">
                                     <span class="text-secondary text-xs font-weight-bold text-center">{{$loop->iteration}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$splr->nama_supplier}}</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{ $pesanan->user ? $pesanan->user->name : 'User not found' }}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$splr->alamat_supplier}}</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{$pesanan->produk->nama_produk}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$splr->nomor_telepon_supplier}}</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{$pesanan->jumlah}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <a href="{{ route('supplier.edit', $splr->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
+                                    <span class="text-secondary text-xs font-weight-bold">{{$pesanan->total}}</span>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <a href="{{ route('supplier.edit', $pesanan->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                    <form id="deleteform{{ $splr->id }}" method="POST" action="{{ route('supplier.destroy', $splr->id) }}" style="display: inline;">
+                                    <form id="deleteform{{ $pesanan->id }}" method="POST" action="{{ route('supplier.destroy', $pesanan->id) }}" style="display: inline;">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-secondary mb-n1 mt-n1 p-2" data-bs-toggle="tooltip" data-original-title="Delete user">
