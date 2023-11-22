@@ -5,7 +5,8 @@
     <div class="row">
       <div class="col-12">
         <div class="card border shadow-xs mb-4">
-          <form role="form" action="{{ route('produk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
+          <form role="form" action="{{ route('produk.update', $produk->id) }}" method="POST"
+            enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="card-header border-bottom pb-0">
@@ -25,19 +26,27 @@
               <div class="table-responsive p-0">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Product Image</label>
-                    <input class="form-control  @error('path_produk') is-invalid @enderror" name="path_produk"
-                      type="file" id="example-text-input">
-                    @error('nama_kategori')
-                      <div class="invalid-feedback">
-                        {{ $message }}
+                    <div class="row">
+                      <div class="col">
+                        <label for="example-text-input" class="form-control-label">Product Image</label>
+                        <input class="form-control  @error('path_produk') is-invalid @enderror" name="path_produk"
+                          type="file" id="example-text-input">
+                        @error('nama_kategori')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
-                    @enderror
+                      <div class="col-md-4">
+                        <img src="{{ asset($produk->path_produk) }}" id="preview-image" alt="Current Product Photo" class="w-100">
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Name</label>
                     <input class="form-control  @error('nama_produk') is-invalid @enderror" name="nama_produk"
-                      type="text" placeholder="Category Name" value="{{ $produk->nama_produk }}" id="example-text-input" value="{{ $produk->nama_produk }}">
+                      type="text" placeholder="Category Name" value="{{ $produk->nama_produk }}"
+                      id="example-text-input" value="{{ $produk->nama_produk }}">
                     @error('nama_produk')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -47,7 +56,8 @@
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Price</label>
                     <input class="form-control  @error('harga') is-invalid @enderror" name="harga" type="text"
-                      placeholder="Price" value="{{ $produk->harga }}" id="example-text-input" value="{{ $produk->harga }}">
+                      placeholder="Price" value="{{ $produk->harga }}" id="example-text-input"
+                      value="{{ $produk->harga }}">
                     @error('harga')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -70,9 +80,9 @@
                       type="text" placeholder="Category Name" value="{{ old('kategori_id') }}"
                       id="example-text-input">
                       @foreach ($kategoris as $kategori)
-                        <option value="{{ $kategori->id }}" @if ($produk->kategori_id == $kategori->id)
-                            @selected(true)
-                        @endif>{{ $kategori->nama_kategori }}</option>
+                        <option value="{{ $kategori->id }}"
+                          @if ($produk->kategori_id == $kategori->id) @selected(true) @endif>
+                          {{ $kategori->nama_kategori }}</option>
                       @endforeach
                     </select>
                     @error('kategori_id')
@@ -87,9 +97,9 @@
                       type="text" placeholder="Category Name" value="{{ old('supplier_id') }}"
                       id="example-text-input">
                       @foreach ($suppliers as $supplier)
-                        <option value="{{ $supplier->id }}" @if ($produk->supplier_id == $supplier->id)
-                          @selected(true)
-                      @endif>{{ $supplier->nama_supplier }}</option>
+                        <option value="{{ $supplier->id }}"
+                          @if ($produk->supplier_id == $supplier->id) @selected(true) @endif>
+                          {{ $supplier->nama_supplier }}</option>
                       @endforeach
                     </select>
                     @error('supplier_id')

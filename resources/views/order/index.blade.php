@@ -12,9 +12,9 @@
                 <p class="text-sm">See information about all category</p>
               </div>
               <div class="ms-auto d-flex">
-                <a href="{{ route('kategori.create') }}">
+                <a href="{{ route('supplier.create') }}">
                     <button type="button" class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">
-                      <span class="btn-inner--text">Add Category</span>
+                      <span class="btn-inner--text">Add Supplier</span>
                     </button>
                 </a>
               </div>
@@ -26,25 +26,33 @@
                 <thead class="bg-gray-100">
                   <tr>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Category</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">User</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Ordered Product</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Phone</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
                   </tr>
                 </thead>
                     <tbody>
-                        @if ($kategori->count() > 0)
-                            @foreach ( $kategori as $kg )
+                        @if ($supplier->count() > 0)
+                            @foreach ( $supplier as $splr )
                             <tr>
                                 <td class="align-middle text-center text-sm">
                                     <span class="text-secondary text-xs font-weight-bold text-center">{{$loop->iteration}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$kg->nama_kategori}}</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{$splr->nama_supplier}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <a href="{{ route('kategori.edit', $kg->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
+                                    <span class="text-secondary text-xs font-weight-bold">{{$splr->alamat_supplier}}</span>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="text-secondary text-xs font-weight-bold">{{$splr->nomor_telepon_supplier}}</span>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <a href="{{ route('supplier.edit', $splr->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                    <form id="deleteform{{ $kg->id }}" method="POST" action="{{ route('kategori.destroy', $kg->id) }}" style="display: inline;">
+                                    <form id="deleteform{{ $splr->id }}" method="POST" action="{{ route('supplier.destroy', $splr->id) }}" style="display: inline;">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-secondary mb-n1 mt-n1 p-2" data-bs-toggle="tooltip" data-original-title="Delete user">

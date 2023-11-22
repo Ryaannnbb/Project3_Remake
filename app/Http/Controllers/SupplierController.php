@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\supplier;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -11,7 +12,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $supplier = supplier::all();
+        return view("supplier.index", compact("supplier"));
     }
 
     /**
@@ -19,7 +21,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view("supplier.create");
     }
 
     /**
@@ -27,7 +29,8 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $supplier = supplier::create($request->all());
+        return redirect()->route("supplier.index")->with("success","Successfully added product");
     }
 
     /**
@@ -43,7 +46,9 @@ class SupplierController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $supplier = supplier::find($id);
+
+        return view("supplier.edit", compact("supplier"));
     }
 
     /**
@@ -51,7 +56,18 @@ class SupplierController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $supplier = supplier::find($id);
+        if (
+            $request->nama_supplier == $supplier->nama_supplier &&
+            $request->alamat_supplier == $supplier->alamat_supplier &&
+            $request->nomor_telepon_supplier == $supplier->nomor_telepon_supplier
+        ) {
+            return redirect()->back()->with("error", "The data you're trying to edit is the same as before.");
+        }
+
+        $supplier->update($request->all());
+
+        return redirect()->route('supplier.index')->with('success','Data updated successfully');
     }
 
     /**
@@ -59,6 +75,8 @@ class SupplierController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        supplier::find($id)->delete();
+
+        return redirect()->route('supplier.index')->with('success','Data deleted successfully');
     }
 }

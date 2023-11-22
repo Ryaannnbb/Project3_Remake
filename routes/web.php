@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,4 +59,12 @@ Route::controller(ProdukController::class)->prefix('produk')->group(function () 
     Route::get('edit/{id}', 'edit')->name('produk.edit');
     Route::put('edit/{id}', 'update')->name('produk.update');
     Route::delete('destroy/{id}', 'destroy')->name('produk.destroy');
+});
+Route::controller(SupplierController::class)->prefix('supplier')->group(function () {
+    Route::get('/', 'index')->name('supplier.index');
+    Route::get('create', 'create')->name('supplier.create');
+    Route::post('store', 'store')->name('supplier.store');
+    Route::get('edit/{id}', 'edit')->name('supplier.edit');
+    Route::put('edit/{id}', 'update')->name('supplier.update');
+    Route::delete('destroy/{id}', 'destroy')->name('supplier.destroy');
 });
