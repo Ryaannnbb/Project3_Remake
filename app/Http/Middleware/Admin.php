@@ -19,7 +19,7 @@ class Admin
             return $next($request);
         } else {
             // Redirect or handle unauthorized access
-            return redirect()->route('login')->with("message", "kontol"); // You can customize this line based on your needs
+            return abort(404); // You can customize this line based on your needs
         }
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 
-Route::middleware(['auth','admin'])->group(function (){
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
 
     Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
@@ -80,4 +81,11 @@ Route::middleware(['auth','admin'])->group(function (){
         Route::put('edit/{id}', 'update')->name('pesanan.update');
         Route::delete('destroy/{id}', 'destroy')->name('pesanan.destroy');
     });
+});
+
+Route::prefix('user')->group(function () {
+    Route::get('/home', [UserController::class, 'index'])->name('user.index');
+    Route::get('shop', function () {return view('user.pages.shop');})->name('user.shop');
+    Route::get('shop-details', function () {return view('user.pages.shop-details');})->name('suser.hop-details');
+    Route::get('/cart', function () {return view('user.pages.shoping-cart');})->name('user.cart');
 });
