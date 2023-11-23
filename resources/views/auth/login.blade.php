@@ -13,11 +13,24 @@
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/349ee9c857.js" crossorigin="anonymous"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
 </head>
+
+@if (session('success'))
+<script>
+    Swal.fire({
+        icon:'success',
+        title: 'Success',
+        text: '{{ session("success") }}'
+    });
+</script>
+@endif
 
 <body class="">
     <main class="main-content mt-0">
@@ -53,8 +66,8 @@
                                             @enderror
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <div class="form-check form-check-info text-left mb-0">
-                                                <input class="form-check-input" type="checkbox" value="" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <div class="form-check form-switch text-left mb-0">
+                                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                                 <label class="font-weight-normal text-dark mb-0" for="remember">
                                                     Remember Me
                                                 </label>
@@ -82,8 +95,8 @@
                             <div class="position-absolute w-40 top-0 end-0 h-100 d-md-block d-none">
                                 <div class="oblique-image position-absolute fixed-top ms-auto h-100 z-index-0 bg-cover ms-n8" style="background-image:url('../assets/img/dog-accessories-snacks-notebook-set.jpg'); background-position: center;">
                                     <div class="blur mt-12 p-4 text-center border border-white border-radius-md position-absolute fixed-bottom m-4">
-                                        <h2 class="mt-3 text-dark font-weight-bold">Selamat datang di PetShop.</h2>
-                                        <h6 class="text-dark text-sm mt-5">Copyright © 2022 Corporate UI Design System by Creative Tim.</h6>
+                                        <h2 class="mt-3 text-dark font-weight-bold">Welcome to PetShop.</h2>
+                                        <h5 class="text-dark text-sm mt-3">Explore various products and services for your beloved pets.</h5>
                                     </div>
                                 </div>
                             </div>

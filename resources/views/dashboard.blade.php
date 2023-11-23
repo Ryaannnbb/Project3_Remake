@@ -1,12 +1,22 @@
 @extends('layout.app')
 
 @section('content')
+
+@if (session('success'))
+    <script>
+        Swal.fire({
+            icon:'success',
+            title: 'Success',
+            text: '{{ session("success") }}'
+        });
+    </script>
+@endif
 <div class="container-fluid py-4 px-5">
     <div class="row">
       <div class="col-md-12">
         <div class="d-md-flex align-items-center mb-3 mx-2">
           <div class="mb-md-0 mb-3">
-            <h3 class="font-weight-bold mb-0">Hello, Noah</h3>
+            <h3 class="font-weight-bold mb-0">Hello, {{ Auth::user()->name }}</h3>
             <p class="mb-0">Apps you might like!</p>
           </div>
           <button type="button" class="btn btn-sm btn-white btn-icon d-flex align-items-center mb-0 ms-md-auto mb-sm-0 mb-2 me-2">

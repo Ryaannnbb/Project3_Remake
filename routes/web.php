@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembayaranController;
@@ -26,10 +27,13 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
-    Route::get('', 'index')->name('kategori');
-    Route::get('create', 'create')->name('kategori.create');
-    Route::post('store', 'store')->name('kategori.store');
+Route::middleware(['auth','admin'])->group(function (){
+    Route::get('home', [HomeController::class, 'index'])->name('home');
+
+    Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
+        Route::get('', 'index')->name('kategori');
+        Route::get('create', 'create')->name('kategori.create');
+        Route::post('store', 'store')->name('kategori.store');
     Route::get('edit/{id}', 'edit')->name('kategori.edit');
     Route::put('edit/{id}', 'update')->name('kategori.update');
     Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
@@ -49,4 +53,6 @@ Route::controller(PembayaranController::class)->prefix('pembayaran')->group(func
     Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
     Route::put('edit/{id}', 'update')->name('pembayaran.update');
     Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+});
+
 });

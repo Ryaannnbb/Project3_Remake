@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KategoriController extends Controller
 {
@@ -12,6 +13,11 @@ class KategoriController extends Controller
      */
     public function index()
     {
+        if (Auth::user() == null)
+        {
+            return view("auth.login");
+        }
+
         $kategori = kategori::all();
         return view('kategori.index', compact('kategori'));
     }

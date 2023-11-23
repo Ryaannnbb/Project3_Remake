@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->timestamps();
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.
