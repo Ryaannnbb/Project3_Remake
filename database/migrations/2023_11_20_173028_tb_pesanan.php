@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained('users')->restrictOnDelete();
             $table->foreignId('produk_id')->constrained('tb_produk')->restrictOnDelete();
-            $table->foreignId('pembayaran_id')->constrained('tb_pembayaran')->restrictOnDelete();
+            // $table->foreignId('pembayaran_id')->constrained('tb_pembayaran')->restrictOnDelete();
             $table->integer('jumlah');
+            $table->integer('total');
             $table->timestamps();
         });
 

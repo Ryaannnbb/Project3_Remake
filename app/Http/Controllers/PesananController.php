@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pesanan;
 use Illuminate\Http\Request;
 
 class PesananController extends Controller
@@ -11,7 +12,8 @@ class PesananController extends Controller
      */
     public function index()
     {
-        //
+        $pesanans = pesanan::all();
+        return view("pesanan.index", compact("pesanans"));
     }
 
     /**
