@@ -84,8 +84,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::prefix('user')->group(function () {
-    Route::get('/home', [UserController::class, 'index'])->name('user.index');
-    Route::get('shop', function () {return view('user.pages.shop');})->name('user.shop');
-    Route::get('shop-details', function () {return view('user.pages.shop-details');})->name('suser.hop-details');
-    Route::get('/cart', function () {return view('user.pages.shoping-cart');})->name('user.cart');
+    Route::get('/home', [UserController::class, 'index'])->name('index');
+    Route::get('shop', function () {return view('user.pages.shop');})->name('shop');
+    Route::get('shop-details', function () {return view('user.pages.shop-details');})->name('shop-details');
+    Route::get('/cart', function () {return view('user.pages.shoping-cart');})->name('cart');
 });
