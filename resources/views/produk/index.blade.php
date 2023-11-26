@@ -26,11 +26,12 @@
                 <thead class="bg-gray-100">
                   <tr>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Image Produk</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Product Name</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Image</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Price</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Description</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Kategory</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Supplier</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
                   </tr>
                 </thead>
@@ -42,10 +43,10 @@
                                     <span class="text-secondary text-xs font-weight-bold text-center">{{$loop->iteration}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->nama_produk}}</span>
+                                    <span><img src="{{ asset($pg->path_produk) }}" alt="" style="width: 150px;"></span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span><img src="{{ asset($pg->path_produk) }}" alt="" style="width: 150px;"></span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->nama_produk}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <span class="text-secondary text-xs font-weight-bold">{{$pg->harga}}</span>

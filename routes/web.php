@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -83,8 +84,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     });
 });
 
+Route::controller(ShopController::class)->prefix('shop')->group(function () {
+    Route::get('/', 'index')->name('shop.index');
+});
 Route::prefix('user')->group(function () {
-    Route::get('/home', [UserController::class, 'index'])->name('index');
     Route::get('shop', function () {return view('user.pages.shop');})->name('shop');
     Route::get('shop-details', function () {return view('user.pages.shop-details');})->name('shop-details');
     Route::get('/cart', function () {return view('user.pages.shoping-cart');})->name('cart');

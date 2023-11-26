@@ -13,14 +13,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
   <!-- Css Styles -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-  <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-  <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('user/css/font-awesome.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('user/css/elegant-icons.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('user/css/nice-select.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('user/css/jquery-ui.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('user/css/slicknav.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('user/css/style.css') }}" type="text/css">
 </head>
 
 <body>
@@ -130,34 +131,24 @@
       <div class="row">
         <div class="col-lg-3">
           <div class="header__logo">
-            <a href="/"><img src="img/logo.png" alt=""></a>
+            <a href="/"><img src="{{ asset('assets/img/1700714057840.png') }}" height="70" alt=""></a>
           </div>
         </div>
         <div class="col-lg-6">
-          <nav class="header__menu">
-            <ul>
-              <li class="{{ request()->is('/*') ? 'active' : ( request()->is('/') ? 'active' : '') }}" ><a href="/">Home</a></li>
-              <li class="{{ request()->is('shop/*') ? 'active' : ( request()->is('shop') ? 'active' : '') }}"><a href="{{ route('shop') }}" >Shop</a></li>
-              <li><a href="#">Pages</a>
-                <ul class="header__menu__dropdown">
-                  <li><a href="{{ route('shop-details') }}">Shop Details</a></li>
-                  <li><a href="{{ route('cart') }}">Shoping Cart</a></li>
-                  <li><a href="./checkout.html">Check Out</a></li>
-                  <li><a href="./blog-details.html">Blog Details</a></li>
-                </ul>
-              </li>
-              <li><a href="./blog.html">Blog</a></li>
-              <li><a href="./contact.html">Contact</a></li>
-            </ul>
-          </nav>
         </div>
         <div class="col-lg-3">
           <div class="header__cart">
             <ul>
-              <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-              <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
+                <li>
+                  <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" style="border: none; background: none; cursor: pointer;">
+                      <i class="fa-solid fa-user"></i>
+                    </button>
+                  </form>
+                </li>
+                <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+              </ul>
           </div>
         </div>
       </div>
@@ -170,7 +161,7 @@
 
   @yield('content')
 
-  <!-- Footer Section Begin -->
+  {{-- <!-- Footer Section Begin -->
   <footer class="footer spad">
     <div class="container">
       <div class="row">
@@ -243,17 +234,17 @@
       </div>
     </div>
   </footer>
-  <!-- Footer Section End -->
+  <!-- Footer Section End --> --}}
 
   <!-- Js Plugins -->
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.nice-select.min.js"></script>
-  <script src="js/jquery-ui.min.js"></script>
-  <script src="js/jquery.slicknav.js"></script>
-  <script src="js/mixitup.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="{{ asset('user/js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('user/js/jquery.nice-select.min.js') }}"></script>
+  <script src="{{ asset('user/js/jquery-ui.min.js') }}"></script>
+  <script src="{{ asset('user/js/jquery.slicknav.js') }}"></script>
+  <script src="{{ asset('user/js/mixitup.min.js') }}"></script>
+  <script src="{{ asset('user/js/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('user/js/main.js') }}"></script>
 
 </body>
 
