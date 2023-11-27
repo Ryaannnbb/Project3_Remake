@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('produk_id')->constrained('tb_produk')->restrictOnDelete();
             $table->integer('jumlah');
             $table->integer('total');
+            $table->enum('status', ['checkout', 'keranjang']);
             $table->timestamps();
         });
     } 

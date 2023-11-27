@@ -2,7 +2,7 @@
 
 @section('content')
   <!-- Hero Section Begin -->
-  <section class="hero hero-normal">
+  {{-- <section class="hero hero-normal">
     <div class="container">
       <div class="row">
         <div class="col-lg-3">
@@ -38,7 +38,7 @@
                 <button type="submit" class="site-btn">SEARCH</button>
               </form>
             </div>
-            {{-- <div class="hero__search__phone">
+            <div class="hero__search__phone">
               <div class="hero__search__phone__icon">
                 <i class="fa fa-phone"></i>
               </div>
@@ -46,12 +46,12 @@
                 <h5>+65 11.188.888</h5>
                 <span>support 24/7 time</span>
               </div>
-            </div> --}}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   <!-- Hero Section End -->
 
   <!-- Breadcrumb Section Begin -->
@@ -60,11 +60,11 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <div class="breadcrumb__text">
-            <h2>Checkout</h2>
-            <div class="breadcrumb__option">
+            <h2 style="color: black">Checkout</h2>
+            {{-- <div class="breadcrumb__option">
               <a href="{{ route('home') }}">Home</a>
               <span>Checkout</span>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@
                   </div>
                 </div>
               </div>
-              <div class="checkout__input__checkbox">
+              {{-- <div class="checkout__input__checkbox">
                 <label for="acc">
                   Create an account?
                   <input type="checkbox" id="acc">
@@ -158,7 +158,7 @@
               <div class="checkout__input">
                 <p>Order notes<span>*</span></p>
                 <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
-              </div>
+              </div> --}}
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="checkout__order">
@@ -178,15 +178,15 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua.</p>
-                <div class="checkout__input__checkbox">
+                {{-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua.</p> --}}
+                {{-- <div class="checkout__input__checkbox">
                   <label for="payment">
                     Check Payment
                     <input type="checkbox" id="payment">
                     <span class="checkmark"></span>
                   </label>
-                </div>
+                </div> --}}
                 <div class="checkout__input__checkbox">
                   <label for="paypal">
                     Paypal

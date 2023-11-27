@@ -12,11 +12,12 @@ class Pesanan extends Model
     use HasFactory;
 
     protected $table = "tb_pesanan";
+    protected $guarded = "id";
 
-    public function produk() : BelongsTo
-    {
-        return $this->belongsTo(produk::class);
-    }
+    // public function produk() : BelongsTo
+    // {
+    //     return $this->belongsTo(produk::class);
+    // }
     public function user() : BelongsTo
     {
         return $this->belongsTo(User::class);

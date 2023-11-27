@@ -1,9 +1,8 @@
 @extends('user.layouts.main')
 
 @section('content')
-
-    <!-- Hero Section Begin -->
-    {{-- <section class="hero hero-normal">
+  <!-- Hero Section Begin -->
+  {{-- <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -53,21 +52,21 @@
             </div>
         </div>
     </section> --}}
-    <!-- Hero Section End -->
+  <!-- Hero Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2 style="color: black">Cart</h2>
-                    </div>
-                </div>
-            </div>
+  <!-- Breadcrumb Section Begin -->
+  <section class="breadcrumb-section set-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="breadcrumb__text">
+            <h2 style="color: black">Cart</h2>
+          </div>
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+      </div>
+    </div>
+  </section>
+  <!-- Breadcrumb Section End -->
 
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
@@ -88,8 +87,12 @@
                             <tbody>
                                 @php
                                     $subtotal = 0;
+                                    $pesanan_id = []
                                 @endphp
                                 @foreach ($pesanans as $pesanan)
+                                @php
+                                    array_push($pesanan_id, $pesanan->id)
+                                @endphp
                                 <tr>
                                     <td class="shoping__cart__item">
                                         <img src="{{ asset($pesanan->produk->path_produk) }}" alt="{{ $pesanan->produk->nama_produk }}">
@@ -145,17 +148,24 @@
                     </div>
                 </div> --}}
                 <div class="col-lg-12">
-                    <div class="shoping__checkout">
+                    <form class="shoping__checkout" action="{{ route('checkout') }}" method="POST">
+                        @csrf
                         <h5>Cart Total</h5>
                         <ul>
                             <li>Total Quantity <span>{{ $pesanans->sum('jumlah') }}</span></li>
                             <li>Total <span>Rp. {{ number_format($subtotal, 0, ',', '.') }}</span></li>
+                          @foreach ($pesanan_id as $id)
+                            <input type="hidden" name="pesanan_id[]" value="{{ $id }}">
+                            <input type="hidden" name="total" value="{{ $subtotal }}">
+                          @endforeach
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
-                    </div>
+                        <button class="btn primary-btn w-100">PROCEED TO CHECKOUT</button>
+                      </form>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Shoping Cart Section End -->
-    @endsection
+      </div>
+    </div>
+  </section>
+  <!-- Shoping Cart Section End -->
+@endsection

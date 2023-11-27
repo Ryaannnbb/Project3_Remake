@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\detailpesanan;
+use App\Models\Detailpesanan;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pesanans = Detailpesanan::where('status', 'keranjang')->get();
-        $pesanan = $pesanans;
-        return view("user.pages.shoping-cart", compact('pesanans', 'pesanan'));
+        $pesanan = Detailpesanan::where('status', 'keranjang')->get();
+        return view('user.pages.checkout', compact('pesanan'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -30,21 +29,28 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pesanan = new Pesanan;
+        $pesanan->user_id = auth()->user()->id;
+        $pesanan->total = $request->total;
+        $pesanan->save();
+
+        $detailPesanan = $request->pesanan_id;
+        foreach ($detailPesanan as $value) {
+            Detailpesanan::findOrFail($value)->update(['pesanan_id' => $pesanan->id, 'status' => 'checkout']);
+        }
+
+        return redirect()->route('shop.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(detailpesanan $detailpesanan)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(detailpesanan $detailpesanan)
+    public function edit(string $id)
     {
         //
     }
@@ -52,7 +58,7 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, detailpesanan $detailpesanan)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -62,7 +68,6 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        detailpesanan::findOrFail($id)->delete();
-        return redirect()->back();
+        //
     }
 }

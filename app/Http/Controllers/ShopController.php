@@ -30,14 +30,14 @@ class ShopController extends Controller
         }
 
         $kategoris = Kategori::all();
-        $pesanan = Detailpesanan::all();
+        $pesanan = Detailpesanan::where('status', 'keranjang');
         // return dd($pesanan);
         return view("user.pages.shop", compact('produk','kategoris', 'pesanan'));
     }
 
     public function detail($produk) {
         $produk = Produk::findOrFail($produk);
-        $pesanan = Detailpesanan::all();
+        $pesanan = Detailpesanan::where('status', 'keranjang')->get();
         return view("user.pages.shop-details", compact('produk', 'pesanan'));
     }
     /**
@@ -50,7 +50,10 @@ class ShopController extends Controller
         Detailpesanan::create([
             "produk_id" => $produk->id,
             "jumlah" => $request->jumlah,
-            "total" => $produk->harga * $request->jumlah
+            "total" => $produk->harga * $request->jumlah,
+            "status" => 'keranjang'
         ]);
+
+        return redirect()->route('cart');
     }
 }
