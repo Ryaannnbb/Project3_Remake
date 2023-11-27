@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,8 +88,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::controller(ShopController::class)->prefix('shop')->group(function () {
     Route::get('/', 'index')->name('shop.index');
     Route::get('{produk}/detail', 'detail')->name('shop.detail');
-    Route::get('cart', 'cart')->name('cart');
     Route::post('{produk_id}/order', 'order')->name('shop.order');
+});
+
+Route::controller(CartController::class)->prefix('shop')->group(function () {
+    Route::get('cart', 'index')->name('cart');
+    Route::delete('cart/{cart}', 'destroy')->name('cart.destroy');
+
 });
 // Route::prefix('user')->group(function () {
 //     Route::get('shop', function () {return view('user.pages.shop');})->name('shop');

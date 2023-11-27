@@ -37,7 +37,8 @@ class ShopController extends Controller
 
     public function detail($produk) {
         $produk = Produk::findOrFail($produk);
-        return view("user.pages.shop-details", compact('produk'));
+        $pesanan = Detailpesanan::all();
+        return view("user.pages.shop-details", compact('produk', 'pesanan'));
     }
     /**
      * Show the form for creating a new resource.
@@ -51,11 +52,5 @@ class ShopController extends Controller
             "jumlah" => $request->jumlah,
             "total" => $produk->harga * $request->jumlah
         ]);
-    }
-
-    public function cart() {
-        $pesanans = Detailpesanan::all();
-
-        return view("user.pages.shoping-cart", compact('pesanans'));
     }
 }

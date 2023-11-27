@@ -106,8 +106,10 @@
                                         Rp. {{ number_format($pesanan->total, 0, ',', '.') }}
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <form action="{{ route('cart.destroy', ) }}">
-                                            <span class="icon_close"></span>
+                                        <form action="{{ route('cart.destroy', $pesanan->id) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn icon_close"></button>
                                         </form>
                                     </td>
                                 </tr>
