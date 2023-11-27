@@ -147,7 +147,18 @@
                     </button>
                   </form>
                 </li>
-                <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ $pesanan->count() }}</span></a></li>
+                <ul class="list-inline">
+                    <li class="list-inline-item mr-4">
+                        <a href="{{ route('cart') }}">
+                            <i class="fa fa-shopping-bag"></i><span>{{ $pesanan->count() }}</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="{{ route('order') }}">
+                            <i class="fas fa-bell"></i> <!-- Menggunakan fas untuk ikon solid -->
+                        </a>
+                    </li>
+                </ul>
               </ul>
           </div>
         </div>

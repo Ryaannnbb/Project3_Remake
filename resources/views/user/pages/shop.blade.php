@@ -1,11 +1,11 @@
 @extends('user.layouts.main')
 
 @section('content')
-    <style>
+    {{-- <style>
         .list{
             display: none;
         }
-    </style>
+    </style> --}}
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -128,13 +128,11 @@
                             <div class="col-lg-4 col-md-5">
                                 <div class="filter__sort">
                                     <span>Sort By</span>
-                                    <form id="Filter">
-                                        <select name="sort" id="sort-by" >
-                                            <option value="default">Default</option>
-                                            <option value="price-low">Price: Low to High</option>
-                                            <option value="price-high">Price: High to Low</option>
-                                        </select>
-                                    </form>
+                                    <select id="sort-by">
+                                        <option value="default">Default</option>
+                                        <option value="price-low">Price: Low to High</option>
+                                        <option value="price-high">Price: High to Low</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-3 offset-md-4">
@@ -176,7 +174,7 @@
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
+    {{-- <script>
         $(document).ready(function(){
             $('#sort-by').change(function(){
                 var form = document.getElementById('Filter');
@@ -197,6 +195,6 @@
             element.style.display = 'none';
             });
         });
-    </script>
+    </script> --}}
     <!-- Product Section End -->
 @endsection

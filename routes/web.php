@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembayaranController;
@@ -94,6 +95,10 @@ Route::controller(ShopController::class)->prefix('shop')->group(function () {
 Route::controller(CartController::class)->prefix('shop')->group(function () {
     Route::get('cart', 'index')->name('cart');
     Route::delete('cart/{cart}', 'destroy')->name('cart.destroy');
+
+});
+Route::controller(OrderController::class)->prefix('order')->group(function () {
+    Route::get('order', 'index')->name('order');
 
 });
 // Route::prefix('user')->group(function () {
