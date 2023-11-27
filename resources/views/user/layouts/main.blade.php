@@ -131,7 +131,7 @@
       <div class="row">
         <div class="col-lg-3">
           <div class="header__logo">
-            <a href="/"><img src="{{ asset('assets/img/1700714057840.png') }}" height="70" alt=""></a>
+            <a href="{{ route('shop.index') }}"><img src="{{ asset('assets/img/1700714057840.png') }}" height="70" alt=""></a>
           </div>
         </div>
         <div class="col-lg-6">
@@ -147,7 +147,7 @@
                     </button>
                   </form>
                 </li>
-                <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ $pesanan->count() }}</span></a></li>
               </ul>
           </div>
         </div>

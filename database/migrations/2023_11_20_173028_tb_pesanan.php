@@ -14,10 +14,6 @@ return new class extends Migration
         Schema::create('tb_pesanan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->constrained('users')->restrictOnDelete();
-            $table->foreignId('produk_id')->constrained('tb_produk')->restrictOnDelete();
-            // $table->foreignId('pembayaran_id')->constrained('tb_pembayaran')->restrictOnDelete();
-            $table->integer('jumlah');
-            $table->integer('total');
             $table->timestamps();
         });
 

@@ -86,9 +86,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::controller(ShopController::class)->prefix('shop')->group(function () {
     Route::get('/', 'index')->name('shop.index');
+    Route::get('{produk}/detail', 'detail')->name('shop.detail');
+    Route::get('cart', 'cart')->name('cart');
+    Route::post('{produk_id}/order', 'order')->name('shop.order');
 });
-Route::prefix('user')->group(function () {
-    Route::get('shop', function () {return view('user.pages.shop');})->name('shop');
-    Route::get('shop-details', function () {return view('user.pages.shop-details');})->name('shop-details');
-    Route::get('/cart', function () {return view('user.pages.shoping-cart');})->name('cart');
-});
+// Route::prefix('user')->group(function () {
+//     Route::get('shop', function () {return view('user.pages.shop');})->name('shop');
+//     Route::get('shop-details', function () {return view('user.pages.shop-details');})->name('shop-details');
+//     Route::get('/cart', function () {return view('user.pages.shoping-cart');})->name('cart');
+// });

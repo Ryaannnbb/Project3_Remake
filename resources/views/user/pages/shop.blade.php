@@ -49,16 +49,10 @@
                         <div class="sidebar__item">
                             <h4>Category</h4>
                             <ul>
-                                <li><a href="#">Fresh Meat</a></li>
-                                <li><a href="#">Vegetables</a></li>
-                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                <li><a href="#">Fresh Berries</a></li>
-                                <li><a href="#">Ocean Foods</a></li>
-                                <li><a href="#">Butter & Eggs</a></li>
-                                <li><a href="#">Fastfood</a></li>
-                                <li><a href="#">Fresh Onion</a></li>
-                                <li><a href="#">Papayaya & Crisps</a></li>
-                                <li><a href="#">Oatmeal</a></li>
+                                <li class="active"><a href="{{ route('shop.index') }}">All</a></li>
+                                @foreach ($kategoris as $kategori)
+                                <li><a href="?category={{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="sidebar__item">
@@ -157,14 +151,14 @@
                                     <div class="product__item">
                                         <div class="product__item__pic set-bg" data-setbg="{{ asset($pd->path_produk) }}">
                                             <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                                {{-- <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li> --}}
+                                                <li><a href="{{ route('shop.detail', $pd->id) }}"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <div class="product__item__text">
                                             <h6><a href="#">{{ $pd->nama_produk }}</a></h6>
-                                            <h5>${{ $pd->harga }}</h5>
+                                            <h5>Rp. {{ number_format($pd->harga, 0, ',', '.') }}</h5>
                                         </div>
                                     </div>
                                 </div>

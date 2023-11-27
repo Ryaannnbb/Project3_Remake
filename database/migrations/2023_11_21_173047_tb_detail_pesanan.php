@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_keranjang', function (Blueprint $table) {
+        Schema::create('tb_detail_pesanan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pesanan_id')->nullable()->default(null)->constrained('tb_pesanan')->restrictOnDelete();
             $table->foreignId('produk_id')->constrained('tb_produk')->restrictOnDelete();
             $table->integer('jumlah');
+            $table->integer('total');
             $table->timestamps();
         });
     } 

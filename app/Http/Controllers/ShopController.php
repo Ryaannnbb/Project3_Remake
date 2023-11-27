@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detailpesanan;
 use App\Models\Produk;
+use App\Models\kategori;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -13,6 +16,7 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $sortOption = $request->input('sort');
+        $category = $request->input('category');
         $produk = Produk::all();
 
         if ($sortOption == 'price-low') {
@@ -21,61 +25,37 @@ class ShopController extends Controller
             $produk = Produk::orderBy('harga', 'desc')->get();
         }
 
-        return view("user.pages.shop", compact('produk'));
-    }
-    // public function queue($pricepler)
-    // {
-    //     if ($pricepler == ) {
-    //         # code...
-    //     }
-    //     $produk = Produk::orderBy('harga', 'asc');
-    // }
+        if($category) {
+            $produk = Produk::where('kategori_id', $category)->get();
+        }
 
+        $kategoris = Kategori::all();
+        $pesanan = Detailpesanan::all();
+        // return dd($pesanan);
+        return view("user.pages.shop", compact('produk','kategoris', 'pesanan'));
+    }
+
+    public function detail($produk) {
+        $produk = Produk::findOrFail($produk);
+        return view("user.pages.shop-details", compact('produk'));
+    }
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function order(Request $request, $produk)
     {
-        //
+        $produk = Produk::findOrFail($produk);
+
+        Detailpesanan::create([
+            "produk_id" => $produk->id,
+            "jumlah" => $request->jumlah,
+            "total" => $produk->harga * $request->jumlah
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function cart() {
+        $pesanans = Detailpesanan::all();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view("user.pages.shoping-cart", compact('pesanans'));
     }
 }
