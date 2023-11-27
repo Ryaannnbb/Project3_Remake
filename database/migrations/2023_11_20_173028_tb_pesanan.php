@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('tb_pesanan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id')->constrained('users')->restrictOnDelete();
+            $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
+            $table->integer('total');
             $table->timestamps();
         });
-
     }
 
     /**

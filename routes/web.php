@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
@@ -94,7 +95,9 @@ Route::controller(ShopController::class)->prefix('shop')->group(function () {
 Route::controller(CartController::class)->prefix('shop')->group(function () {
     Route::get('cart', 'index')->name('cart');
     Route::delete('cart/{cart}', 'destroy')->name('cart.destroy');
-
+});
+Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(function () {
+    Route::post('/', 'store')->name('checkout');
 });
 // Route::prefix('user')->group(function () {
 //     Route::get('shop', function () {return view('user.pages.shop');})->name('shop');
