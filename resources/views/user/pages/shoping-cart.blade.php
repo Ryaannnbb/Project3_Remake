@@ -87,8 +87,12 @@
                             <tbody>
                                 @php
                                     $subtotal = 0;
+                                    $pesanan_id = []
                                 @endphp
                                 @foreach ($pesanans as $pesanan)
+                                @php
+                                    array_push($pesanan_id, $pesanan->id)
+                                @endphp
                                 <tr>
                                     <td class="shoping__cart__item">
                                         <img src="{{ asset($pesanan->produk->path_produk) }}" alt="{{ $pesanan->produk->nama_produk }}">
@@ -144,50 +148,21 @@
                     </div>
                 </div> --}}
                 <div class="col-lg-12">
-                    <div class="shoping__checkout">
+                    <form class="shoping__checkout" action="{{ route('checkout') }}" method="POST">
+                        @csrf
                         <h5>Cart Total</h5>
                         <ul>
                             <li>Total Quantity <span>{{ $pesanans->sum('jumlah') }}</span></li>
                             <li>Total <span>Rp. {{ number_format($subtotal, 0, ',', '.') }}</span></li>
+                          @foreach ($pesanan_id as $id)
+                            <input type="hidden" name="pesanan_id[]" value="{{ $id }}">
+                            <input type="hidden" name="total" value="{{ $subtotal }}">
+                          @endforeach
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
-                    </div>
+                        <button class="btn primary-btn w-100">PROCEED TO CHECKOUT</button>
+                      </form>
                 </div>
             </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="shoping__cart__btns">
-            <a href="{{ route('shop.index') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-            <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-              Upadate Cart</a>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="shoping__continue">
-            <div class="shoping__discount">
-              <h5>Discount Codes</h5>
-              <form action="#">
-                <input type="text" placeholder="Enter your coupon code">
-                <button type="submit" class="site-btn">APPLY COUPON</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <form class="shoping__checkout" action="{{ route('checkout') }}" method="POST">
-            @csrf
-            <h5>Cart Total</h5>
-            <ul>
-              <li>Subtotal <span>$454.98</span></li>
-              <li>Total <span>$454.98</span></li>
-              @foreach ($pesanan_id as $id)
-                <input type="hidden" name="pesanan_id[]" value="{{ $id }}">
-              @endforeach
-            </ul>
-            <button class="btn primary-btn w-100">PROCEED TO CHECKOUT</button>
-          </form>
         </div>
       </div>
     </div>

@@ -83,6 +83,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('edit/{id}', 'edit')->name('pesanan.edit');
         Route::put('edit/{id}', 'update')->name('pesanan.update');
         Route::delete('destroy/{id}', 'destroy')->name('pesanan.destroy');
+        Route::get('{id}/detail', 'show')->name('pesanan.detail');
+        Route::post('{id}/terima', 'terima')->name('pesanan.terima');
     });
 });
 
@@ -97,6 +99,7 @@ Route::controller(CartController::class)->prefix('shop')->group(function () {
     Route::delete('cart/{cart}', 'destroy')->name('cart.destroy');
 });
 Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(function () {
+    Route::get('/', 'index')->name('checkout.index');
     Route::post('/', 'store')->name('checkout');
 });
 // Route::prefix('user')->group(function () {

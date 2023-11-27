@@ -8,13 +8,13 @@
           <div class="card-header border-bottom pb-0">
             <div class="d-sm-flex align-items-center">
               <div>
-                <h6 class="font-weight-semibold text-lg mb-0">Category list</h6>
+                <h6 class="font-weight-semibold text-lg mb-0">Orders Detail</h6>
                 <p class="text-sm">See information about all category</p>
               </div>
               <div class="ms-auto d-flex">
-                <a href="{{ route('supplier.create') }}">
+                <a href="{{ route('pesanan.index') }}">
                   <button type="button" class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">
-                    <span class="btn-inner--text">Add Supplier</span>
+                    <span class="btn-inner--text">Back</span>
                   </button>
                 </a>
               </div>
@@ -26,9 +26,11 @@
                 <thead class="bg-gray-100">
                   <tr>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">User</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Product Image</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Product Name</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Quantity</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Total</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
+                    {{-- <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th> --}}
                   </tr>
                 </thead>
                 <tbody>
@@ -38,34 +40,38 @@
                         <td class="align-middle text-center text-sm">
                           <span class="text-secondary text-xs font-weight-bold text-center">{{ $loop->iteration }}</span>
                         </td>
-                        <td class="align-middle text-center text-sm">
-                          <span
-                            class="text-secondary text-xs font-weight-bold">{{ $pesanan->user_id ? $pesanan->user->name : 'User not found' }}</span>
                         </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="text-secondary text-xs font-weight-bold">
+                            <img src="{{ asset($pesanan->produk->path_produk) }}" alt="">
+                          </span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="text-secondary text-xs font-weight-bold">
+                            {{ $pesanan->produk->nama_produk }}</span>
+                       </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="text-secondary text-xs font-weight-bold">
+                            {{ $pesanan->jumlah }}</span>
+                       </td>
                         <td class="align-middle text-center text-sm">
                           <span class="text-secondary text-xs font-weight-bold">Rp.
                             {{ number_format($pesanan->total, 0, ',', '.') }}</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <a href="{{ url("pesanan/$pesanan->id/detail") }}" class="btn btn-secondary mb-n1 mt-n1 p-2" >
-                            {{-- <i class="fa-solid fa-trash"></i> --}}
+                       </td>
+                        {{--  <td class="align-middle text-center text-sm">
+                          <a class="btn btn-secondary mb-n1 mt-n1 p-2" data-original-title="Delete user"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Detail
                           </a>
-                          @if ($pesanan->status == 'menunggu')
-                          <form action="{{ route('pesanan.terima', $pesanan->id) }}" >
-                            <button class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip"
+                          <a href="" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip"
                             data-original-title="Edit user">
-                            {{-- <i class="fa-regular fa-pen-to-square"></i> --}}
                             Terima
-                            </button>
-                          </form>
-                          @endif
+                          </a>
                           <button type="submit" class="btn btn-secondary mb-n1 mt-n1 p-2"
                             data-original-title="Delete user" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            {{-- <i class="fa-solid fa-trash"></i> --}}
                             Tolak
                           </button>
-                        </td>
+                        </td> --}}
                       </tr>
                     @endforeach
                   @endif

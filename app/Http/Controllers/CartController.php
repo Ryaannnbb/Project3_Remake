@@ -12,8 +12,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        $pesanans = Detailpesanan::all();
-        $pesanan = Detailpesanan::all();
+        $pesanans = Detailpesanan::where('status', 'keranjang')->get();
+        $pesanan = $pesanans;
         return view("user.pages.shoping-cart", compact('pesanans', 'pesanan'));
     }
 

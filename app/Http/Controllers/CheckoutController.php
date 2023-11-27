@@ -13,9 +13,9 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        //
+        $pesanan = Detailpesanan::where('status', 'keranjang')->get();
+        return view('user.pages.checkout', compact('pesanan'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -31,11 +31,12 @@ class CheckoutController extends Controller
     {
         $pesanan = new Pesanan;
         $pesanan->user_id = auth()->user()->id;
+        $pesanan->total = $request->total;
         $pesanan->save();
 
         $detailPesanan = $request->pesanan_id;
         foreach ($detailPesanan as $value) {
-            Detailpesanan::findOrFail($value)->update(['pesanan_id' => $pesanan->id]);
+            Detailpesanan::findOrFail($value)->update(['pesanan_id' => $pesanan->id, 'status' => 'checkout']);
         }
 
         return redirect()->route('shop.index');
@@ -44,10 +45,7 @@ class CheckoutController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
