@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembayaranController;
@@ -86,6 +87,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::delete('destroy/{id}', 'destroy')->name('pesanan.destroy');
         Route::get('{id}/detail', 'show')->name('pesanan.detail');
         Route::post('{id}/terima', 'terima')->name('pesanan.terima');
+        Route::post('{id}/tolak', 'tolak')->name('pesanan.tolak');
     });
     Route::controller(PengirimanController::class)->prefix('pengiriman')->group(function() {
         Route::get('/', 'index')->name('pengiriman.index');
@@ -100,11 +102,16 @@ Route::controller(ShopController::class)->prefix('shop')->group(function () {
 
 Route::controller(CartController::class)->prefix('shop')->group(function () {
     Route::get('cart', 'index')->name('cart');
-    Route::delete('cart/{cart}', 'destroy')->name('cart.destroy');
+    Route::delete('cart/{id}', 'destroy')->name('cart.destroy');
 });
 Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(function () {
     Route::get('/', 'index')->name('checkout.index');
     Route::post('/checkout', 'store')->name('checkout');
+});
+Route::controller(OrderController::class)->prefix('order')->group(function () {
+    Route::get('order', 'index')->name('order');
+    Route::delete('order/{id}', 'destroy')->name('order.destroy');
+
 });
 // Route::prefix('user')->group(function () {
 //     Route::get('shop', function () {return view('user.pages.shop');})->name('shop');

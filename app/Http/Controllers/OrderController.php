@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\detailpesanan;
+use App\Models\pesanan;
 use Illuminate\Http\Request;
+use App\Models\Detailpesanan;
 
-class CartController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pesanans = Detailpesanan::where('status', 'keranjang')->get();
+        $pesanans = Detailpesanan::where('status', 'checkout')->get();
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $order = Detailpesanan::where('status', 'checkout')->get()->count();
-        return view("user.pages.shoping-cart", compact('pesanans', 'totalpesanan', 'order'));
+
+        return view("user.pages.order", compact('pesanans', 'totalpesanan', 'order'));
     }
 
     /**
@@ -37,7 +39,7 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(detailpesanan $detailpesanan)
+    public function show(string $id)
     {
         //
     }
@@ -45,7 +47,7 @@ class CartController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(detailpesanan $detailpesanan)
+    public function edit(string $id)
     {
         //
     }
@@ -53,7 +55,7 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, detailpesanan $detailpesanan)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -63,7 +65,7 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        detailpesanan::findOrFail($id)->delete();
+        pesanan::findOrFail($id)->delete();
         return redirect()->back();
     }
 }

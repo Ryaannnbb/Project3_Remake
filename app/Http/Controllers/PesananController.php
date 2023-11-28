@@ -19,7 +19,22 @@ class PesananController extends Controller
 
     public function terima(string $id)
     {
-        Pesanan::find($id)->update(['status' => 'diterima']);
+        $pesanan = Pesanan::find($id);
+        $pesanan->status = 'diterima';
+        $pesanan->update();
+
+        return redirect()->route('pesanan.index');
+
+    }
+    public function tolak(Request $request, string $id)
+    {
+        $pesanan = Pesanan::find($id);
+        $pesanan->status = 'ditolak';
+        $pesanan->pesan_tolak = $request->pesan_tolak;
+        $pesanan->update();
+
+        return redirect()->route('pesanan.index');
+
     }
 
     /**

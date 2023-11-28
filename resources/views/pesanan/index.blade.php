@@ -48,23 +48,40 @@
                         </td>
                         <td class="align-middle text-center text-sm">
                           <a href="{{ url("pesanan/$pesanan->id/detail") }}" class="btn btn-secondary mb-n1 mt-n1 p-2" >
-                            {{-- <i class="fa-solid fa-trash"></i> --}}
                             Detail
                           </a>
                           @if ($pesanan->status == 'menunggu')
-                          <form action="{{ route('pesanan.terima', $pesanan->id) }}" >
+                          <form action="{{ route('pesanan.terima', $pesanan->id) }}" method="POST" style="display: inline">
+                            @csrf
                             <button class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip"
                             data-original-title="Edit user">
-                            {{-- <i class="fa-regular fa-pen-to-square"></i> --}}
                             Terima
                             </button>
                           </form>
-                          @endif
                           <button type="submit" class="btn btn-secondary mb-n1 mt-n1 p-2"
-                            data-original-title="Delete user" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            {{-- <i class="fa-solid fa-trash"></i> --}}
-                            Tolak
-                          </button>
+                          data-original-title="Delete user" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pesanan->id }}">
+                          Tolak
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{ $pesanan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <form class="modal-content" action="{{ route('pesanan.tolak', $pesanan->id) }}" method="POST">
+                              @csrf
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Pesan Tolak</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <textarea name="pesan_tolak" id="" cols="30" rows="5" class="form-control"></textarea>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Next</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                        @endif
                         </td>
                       </tr>
                     @endforeach
@@ -80,23 +97,4 @@
   </div>
   <!-- Button trigger modal -->
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <form class="modal-content" action="" method="POST">
-        @csrf
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Pesan Tolak</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <textarea name="pesan" id="" cols="30" rows="5" class="form-control"></textarea>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Next</button>
-        </div>
-      </form>
-    </div>
-  </div>
 @endsection

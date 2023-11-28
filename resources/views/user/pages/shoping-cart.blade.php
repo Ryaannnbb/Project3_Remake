@@ -81,6 +81,7 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
+                                    <th>Action</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -95,8 +96,8 @@
                                 @endphp
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="{{ asset($pesanan->produk->path_produk) }}" alt="{{ $pesanan->produk->nama_produk }}">
-                                        <h5>{{ $pesanan->produk->nama_produk }}</h5>
+                                        <img src="{{ asset($pesanan->produk->path_produk) }}" alt="{{ $pesanan->produk->nama_produk }}" style="width: 160px;">
+                                        <h5>{{ ucfirst($pesanan->produk->nama_produk) }}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
                                         Rp. {{ number_format($pesanan->produk->harga, 0, ',', '.') }}
@@ -115,7 +116,7 @@
                                         <form action="{{ route('cart.destroy', $pesanan->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn icon_close"></button>
+                                            <button type="submit" class="btn njir"><i class="fa-solid fa-xmark fa-lg"></i></button>
                                         </form>
                                     </td>
                                 </tr>
