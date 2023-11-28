@@ -52,7 +52,7 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div> --}}
-            <div class="product__details__price">Rp. {{ number_format($produk->harga, 0, ',', '.') }}</div>
+            <div class="product__details__pr">Rp. {{ number_format($produk->harga, 0, ',', '.') }}</div>
             <p>{{ $produk->deskripsi }}</p>
             <form action="{{ route('shop.order', $produk->id) }}" method="POST">
                 @csrf

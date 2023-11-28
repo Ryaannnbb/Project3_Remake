@@ -15,9 +15,12 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $sortOption = $request->input('sort');
         $category = $request->input('category');
-        $produk = Produk::all();
+        $produk = Produk::paginate(3);
+        $order = Detailpesanan::where('status', 'checkout')->get()->count();
+
 
         if ($sortOption == 'price-low') {
             $produk = Produk::orderBy('harga', 'asc')->get();
@@ -32,13 +35,15 @@ class ShopController extends Controller
         $kategoris = Kategori::all();
         $pesanan = Detailpesanan::where('status', 'keranjang');
         // return dd($pesanan);
-        return view("user.pages.shop", compact('produk','kategoris', 'pesanan'));
+        return view("user.pages.shop", compact('produk','kategoris', 'totalpesanan', 'order'));
     }
 
-    public function detail($produk) {
+    public function detail($produk)
+    {
         $produk = Produk::findOrFail($produk);
-        $pesanan = Detailpesanan::where('status', 'keranjang')->get();
-        return view("user.pages.shop-details", compact('produk', 'pesanan'));
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
+        $order = Detailpesanan::where('status', 'checkout')->get()->count();
+        return view("user.pages.shop-details", compact('produk', 'totalpesanan', 'order'));
     }
     /**
      * Show the form for creating a new resource.

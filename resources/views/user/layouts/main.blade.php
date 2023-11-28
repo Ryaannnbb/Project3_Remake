@@ -10,6 +10,13 @@
   <title>Ogani | Template</title>
 
   <!-- Google Font -->
+  <!-- resources/views/layouts/app.blade.php -->
+
+<!-- Tambahkan ini di dalam tag <head> -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
   <!-- Css Styles -->
@@ -148,16 +155,24 @@
                   </form>
                 </li>
                 <ul class="list-inline">
-                    <li class="list-inline-item mr-4">
-                        <a href="{{ route('cart') }}">
-                            <i class="fa fa-shopping-bag"></i><span>{{ $pesanan->count() }}</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="{{ route('order') }}">
-                            <i class="fas fa-bell"></i> <!-- Menggunakan fas untuk ikon solid -->
-                        </a>
-                    </li>
+                    <ul class="list-inline">
+                        <li class="list-inline-item mr-4">
+                            <a href="{{ route('cart') }}">
+                                <i class="fa fa-shopping-bag"></i>
+                                @if($totalpesanan > 0)
+                                    <span>{{ $totalpesanan }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{{ route('order') }}">
+                                <i class="fas fa-bell"></i>
+                                @if($order > 0)
+                                    <span>{{ $order }}</span>
+                                @endif
+                            </a>
+                        </li>
+                    </ul>
                 </ul>
               </ul>
           </div>
@@ -248,6 +263,7 @@
   <!-- Footer Section End --> --}}
 
   <!-- Js Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="{{ asset('user/js/jquery-3.3.1.min.js') }}"></script>
   <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('user/js/jquery.nice-select.min.js') }}"></script>
@@ -255,7 +271,7 @@
   <script src="{{ asset('user/js/jquery.slicknav.js') }}"></script>
   <script src="{{ asset('user/js/mixitup.min.js') }}"></script>
   <script src="{{ asset('user/js/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('user/js/main.js') }}"></script>
+  <script src="{{ asset('/user/js/main.js') }}"></script>
 
 </body>
 

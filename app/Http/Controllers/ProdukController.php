@@ -86,7 +86,7 @@ class ProdukController extends Controller
     {
         $produk = produk::find($id);
 
-        // Memeriksa apakah data yang akan diubah sama dengan data sebelumnya   
+        // Memeriksa apakah data yang akan diubah sama dengan data sebelumnya
         // if (
         //     $request->judul_buku == $produk->judul_buku &&
         //     $request->tahun_terbit == $produk->tahun_terbit &&

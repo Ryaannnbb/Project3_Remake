@@ -13,8 +13,9 @@ class CartController extends Controller
     public function index()
     {
         $pesanans = Detailpesanan::where('status', 'keranjang')->get();
-        $pesanan = $pesanans;
-        return view("user.pages.shoping-cart", compact('pesanans', 'pesanan'));
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
+        $order = Detailpesanan::where('status', 'checkout')->get()->count();
+        return view("user.pages.shoping-cart", compact('pesanans', 'totalpesanan', 'order'));
     }
 
     /**

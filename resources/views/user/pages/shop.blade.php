@@ -55,7 +55,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="sidebar__item">
+                        {{-- <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
                                 <div class="latest-product__slider owl-carousel">
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
@@ -163,12 +163,9 @@
                             @endforeach
                         @endif
                     </div>
-                    {{-- <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div> --}}
+                    <div class="">
+                        {{ $produk->links() }}
+                    </div>
                 </div>
             </div>
         </div>

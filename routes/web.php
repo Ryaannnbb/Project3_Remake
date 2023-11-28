@@ -86,6 +86,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::delete('destroy/{id}', 'destroy')->name('pesanan.destroy');
         Route::get('{id}/detail', 'show')->name('pesanan.detail');
         Route::post('{id}/terima', 'terima')->name('pesanan.terima');
+        Route::post('{id}/tolak', 'tolak')->name('pesanan.tolak');
     });
 });
 
@@ -97,7 +98,7 @@ Route::controller(ShopController::class)->prefix('shop')->group(function () {
 
 Route::controller(CartController::class)->prefix('shop')->group(function () {
     Route::get('cart', 'index')->name('cart');
-    Route::delete('cart/{cart}', 'destroy')->name('cart.destroy');
+    Route::delete('cart/{id}', 'destroy')->name('cart.destroy');
 });
 Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(function () {
     Route::get('/', 'index')->name('checkout.index');
@@ -105,6 +106,7 @@ Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(fun
 });
 Route::controller(OrderController::class)->prefix('order')->group(function () {
     Route::get('order', 'index')->name('order');
+    Route::delete('order/{id}', 'destroy')->name('order.destroy');
 
 });
 // Route::prefix('user')->group(function () {
