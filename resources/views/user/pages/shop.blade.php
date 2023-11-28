@@ -51,7 +51,7 @@
                             <ul>
                                 <li class="active"><a href="{{ route('shop.index') }}">All</a></li>
                                 @foreach ($kategoris as $kategori)
-                                <li><a href="?category={{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
+                                <li><a href="{{ URL::current() }}?category={{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -128,7 +128,7 @@
                             <div class="col-lg-4 col-md-5">
                                 <div class="filter__sort">
                                     <span>Sort By</span>
-                                    <form id="Filter">
+                                    <form id="Filter" action="{{ URL::current() }}">
                                         <select name="sort" id="sort-by" >
                                             <option value="default">Default</option>
                                             <option value="price-low">Price: Low to High</option>

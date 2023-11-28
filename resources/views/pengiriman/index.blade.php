@@ -8,13 +8,13 @@
           <div class="card-header border-bottom pb-0">
             <div class="d-sm-flex align-items-center">
               <div>
-                <h6 class="font-weight-semibold text-lg mb-0">Payment list</h6>
-                <p class="text-sm">See information about all payment</p>
+                <h6 class="font-weight-semibold text-lg mb-0">Delivery list</h6>
+                <p class="text-sm">See information about all Product</p>
               </div>
               <div class="ms-auto d-flex">
-                <a href="{{ route('pembayaran.create') }}">
+                <a href="{{ route('produk.create') }}">
                     <button type="button" class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">
-                      <span class="btn-inner--text">Add Payment</span>
+                      <span class="btn-inner--text">Add Product</span>
                     </button>
                 </a>
               </div>
@@ -26,29 +26,34 @@
                 <thead class="bg-gray-100">
                   <tr>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Payment Method</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Order</th>
+                    {{-- <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Status</th> --}}
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Date Delivery</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Date Received</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
                   </tr>
                 </thead>
                     <tbody>
-                        @if ($pembayaran->count() > 0)
-                            @foreach ( $pembayaran as $pb )
+                        @if ($pengirimans->count() > 0)
+                            @foreach ( $pengirimans as $pengiriman )
                             <tr>
                                 <td class="align-middle text-center text-sm">
                                     <span class="text-secondary text-xs font-weight-bold text-center">{{$loop->iteration}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$pb->metode_pembayaran}}</span>
+                                    <span>{{ $pengiriman->pesanan->user->name }}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$pb->no_rekening}}</span>
+                                    <span>{{ $pengiriman->tanggal_pengiriman }}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <a href="{{ route('pembayaran.edit', $pb->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
+                                    <span>{{ $pengiriman->tanggal_menerima }}</span>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <a href="{{ route('produk.edit', $pengiriman->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
-                                    <form id="deleteform{{ $pb->id }}" method="POST" action="{{ route('pembayaran.destroy', $pb->id) }}" style="display: inline;">
+                                    <form id="deleteform{{ $pengiriman->id }}" method="POST" action="{{ route('produk.destroy', $pengiriman->id) }}" style="display: inline;">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-secondary mb-n1 mt-n1 p-2" data-bs-toggle="tooltip" data-original-title="Delete user">

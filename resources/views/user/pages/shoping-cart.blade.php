@@ -159,7 +159,7 @@
                             <input type="hidden" name="total" value="{{ $subtotal }}">
                           @endforeach
                         </ul>
-                        <button class="btn primary-btn w-100">PROCEED TO CHECKOUT</button>
+                        <button class="btn primary-btn w-100">PROCEED TO ORDER</button>
                       </form>
                 </div>
             </div>

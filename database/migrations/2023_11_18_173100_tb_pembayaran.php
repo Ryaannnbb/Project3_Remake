@@ -13,9 +13,8 @@ return new class extends Migration
 {
     Schema::create('tb_pembayaran', function (Blueprint $table) {
         $table->id();
-        $table->string('pesanan', 100);
-        $table->string('nama_pembayaran', 100);
-        $table->enum('status_pembayaran', ['belum dibayar', 'dibayar'])->default('belum dibayar');
+        $table->string('metode_pembayaran');
+        $table->string('no_rekening');
         $table->timestamps();
     });
 }

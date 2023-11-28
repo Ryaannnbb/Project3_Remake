@@ -27,7 +27,7 @@
                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="profileDropdown">
                         <!-- Content for profile dropdown -->
                         <li class="mb-2">
-                            <a class="dropdown-item border-radius-md" href="user-profile.php">
+                            <a class="dropdown-item border-radius-md" href="#">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
                                         <img src="{{ asset('../assets/img/team-2.jpg') }}" class="avatar avatar-sm border-radius-sm  me-3 ">

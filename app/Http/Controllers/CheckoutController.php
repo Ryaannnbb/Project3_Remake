@@ -11,9 +11,11 @@ class CheckoutController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pesanan = Detailpesanan::where('status', 'keranjang')->get();
+        $ids = $request->pesanan_id;
+        $pesanan = Detailpesanan::find($ids);
+        // return dd($pesanan);
         return view('user.pages.checkout', compact('pesanan'));
     }
     /**

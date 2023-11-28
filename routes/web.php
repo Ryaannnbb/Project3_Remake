@@ -13,6 +13,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PengirimanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('{id}/detail', 'show')->name('pesanan.detail');
         Route::post('{id}/terima', 'terima')->name('pesanan.terima');
     });
+    Route::controller(PengirimanController::class)->prefix('pengiriman')->group(function() {
+        Route::get('/', 'index')->name('pengiriman.index');
+    });
 });
 
 Route::controller(ShopController::class)->prefix('shop')->group(function () {
@@ -100,7 +104,7 @@ Route::controller(CartController::class)->prefix('shop')->group(function () {
 });
 Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(function () {
     Route::get('/', 'index')->name('checkout.index');
-    Route::post('/', 'store')->name('checkout');
+    Route::post('/checkout', 'store')->name('checkout');
 });
 // Route::prefix('user')->group(function () {
 //     Route::get('shop', function () {return view('user.pages.shop');})->name('shop');
