@@ -21,6 +21,10 @@ class Produk extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+    public function supplier(): BelongsTo
+    {
+        return $this->belongsTo(Supplier::class);
+    }
     public function scopeOrderByDefault($query)
     {
         return $query->orderBy('created_at', 'desc');

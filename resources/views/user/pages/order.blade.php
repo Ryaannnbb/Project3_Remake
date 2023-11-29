@@ -148,7 +148,7 @@
                               </form>
                             </div>
                           </div>
-                        @elseif ($pesanan->status == 'sampai')
+                        @elseif ($pesanan->status == 'delivered')
                           <form action="{{ route('order.destroy', $pesanan->id) }}" method="POST" style="display: inline">
                             @csrf
                             @method('delete')
@@ -157,7 +157,7 @@
                               <i class="fa-solid fa-check"></i>
                             </button>
                           </form>
-                        @elseif ($pesanan->status == 'dikirim')
+                        @elseif ($pesanan->status == 'shipped')
                           <form action="{{ route('pengiriman.tiba', $pesanan->id) }}" method="POST" style="display: inline">
                             @csrf
                             @method('put')
