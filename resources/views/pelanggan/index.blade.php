@@ -28,8 +28,6 @@
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Customer Name</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Address</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Phone Number</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
                   </tr>
                 </thead>
                     <tbody>
@@ -40,15 +38,12 @@
                                     <span class="text-secondary text-xs font-weight-bold text-center">{{$loop->iteration}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->nama_pelanggan}}</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->name }}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->alamat}}</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->address}}</span>
                                 </td>
-                                <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->nomor_telepon}}</span>
-                                </td>
-                                <td class="align-middle text-center text-sm">
+                                {{-- <td class="align-middle text-center text-sm">
                                     <a href="{{ route('pelanggan.edit', $pg->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
@@ -59,7 +54,7 @@
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
-                                </td>
+                                </td> --}}
                             </tr>
                             @endforeach
                         @endif

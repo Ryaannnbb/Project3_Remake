@@ -25,7 +25,7 @@ class CheckoutController extends Controller
 
         // return dd($pesanan);
         return view('user.pages.checkout', compact('pesanan', 'totalpesanan', 'order', 'payments', 'pesanan_id'));
-    }   
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -33,7 +33,7 @@ class CheckoutController extends Controller
     {
         $pesanan = Pesanan::findOrfail($id);
         $pesanan->metode_pembayaran = $request->payment;
-        $pesanan->status = 'dibayar';
+        $pesanan->status = 'paid';
         $pesanan->update();
         return redirect()->route('order');
 
@@ -63,7 +63,7 @@ class CheckoutController extends Controller
     /**
      * Display the specified resource.
      */
-    
+
 
     /**
      * Show the form for editing the specified resource.

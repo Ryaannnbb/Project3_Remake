@@ -100,8 +100,8 @@ Route::controller(ShopController::class)->prefix('shop')->group(function () {
     Route::middleware(['auth', 'verified', 'user'])->group(function () {
         Route::get('{produk}/detail', 'detail')->name('shop.detail');
         Route::post('{produk_id}/order', 'order')->name('shop.order');
+        Route::get('/', 'index')->name('shop.index');
     });
-    Route::get('/', 'index')->name('shop.index');
 });
 
 Route::middleware(['auth', 'verified', 'user'])->group(function () {

@@ -22,7 +22,7 @@
                 <!-- Dropdown for Profile -->
                 <li class="nav-item dropdown ps-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('../assets/img/team-2.jpg') }}" class="avatar avatar-sm" alt="avatar" />
+                        <img src="{{ asset('assets/img/New Project 72 [29EB347].png') }}" class="avatar avatar-sm" alt="avatar" />
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="profileDropdown">
                         <!-- Content for profile dropdown -->
@@ -30,7 +30,7 @@
                             <a class="dropdown-item border-radius-md" href="#">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="{{ asset('../assets/img/team-2.jpg') }}" class="avatar avatar-sm border-radius-sm  me-3 ">
+                                        <img src="{{ asset('assets/img/New Project 72 [29EB347].png') }}" class="avatar avatar-sm border-radius-sm  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">

@@ -37,14 +37,14 @@ class PengirimanController extends Controller
         $pengiriman->save();
 
         $pesanan = Pesanan::find($request->pesanan);
-        $pesanan->status = 'dikirim';
+        $pesanan->status = 'shipped';
         $pesanan->update();
         return redirect()->route('pengiriman.index');
     }
 
     public function tiba($id) {
         $pesanan = Pesanan::find($id);
-        $pesanan->status = 'sampai';
+        $pesanan->status = 'delivered';
         $pesanan->update();
         return redirect()->route('shop.order');
     }

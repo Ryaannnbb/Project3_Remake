@@ -20,7 +20,7 @@ class PesananController extends Controller
     public function terima(string $id)
     {
         $pesanan = Pesanan::find($id);
-        $pesanan->status = 'menunggu dibayar';
+        $pesanan->status = 'waiting payment';
         $pesanan->update();
 
         return redirect()->route('pesanan.index');
@@ -29,7 +29,7 @@ class PesananController extends Controller
     public function tolak(Request $request, string $id)
     {
         $pesanan = Pesanan::find($id);
-        $pesanan->status = 'ditolak';
+        $pesanan->status = 'rejected';
         $pesanan->pesan_tolak = $request->pesan_tolak;
         $pesanan->update();
 

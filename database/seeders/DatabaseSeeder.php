@@ -26,18 +26,18 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'role' => 'admin'
         ]);
-        \App\Models\Pembayaran::factory()->create([
-            'metode_pembayaran' => 'Dana',
-            'no_rekening' => '12345678'
-        ]);
-        \App\Models\Pembayaran::factory()->create([
-            'metode_pembayaran' => 'Gopay',
-            'no_rekening' => '87654321'
-        ]);
+        // \App\Models\Pembayaran::factory()->create([
+        //     'metode_pembayaran' => 'Dana',
+        //     'no_rekening' => '12345678'
+        // ]);
+        // \App\Models\Pembayaran::factory()->create([
+        //     'metode_pembayaran' => 'Gopay',
+        //     'no_rekening' => '87654321'
+        // ]);
 
-        \App\Models\kategori::factory(3)->create();
-        \App\Models\supplier::factory(3)->create();
-        \App\Models\produk::factory(3)->create();
-        
+        // \App\Models\kategori::factory(3)->create();
+        // \App\Models\supplier::factory(3)->create();
+        // \App\Models\produk::factory(3)->create();
+
     }
 }

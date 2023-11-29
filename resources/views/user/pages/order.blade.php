@@ -92,10 +92,10 @@
                   {{-- {{ dd($pesanan->detailPesanan->id) }} --}}
                   <tr>
                     <td>
-                      {{ $detailpesanans->count() }}
+                      <b>{{ $detailpesanans->count() }}</b>
                     </td>
-                    <td class="">
-                      Rp. {{ number_format($pesanan->total, 0, ',', '.') }}
+                    <td>
+                      <b>Rp. {{ number_format($pesanan->total, 0, ',', '.') }}</b>
                     </td>
                     <td>
                       <span class="badge bg-secondary">{{ ucfirst($pesanan->status) }}</span>
@@ -107,20 +107,20 @@
                             <i class="fa-solid fa-eye fa-lg"></i>
                           </button>
                         </a>
-                        @if ($pesanan->status == 'menunggu')
+                        @if ($pesanan->status == 'pending')
                           <form action="{{ route('order.destroy', $pesanan->id) }}" method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn soasik njir"><i
                                 class="fa-solid fa-xmark fa-lg"></i></button>
                           </form>
-                        @elseif ($pesanan->status == 'menunggu dibayar')
+                        @elseif ($pesanan->status == 'waiting payment')
                           <a href="{{ route('checkout.index', $pesanan->id) }}">
                             <button type="button" class="btn">
-                              <i class="fa-solid fa-money-bill-1-wave fa-lg"></i> 
+                              <i class="fa-solid fa-money-bill-1-wave fa-lg"></i>
                             </button>
                           </a>
-                        @elseif ($pesanan->status == 'ditolak')
+                        @elseif ($pesanan->status == 'rejected')
                           <button type="button" class="btn" data-original-title="Delete user" data-bs-toggle="modal"
                             data-bs-target="#exampleModal{{ $pesanan->id }}">
                             <i class="fa-regular fa-eye fa-lg"></i>
