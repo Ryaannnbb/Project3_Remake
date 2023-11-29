@@ -25,7 +25,7 @@
                 <div class="card-body">
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">Payment Method</label>
-                            <input class="form-control  @error('nama_pembayaran') is-invalid @enderror" name="metode_pembayaran" type="text" value="{{ old('metode_pembayaran') }}" id="example-text-input">
+                            <input class="form-control  @error('metode_pembayaran') is-invalid @enderror" name="metode_pembayaran" type="text" value="{{ old('metode_pembayaran') }}" id="example-text-input">
                             @error('metode_pembayaran')
                                 <div class="invalid-feedback">
                                     {{ $message }}
