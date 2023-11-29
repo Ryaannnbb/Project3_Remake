@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Name</label>
                     <input class="form-control @error('nama_produk') is-invalid @enderror" name="nama_produk" type="text" placeholder="Product Name" value="{{ old('nama_produk', $produk->nama_produk) }}" id="example-text-input">
@@ -51,17 +51,17 @@
                         </div>
                     @enderror
                 </div>
-                
+
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Price</label>
-                    <input class="form-control @error('harga') is-invalid @enderror" name="harga" type="text" placeholder="Price" value="{{ old('harga', $produk->harga) }}" id="example-text-input">
+                    <input class="form-control @error('harga') is-invalid @enderror" name="harga" type="number" placeholder="Price" value="{{ old('harga', $produk->harga) }}" id="example-text-input">
                     @error('harga')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
-                
+
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Description</label>
                     <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" type="text" placeholder="Description" id="example-text-input">{{ old('deskripsi', $produk->deskripsi) }}</textarea>
@@ -71,7 +71,7 @@
                         </div>
                     @enderror
                 </div>
-                
+
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Category Name</label>
                     <select class="form-select @error('kategori_id') is-invalid @enderror" name="kategori_id" type="text" placeholder="Category Name" id="example-text-input">
@@ -87,7 +87,7 @@
                         </div>
                     @enderror
                 </div>
-                
+
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Supplier</label>
                     <select class="form-select @error('supplier_id') is-invalid @enderror" name="supplier_id" type="text" placeholder="Supplier" id="example-text-input">
@@ -102,7 +102,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                </div>                
+                </div>
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Name</label>
                     <input class="form-control  @error('nama_produk') is-invalid @enderror" name="nama_produk"
@@ -186,7 +186,7 @@
     const imagePreview = document.getElementById('preview-image')
     imageInput.onchange = evt => {
       const [file] = imageInput.files
-      if (file) { 
+      if (file) {
         imagePreview.src = URL.createObjectURL(file)
       }
     }

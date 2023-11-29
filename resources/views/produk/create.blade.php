@@ -53,7 +53,7 @@
                   </div>
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Price</label>
-                    <input class="form-control  @error('harga') is-invalid @enderror" name="harga" type="text"
+                    <input class="form-control  @error('harga') is-invalid @enderror" name="harga" type="number"
                       value="{{ old('harga') }}" id="example-text-input">
                     @error('harga')
                       <div class="invalid-feedback">
@@ -117,7 +117,7 @@
     const imagePreview = document.getElementById('preview-image')
     imageInput.onchange = evt => {
       const [file] = imageInput.files
-      if (file) { 
+      if (file) {
         imagePreview.src = URL.createObjectURL(file)
       }
     }
