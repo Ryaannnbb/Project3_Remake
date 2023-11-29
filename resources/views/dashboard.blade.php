@@ -19,22 +19,24 @@
             <h3 class="font-weight-bold mb-0">Hello, {{ Auth::user()->name }}</h3>
             <p class="mb-0">Apps you might like!</p>
           </div>
-          <button type="button" class="btn btn-sm btn-white btn-icon d-flex align-items-center mb-0 ms-md-auto mb-sm-0 mb-2 me-2">
+          {{-- <button type="button" class="btn btn-sm btn-white btn-icon d-flex align-items-center mb-0 ms-md-auto mb-sm-0 mb-2 me-2">
             <span class="btn-inner--icon">
               <span class="p-1 bg-success rounded-circle d-flex ms-auto me-2">
                 <span class="visually-hidden">New</span>
               </span>
             </span>
-            <span class="btn-inner--text">Messages</span>
-          </button>
-          <button type="button" class="btn btn-sm btn-dark btn-icon d-flex align-items-center mb-0">
+                <span class="btn-inner--text">Messages</span>
+          </button> --}}
+          {{-- <a href="{{ route('home') }}">
+            <button type="button" class="btn btn-sm btn-dark btn-icon d-flex align-items-center mb-0 apasi">
             <span class="btn-inner--icon">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="d-block me-2">
+                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="d-block me-2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-              </svg>
+                </svg>
             </span>
             <span class="btn-inner--text">Sync</span>
-          </button>
+            </button>
+          </a> --}}
         </div>
       </div>
     </div>
@@ -52,13 +54,11 @@
             <div class="row">
               <div class="col-12">
                 <div class="w-100">
-                  <p class="text-sm text-secondary mb-1">Revenue</p>
-                  <h4 class="mb-2 font-weight-bold">$99,118.5</h4>
+                  <p class="text-sm text-secondary mb-1">Produk</p>
+                  <h4 class="mb-2 font-weight-bold">{{ $produks->count() }}</h4>
                   <div class="d-flex align-items-center">
                     <span class="text-sm text-success font-weight-bolder">
-                      <i class="fa fa-chevron-up text-xs me-1"></i>10.5%
                     </span>
-                    <span class="text-sm ms-1">from $89,740.00</span>
                   </div>
                 </div>
               </div>
@@ -78,13 +78,11 @@
             <div class="row">
               <div class="col-12">
                 <div class="w-100">
-                  <p class="text-sm text-secondary mb-1">Transactions</p>
-                  <h4 class="mb-2 font-weight-bold">376</h4>
+                  <p class="text-sm text-secondary mb-1">Order Pending</p>
+                  <h4 class="mb-2 font-weight-bold">{{ $pesanan_menunggu->count() }}</h4>
                   <div class="d-flex align-items-center">
                     <span class="text-sm text-success font-weight-bolder">
-                      <i class="fa fa-chevron-up text-xs me-1"></i>55%
                     </span>
-                    <span class="text-sm ms-1">from 243</span>
                   </div>
                 </div>
               </div>
@@ -103,13 +101,11 @@
             <div class="row">
               <div class="col-12">
                 <div class="w-100">
-                  <p class="text-sm text-secondary mb-1">Avg. Transaction</p>
-                  <h4 class="mb-2 font-weight-bold">$450.53</h4>
+                  <p class="text-sm text-secondary mb-1">Order Completed</p>
+                  <h4 class="mb-2 font-weight-bold">{{ $pesanan_diterima->count() }}</h4>
                   <div class="d-flex align-items-center">
                     <span class="text-sm text-success font-weight-bolder">
-                      <i class="fa fa-chevron-up text-xs me-1"></i>22%
                     </span>
-                    <span class="text-sm ms-1">from $369.30</span>
                   </div>
                 </div>
               </div>
@@ -128,13 +124,11 @@
             <div class="row">
               <div class="col-12">
                 <div class="w-100">
-                  <p class="text-sm text-secondary mb-1">Coupon Sales</p>
-                  <h4 class="mb-2 font-weight-bold">$23,364.55</h4>
+                  <p class="text-sm text-secondary mb-1">Order Rejected</p>
+                  <h4 class="mb-2 font-weight-bold">{{ $pesanan_ditolak->count() }}</h4>
                   <div class="d-flex align-items-center">
                     <span class="text-sm text-success font-weight-bolder">
-                      <i class="fa fa-chevron-up text-xs me-1"></i>18%
                     </span>
-                    <span class="text-sm ms-1">from $19,800.40</span>
                   </div>
                 </div>
               </div>
@@ -143,7 +137,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
       <div class="col-lg-12">
         <div class="card shadow-xs border">
           <div class="card-header pb-0">
@@ -176,6 +170,6 @@
         </div>
       </div>
       @include('layout.footer')
-    </div>
+    </div> --}}
   </div>
 @endsection

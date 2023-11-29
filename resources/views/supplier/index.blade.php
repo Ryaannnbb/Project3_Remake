@@ -26,9 +26,9 @@
                 <thead class="bg-gray-100">
                   <tr>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Nama Suppler</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Alamat</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Phone</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Supplier Name</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Address</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Phone Number</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
                   </tr>
                 </thead>

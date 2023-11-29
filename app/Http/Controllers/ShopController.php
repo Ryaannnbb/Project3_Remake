@@ -18,24 +18,32 @@ class ShopController extends Controller
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $sortOption = $request->input('sort');
         $category = $request->input('category');
-        $produk = Produk::paginate(3);
+        $produk = Produk::paginate(6);
         $order = Detailpesanan::where('status', 'checkout')->get()->count();
 
 
         if ($sortOption == 'price-low') {
-            $produk = Produk::orderBy('harga', 'asc')->get();
+            $produk = Produk::orderBy('harga', 'asc')->paginate(6);
         } elseif ($sortOption == 'price-high') {
-            $produk = Produk::orderBy('harga', 'desc')->get();
+            $produk = Produk::orderBy('harga', 'desc')->paginate(6);
         }
 
         if($category) {
-            $produk = Produk::where('kategori_id', $category)->get();
+            $produk = Produk::where('kategori_id', $category)->paginate(6);
         }
 
         $kategoris = Kategori::all();
         $pesanan = Detailpesanan::where('status', 'keranjang');
         // return dd($pesanan);
         return view("user.pages.shop", compact('produk','kategoris', 'totalpesanan', 'order'));
+    }
+
+    public function fetchProduks(Request $request)
+    {
+        if ($request->ajax()) {
+            $produks = Produk::paginate(2);
+            return view('user.pages.shop', compact('produk'))->render();
+        }
     }
 
     public function detail($produk)

@@ -19,7 +19,7 @@ class Admin
             return $next($request);
         } else {
             // Redirect or handle unauthorized access
-            return abort(404); // You can customize this line based on your needs
+            return redirect()->route('shop.index')->with('message', 'Anda harus login sebagai admin'); // You can customize this line based on your needs
         }
     }
 }

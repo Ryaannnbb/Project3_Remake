@@ -1,5 +1,16 @@
 @extends('layout.app')
 
+@if (session('success'))
+    <script>
+        Swal.fire({
+            icon:'success',
+            title: 'Success',
+            text: '{{ session("success") }}'
+        });
+    </script>
+@endif
+
+
 @section('content')
 <div class="container-fluid py-4 px-5">
     <div class="row">
