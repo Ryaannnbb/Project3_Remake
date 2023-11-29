@@ -37,6 +37,12 @@ class ShopController extends Controller
             $produk->appends(['category' => $category])->links();
         }
 
+        if($request->has('search')) {
+            // return dd($request->search);
+            $keyword = $request->search;
+            $produk = Produk::where('nama_produk', 'like', "%".$keyword."%")->paginate(6);
+        }
+
         $kategoris = Kategori::all();
         $pesanan = Detailpesanan::where('status', 'keranjang');
         // return dd($pesanan);
@@ -63,16 +69,25 @@ class ShopController extends Controller
      */
     public function order(Request $request, $produk)
     {
+
+        $request->validate(['jumlah' => 'numeric|min:1']);
+
+        $detailPesanan = Detailpesanan::where('produk_id', $produk)->first();
         $produk = Produk::findOrFail($produk);
-
-        Detailpesanan::create([
-            "produk_id" => $produk->id,
-            "jumlah" => $request->jumlah,
-            "total" => $produk->harga * $request->jumlah,
-            "status" => 'keranjang',
-            "user_id" => auth()->user()->id
-        ]);
-
+        if ($detailPesanan) {
+            $detailPesanan->jumlah += $request->jumlah;
+            $detailPesanan->total = $produk->harga * $request->jumlah;
+            $detailPesanan->save();
+            // return dd($detailPesanan);
+        } else {
+            Detailpesanan::create([
+                "produk_id" => $produk->id,
+                "jumlah" => $request->jumlah,
+                "total" => $produk->harga * $request->jumlah,
+                "status" => 'keranjang',
+                "user_id" => auth()->user()->id
+            ]);
+        }
         return redirect()->route('cart');
     }
 }

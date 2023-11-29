@@ -71,65 +71,65 @@
   <!-- Shoping Cart Section Begin -->
   <section class="shoping-cart spad">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="shoping__cart__table">
-            <table>
-              <thead>
-                <tr>
-                  <th class="shoping__product">Products</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                  <th>Action</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                @php
-                  $subtotal = 0;
-                  $pesanan_id = [];
-                  $pesanan_jumlah = [];
-                @endphp
-                @foreach ($pesanans as $pesanan)
-                  @php
-                    array_push($pesanan_id, $pesanan->id);
-                  @endphp
+      <div class="col-lg-12">
+        <div class="row">
+          @if ($pesanans->count() > 0)
+            <div class="shoping__cart__table">
+              <table>
+                <thead>
                   <tr>
-                    <td class="shoping__cart__item">
-                      <img src="{{ asset($pesanan->produk->path_produk) }}" alt="{{ $pesanan->produk->nama_produk }}"
-                        style="width: 160px;">
-                      <h5>{{ ucfirst($pesanan->produk->nama_produk) }}</h5>
-                    </td>
-                    <td class="shoping__cart__price">
-                      Rp. {{ number_format($pesanan->produk->harga, 0, ',', '.') }}
-                    </td>
-                    <td class="shoping__cart__quantity">
+                    <th class="shoping__product">Products</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @php
+                    $subtotal = 0;
+                    $pesanan_id = [];
+                  @endphp
+                  @foreach ($pesanans as $pesanan)
+                    @php
+                      array_push($pesanan_id, $pesanan->id);
+                    @endphp
+                    <tr>
+                      <td class="shoping__cart__item">
+                        <img src="{{ asset($pesanan->produk->path_produk) }}" alt="{{ $pesanan->produk->nama_produk }}"
+                          style="width: 160px;">
+                        <h5>{{ ucfirst($pesanan->produk->nama_produk) }}</h5>
+                      </td>
+                      <td class="shoping__cart__price">
+                        Rp. {{ number_format($pesanan->produk->harga, 0, ',', '.') }}
+                      </td>
+                      <td class="shoping__cart__quantity">
                         <b>{{ number_format($pesanan->jumlah, 0, ',', '.') }}</b>
-                      {{-- <div class="quantity">
+                        {{-- <div class="quantity">
                         <div class="pro-qty">
                           <span type="text" value="{{ $pesanan->jumlah }}" id="jumlah-{{ $pesanan->id }}" readonly>{{ $pesanan->jumlah }}</span>
                         </div>
                       </div> --}}
-                    </td>
-                    <td class="shoping__cart__total">
-                      Rp. {{ number_format($pesanan->produk->harga * $pesanan->jumlah, 0, ',', '.') }}
-                    </td>
-                    <td class="shoping__cart__item__close">
-                      <form action="{{ route('cart.destroy', $pesanan->id) }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn njir"><i class="fa-solid fa-xmark fa-lg"></i></button>
-                      </form>
-                    </td>
-                  </tr>
-                  @php
-                    $subtotal += $pesanan->produk->harga * $pesanan->jumlah;
-                  @endphp
-                @endforeach
-              </tbody>
-            </table>
-          </div>
+                      </td>
+                      <td class="shoping__cart__total">
+                        Rp. {{ number_format($pesanan->produk->harga * $pesanan->jumlah, 0, ',', '.') }}
+                      </td>
+                      <td class="shoping__cart__item__close">
+                        <form action="{{ route('cart.destroy', $pesanan->id) }}" method="POST">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="btn njir"><i class="fa-solid fa-xmark fa-lg"></i></button>
+                        </form>
+                      </td>
+                    </tr>
+                    @php
+                      $subtotal += $pesanan->produk->harga * $pesanan->jumlah;
+                    @endphp
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
         </div>
       </div>
       <div class="row">
@@ -165,8 +165,12 @@
         </div>
       </div>
     </div>
+    @else
+    <h3 class="col-12 text-center mb-3">There are no item in the cart</h3>
+    <div class="col-12 text-center">
+      <a href="{{ route('shop.index') }}" class="btn primary-btn">Shop Now</a>
     </div>
-    </div>
+  @endif
   </section>
   <!-- Shoping Cart Section End -->
 @endsection

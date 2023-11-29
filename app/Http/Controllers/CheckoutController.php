@@ -34,9 +34,8 @@ class CheckoutController extends Controller
         $pesanan = Pesanan::findOrfail($id);
         $pesanan->metode_pembayaran = $request->payment;
         $pesanan->status = 'paid';
-        $pesanan->update();
+        $pesanan->save();
         return redirect()->route('order');
-
         // return dd($pesanan);
     }
 

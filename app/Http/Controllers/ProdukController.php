@@ -31,38 +31,7 @@ class ProdukController extends Controller
         ]);
     }
 
-    protected function produkValidate($request) {
-        $request->validate([
-            'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Max size is 2MB
-            'nama_produk' => 'required|string|max:255',
-            'harga' => 'required|numeric|min:1',
-            'deskripsi' => 'required|string',
-            'kategori_id' => 'required|exists:tb_kategori,id',
-            'supplier_id' => 'required|exists:tb_supplier,id',
-        ], [
-            'path_produk.required' => 'Product image is required.',
-            'path_produk.image' => 'The file must be an image.',
-            'path_produk.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
-            'path_produk.max' => 'The image may not be greater than 2 megabytes.',
 
-            'nama_produk.required' => 'Product name is required.',
-            'nama_produk.string' => 'Product name must be a string.',
-            'nama_produk.max' => 'Product name may not be greater than :max characters.',
-
-            'harga.required' => 'Product price is required.',
-            'harga.numeric' => 'Product price must be a number.',
-            'harga.min' => 'Product price must be at least :min.',
-
-            'deskripsi.required' => 'Description is required.',
-            'deskripsi.string' => 'Description must be a string.',
-
-            'kategori_id.required' => 'Category is required.',
-            'kategori_id.exists' => 'Selected category is invalid.',
-
-            'supplier_id.required' => 'Supplier is required.',
-            'supplier_id.exists' => 'Selected supplier is invalid.',
-        ]);
-    }
     /**
      * Store a newly created resource in storage.
      */

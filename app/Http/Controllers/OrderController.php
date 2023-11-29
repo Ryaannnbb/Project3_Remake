@@ -15,6 +15,7 @@ class OrderController extends Controller
     {
         $pesanans = pesanan::where('user_id', auth()->user()->id)->get();
         $detailpesanans = Detailpesanan::where('status', 'checkout')->get();
+        // return dd($detailpesanans);
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $order = $pesanans->count();
 
