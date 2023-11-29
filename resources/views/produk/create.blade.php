@@ -29,8 +29,8 @@
                       <div class="col">
                         <label for="example-text-input" class="form-control-label">Product Image</label>
                         <input class="form-control  @error('path_produk') is-invalid @enderror" id="imageInput"
-                          name="path_produk" type="file" id="example-text-input">
-                        @error('nama_kategori')
+                          name="path_produk" type="file" id="example-text-input" value="{{ old('path_produk') }}">
+                        @error('path_produk')
                           <div class="invalid-feedback">
                             {{ $message }}
                           </div>
