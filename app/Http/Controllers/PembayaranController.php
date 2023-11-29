@@ -37,7 +37,7 @@ class PembayaranController extends Controller
             'metode_pembayaran.required' => 'The Payment Method field is required.',
             'metode_pembayaran.string' => 'The Payment Method must be a string.',
             'metode_pembayaran.max' => 'The Payment Method may not be greater than :max characters.',
-            
+
             'no_rekening.required' => 'The Account Number field is required.',
             'no_rekening.numeric' => 'The Account Number must be a number.',
         ]);
@@ -70,12 +70,12 @@ class PembayaranController extends Controller
     {
         $request->validate([
             'metode_pembayaran' => 'required|string|max:255',
-            'no_rekening' => 'required|numeric', 
+            'no_rekening' => 'required|numeric',
         ], [
             'metode_pembayaran.required' => 'The Payment Method field is required.',
             'metode_pembayaran.string' => 'The Payment Method must be a string.',
             'metode_pembayaran.max' => 'The Payment Method may not be greater than :max characters.',
-            
+
             'no_rekening.required' => 'The Account Number field is required.',
             'no_rekening.numeric' => 'The Account Number must be a number.',
         ]);
@@ -92,9 +92,9 @@ class PembayaranController extends Controller
     {
         try {
             Pembayaran::find($id)->delete();
-            return redirect()->route('pembayaran');
+            return redirect()->route('pembayaran')->with("success", "Payment data has been successfully deleted!");
         } catch (\Throwable $th) {
-            return redirect()->route('pembayaran');
+            return redirect()->route('pembayaran')->with("error", "Failed because it is currently in use!");
         }
     }
 }
