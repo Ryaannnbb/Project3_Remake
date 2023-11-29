@@ -1,17 +1,15 @@
 @extends('layout.app')
 
-@if (session('message'))
-  <script>
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "{{ session('message') }}",
-      footer: '<a href="#">Why do I have this issue?</a>'
-    });
-  </script>
-@endif
-
 @section('content')
+  @if (session('message'))
+    <script>
+      Swal.fire({
+        title: "Oops...",
+        text: "{{ session('message') }}",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
+    </script>
+  @endif
   @if (session('success'))
     <script>
       Swal.fire({
