@@ -58,7 +58,7 @@
                             <ul>
                                 <li class="active"><a href="{{ route('shop.index') }}">All</a></li>
                                 @foreach ($kategoris as $kategori)
-                                <li><a href="?category={{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
+                                <li><a href="{{ URL::current() }}?category={{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
                                 @endforeach
                             </ul>
                         </div>

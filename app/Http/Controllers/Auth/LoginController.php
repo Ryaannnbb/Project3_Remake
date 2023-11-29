@@ -61,7 +61,7 @@ class LoginController extends Controller
             $request->session()->invalidate();
             $request->session()->regenerateToken();
             Auth::logout();
-            return view('auth.login')->with([
+            return redirect()->route('login')->with([
                 'success' => 'Logout berhasil!',
             ]);
         } catch (\Throwable $th) {

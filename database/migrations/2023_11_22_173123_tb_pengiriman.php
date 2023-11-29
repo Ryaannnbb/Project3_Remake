@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('tb_pengiriman', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pesanan_id')->constrained('tb_pesanan')->restrictOnDelete();
-            $table->string('metode_pengiriman', 100);
-            $table->enum('status_pengiriman', ['belum diterima', 'diterima'])->default('belum diterima');
             $table->date('tanggal_pengiriman');
-            $table->date('tanggal_menerima');
+            $table->date('tanggal_menerima')->default(null);
             $table->timestamps();
         });
     }

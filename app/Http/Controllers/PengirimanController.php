@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengiriman;
 use Illuminate\Http\Request;
 
 class PengirimanController extends Controller
@@ -11,7 +12,8 @@ class PengirimanController extends Controller
      */
     public function index()
     {
-        //
+        $pengirimans = Pengiriman::all();
+        return view("pengiriman.index", compact('pengirimans'));
     }
 
     /**

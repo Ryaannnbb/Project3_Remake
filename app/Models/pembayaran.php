@@ -10,8 +10,5 @@ class Pembayaran extends Model
 {
     use HasFactory;
     protected $table = 'tb_pembayaran';
-    protected $fillable = [
-        'nama_pembayaran',
-        'status_pembayaran',
-    ];
+    protected $guarded = ['id'];
 }
