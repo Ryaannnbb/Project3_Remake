@@ -73,7 +73,13 @@ class KategoriController extends Controller
     public function destroy(string $id)
     {
         $kategori = kategori::find($id);
-        $kategori->delete();
-        return redirect()->route("kategori")->with("success","Category data has been successfully deleted!");
+        try {
+            //code...
+            $kategori->delete();
+            return redirect()->route("kategori")->with("success","Category data has been successfully deleted!");
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->route("kategori")->with("error","Cannot delete category!");
+        }
     }
 }

@@ -83,54 +83,20 @@
       </div> --}}
       <div class="checkout__form">
         <h4>Billing Details</h4>
-        <form action="#">
           <div class="row">
             <div class="col-lg-8 col-md-6">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="checkout__input">
                     <p>Name<span>*</span></p>
-                    <input type="text">
+                    <p class="checkout__order__products">{{ auth()->user()->name }}</p>
                   </div>
                 </div>
               </div>
               <div class="checkout__input">
-                <p>Town/City<span>*</span></p>
-                <input type="text">
-              </div>
-              <div class="checkout__input">
-                <p>Country/State<span>*</span></p>
-                <input type="text">
-              </div>
-              <div class="checkout__input">
                 <p>Address<span>*</span></p>
-                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                <p type="text" class="checkout__input__add" value="">{{ auth()->user()->address }}</p>
               </div>
-              {{-- <div class="checkout__input__checkbox">
-                <label for="acc">
-                  Create an account?
-                  <input type="checkbox" id="acc">
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-              <p>Create an account by entering the information below. If you are a returning customer
-                please login at the top of the page</p>
-              <div class="checkout__input">
-                <p>Account Password<span>*</span></p>
-                <input type="text">
-              </div>
-              <div class="checkout__input__checkbox">
-                <label for="diff-acc">
-                  Ship to a different address?
-                  <input type="checkbox" id="diff-acc">
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-              <div class="checkout__input">
-                <p>Order notes<span>*</span></p>
-                <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
-              </div> --}}
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="checkout__order">
@@ -148,7 +114,8 @@
                   @endforeach
                 </ul>
                 <div class="checkout__order__total">Total <span>Rp. {{ number_format($total, 0, ',', '.') }}</span></div>
-                <form action="{{ route('checkout', $pesanan_id) }}">
+                <form action="{{ route('bayar', $pesanan_id) }}" method="POST">
+                  @csrf
                   <div class="checkout__input__checkbox">
                     @foreach ($payments as $payment)
                       <div class="d-flex">

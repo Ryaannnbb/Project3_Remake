@@ -32,7 +32,12 @@ class CheckoutController extends Controller
     public function bayar(Request $request, $id)
     {
         $pesanan = Pesanan::findOrfail($id);
-        return dd($pesanan);
+        $pesanan->metode_pembayaran = $request->payment;
+        $pesanan->status = 'dibayar';
+        $pesanan->update();
+        return redirect()->route('order');
+
+        // return dd($pesanan);
     }
 
     /**

@@ -100,8 +100,8 @@
                     <td>
                       <span class="badge bg-secondary">{{ ucfirst($pesanan->status) }}</span>
                     </td>
-                    <td class="shoping__cart__item__close" style="text-align: center;">
-                      <div class="njir m-0 d-flex justify-content-center">
+                    <td class="shoping__cart__item__close" style="text-align: center">
+                      <div class="njir m-0 d-flex justify-content-center" style="align-items: center;">
                         <a href="{{ route('order.detail', $pesanan->id) }}">
                           <button type="button" class="btn">
                             <i class="fa-solid fa-eye fa-lg"></i>
@@ -123,7 +123,7 @@
                         @elseif ($pesanan->status == 'ditolak')
                           <button type="button" class="btn" data-original-title="Delete user" data-bs-toggle="modal"
                             data-bs-target="#exampleModal{{ $pesanan->id }}">
-                            <i class="fa-solid fa-eye"></i>
+                            <i class="fa-regular fa-eye fa-lg"></i>
                           </button>
                           <!-- Modal -->
                           <div class="modal fade" id="exampleModal{{ $pesanan->id }}" tabindex="-1"
@@ -152,6 +152,15 @@
                           <form action="{{ route('order.destroy', $pesanan->id) }}" method="POST" style="display: inline">
                             @csrf
                             @method('delete')
+                            <button type="submit" class="btn hadeh njir mt-3" data-original-title="Delete user"
+                              data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pesanan->id }}">
+                              <i class="fa-solid fa-check"></i>
+                            </button>
+                          </form>
+                        @elseif ($pesanan->status == 'dikirim')
+                          <form action="{{ route('pengiriman.tiba', $pesanan->id) }}" method="POST" style="display: inline">
+                            @csrf
+                            @method('put')
                             <button type="submit" class="btn hadeh njir mt-3" data-original-title="Delete user"
                               data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pesanan->id }}">
                               <i class="fa-solid fa-check"></i>

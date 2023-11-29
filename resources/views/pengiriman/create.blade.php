@@ -25,11 +25,11 @@
               <div class="table-responsive p-0">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Order Id</label>
+                    <label for="example-text-input" class="form-control-label">Customer Name</label>
                     <select class="form-select  @error('pesanan') is-invalid @enderror" name="pesanan" type="text"
                       value="{{ old('pesanan') }}" id="example-text-input">
                       @foreach ($pesanan as $ps)
-                        <option value="{{ $ps->id }}">{{ $ps->id }}</option>
+                        <option value="{{ $ps->id }}">{{ $ps->user->name }}</option>
                       @endforeach
                     </select>
                     @error('pesanan')

@@ -54,9 +54,12 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, detailpesanan $detailpesanan)
+    public function update(Request $request)
     {
-        //
+        // $detailPesanan = $request->pesanan_id;
+        // foreach ($detailPesanan as $value) {
+        //     Detailpesanan::findOrFail($value)->update(["jumlah" == ]);
+        // }
     }
 
     /**

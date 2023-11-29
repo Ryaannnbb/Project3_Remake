@@ -91,9 +91,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
         Route::get('/', 'index')->name('pengiriman.index');
         Route::get('create', 'create')->name('pengiriman.create');
         Route::post('store', 'store')->name('pengiriman.store');
-        Route::post('tiba/{id}', 'tiba')->name('pengiriman.tiba');
         Route::get('edit/{id}', 'edit')->name('pengiriman.edit');
-        Route::put('edit/{id}', 'update')->name('pengiriman.update');
         Route::delete('destroy/{id}', 'destroy')->name('pengiriman.destroy');
     });
 });
@@ -107,8 +105,10 @@ Route::controller(ShopController::class)->prefix('shop')->group(function () {
 });
 
 Route::middleware(['auth', 'verified', 'user'])->group(function () {
+    Route::put('tiba/{id}', [PengirimanController::class, 'tiba'])->name('pengiriman.tiba');
     Route::controller(CartController::class)->prefix('shop')->group(function () {
         Route::get('cart', 'index')->name('cart');
+        Route::post('cart', 'update')->name('cart.update');
         Route::delete('cart/{id}', 'destroy')->name('cart.destroy');
     });
     Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(function () {

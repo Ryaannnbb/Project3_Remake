@@ -46,7 +46,7 @@ class PengirimanController extends Controller
         $pesanan = Pesanan::find($id);
         $pesanan->status = 'sampai';
         $pesanan->update();
-        return redirect()->route('pengiriman.index');
+        return redirect()->route('shop.order');
     }
 
     /**

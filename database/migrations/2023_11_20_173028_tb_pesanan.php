@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('total');
             $table->enum('status', ['menunggu', 'diterima','dibayar', 'menunggu dibayar', 'ditolak', 'dikirim', 'sampai', 'selesai'])->default('menunggu');
             $table->string('pesan_tolak')->default('');
-            $table->string('address')->default('');
+            $table->string('metode_pembayaran')->default('');
             $table->timestamps();
         });
     }
