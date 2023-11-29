@@ -60,7 +60,7 @@
                                     <span class="text-secondary text-xs font-weight-bold">{{$pg->nama_produk}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->harga}}</span>
+                                    <span class="text-secondary text-xs font-weight-bold">Rp. {{number_format($pg->harga, 0, ',', '.')}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <span class="text-secondary text-xs font-weight-bold">{{$pg->deskripsi}}</span>

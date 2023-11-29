@@ -13,8 +13,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        if (Auth::user() == null)
-        {
+        if (Auth::user() == null) {
             return view("auth.login");
         }
 
@@ -35,6 +34,13 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_kategori' => 'required|string|max:255', // Add any other rules as needed
+        ], [
+            'nama_kategori.required' => 'The Category Name field is required.',
+            'nama_kategori.string' => 'The Category Name must be a string.',
+            'nama_kategori.max' => 'The Category Name may not be greater than :max characters.',
+        ]);
         kategori::create($request->all());
         return redirect()->route('kategori')->with("success", "Category data has been successfully added!");
     }
@@ -53,7 +59,7 @@ class KategoriController extends Controller
     public function edit(string $id)
     {
         $kategori = kategori::find($id);
-        return view ('kategori.edit', compact('kategori'));
+        return view('kategori.edit', compact('kategori'));
     }
 
     /**
@@ -61,10 +67,18 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $request->validate([
+            'nama_kategori' => 'required|string|max:255', // Add any other rules as needed
+        ], [
+            'nama_kategori.required' => 'The Category Name field is required.',
+            'nama_kategori.string' => 'The Category Name must be a string.',
+            'nama_kategori.max' => 'The Category Name may not be greater than :max characters.',
+        ]);
+
         $kategori = kategori::find($id);
         $kategori->update($request->all());
         return redirect()->route('kategori')->with("success", "Category data has been successfully updated!");
-
     }
 
     /**
@@ -76,10 +90,10 @@ class KategoriController extends Controller
         try {
             //code...
             $kategori->delete();
-            return redirect()->route("kategori")->with("success","Category data has been successfully deleted!");
+            return redirect()->route("kategori")->with("success", "Category data has been successfully deleted!");
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect()->route("kategori")->with("error","Failed because it is currently in use!");
+            return redirect()->route("kategori")->with("error", "Failed because it is currently in use!");
         }
     }
 }

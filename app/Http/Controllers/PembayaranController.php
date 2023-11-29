@@ -30,6 +30,18 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'metode_pembayaran' => 'required|string|max:255',
+            'no_rekening' => 'required|numeric',
+        ], [
+            'metode_pembayaran.required' => 'The Payment Method field is required.',
+            'metode_pembayaran.string' => 'The Payment Method must be a string.',
+            'metode_pembayaran.max' => 'The Payment Method may not be greater than :max characters.',
+            
+            'no_rekening.required' => 'The Account Number field is required.',
+            'no_rekening.numeric' => 'The Account Number must be a number.',
+        ]);
+
         Pembayaran::create($request->all());
         return redirect()->route('pembayaran')->with("success","Payment data has been successfully added!");
     }
@@ -56,6 +68,18 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'metode_pembayaran' => 'required|string|max:255',
+            'no_rekening' => 'required|numeric', 
+        ], [
+            'metode_pembayaran.required' => 'The Payment Method field is required.',
+            'metode_pembayaran.string' => 'The Payment Method must be a string.',
+            'metode_pembayaran.max' => 'The Payment Method may not be greater than :max characters.',
+            
+            'no_rekening.required' => 'The Account Number field is required.',
+            'no_rekening.numeric' => 'The Account Number must be a number.',
+        ]);
+
         $pembayaran = Pembayaran::find($id);
         $pembayaran->update($request->all());
         return redirect()->route('pembayaran')->with("success", "Payment data has been successfully updated!");
@@ -66,6 +90,11 @@ class PembayaranController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            Pembayaran::find($id)->delete();
+            return redirect()->route('pembayaran');
+        } catch (\Throwable $th) {
+            return redirect()->route('pembayaran');
+        }
     }
 }
