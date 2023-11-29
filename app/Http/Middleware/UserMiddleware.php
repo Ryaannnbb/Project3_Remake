@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,11 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role == 'admin') {
+        if (auth()->check() && auth()->user()->role == 'user') {
             return $next($request);
         } else {
             // Redirect or handle unauthorized access
-            return redirect()->route('shop.index')->with('message', 'Anda harus login sebagai admin'); // You can customize this line based on your needs
+            return redirect()->route('home')->with('message', 'Anda harus login sebagai user'); // You can customize this line based on your needs
         }
     }
 }

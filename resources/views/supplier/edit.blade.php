@@ -48,11 +48,9 @@
                     @enderror
                   </div>
                   <div class="form-group">
-
                     <label for="example-text-input" class="form-control-label">Phone</label>
                     <input class="form-control  @error('nomor_telepon_supplier') is-invalid @enderror"
-                      name="nomor_telepon_supplier" type="number"
-                      value="{{ $supplier->nomor_telepon_supplier }}" id="example-text-input">
+                      name="nomor_telepon_supplier" type="text" value="{{ $supplier->nomor_telepon_supplier }}" id="example-text-input">
                     @error('nomor_telepon_supplier')
                       <div class="invalid-feedback">
                         {{ $message }}

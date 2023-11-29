@@ -13,11 +13,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $pesanans = Detailpesanan::where('status', 'checkout')->get();
+        $pesanans = pesanan::where('user_id', auth()->user()->id)->get();
+        $detailpesanans = Detailpesanan::where('status', 'checkout')->get();
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        $order = Detailpesanan::where('status', 'checkout')->get()->count();
+        $order = $pesanans->count();
 
-        return view("user.pages.order", compact('pesanans', 'totalpesanan', 'order'));
+        return view("user.pages.order", compact('pesanans', 'detailpesanans', 'totalpesanan', 'order'));
     }
 
     /**
@@ -41,7 +42,11 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $detailpesanans = Detailpesanan::where('pesanan_id', $id)->get();
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
+        $order = Detailpesanan::where('status', 'checkout')->get()->count();
+
+        return view("user.pages.detailorder", compact('detailpesanans', 'totalpesanan', 'order'));
     }
 
     /**

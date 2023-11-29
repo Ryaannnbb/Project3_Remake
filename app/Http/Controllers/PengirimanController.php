@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengiriman;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 
 class PengirimanController extends Controller
@@ -21,7 +22,8 @@ class PengirimanController extends Controller
      */
     public function create()
     {
-        //
+        $pesanan = Pesanan::all();
+        return view('pengiriman.create', compact('pesanan'));
     }
 
     /**
@@ -29,7 +31,22 @@ class PengirimanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pengiriman = new Pengiriman;
+        $pengiriman->pesanan_id = $request->pesanan;
+        $pengiriman->tanggal_pengiriman = $request->tanggal_pengiriman;
+        $pengiriman->save();
+
+        $pesanan = Pesanan::find($request->pesanan);
+        $pesanan->status = 'dikirim';
+        $pesanan->update();
+        return redirect()->route('pengiriman.index');
+    }
+
+    public function tiba($id) {
+        $pesanan = Pesanan::find($id);
+        $pesanan->status = 'sampai';
+        $pesanan->update();
+        return redirect()->route('pengiriman.index');
     }
 
     /**

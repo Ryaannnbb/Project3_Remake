@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_detail_pesanan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
             $table->foreignId('pesanan_id')->nullable()->default(null)->constrained('tb_pesanan')->cascadeOnDelete();
             $table->foreignId('produk_id')->constrained('tb_produk')->restrictOnDelete();
             $table->integer('jumlah');

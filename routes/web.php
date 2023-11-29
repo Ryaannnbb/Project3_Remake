@@ -33,9 +33,7 @@ Route::get('/', function () {
 
 
 Auth::routes(['verify' => true]);
-
-
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
 
     Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
@@ -89,30 +87,42 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::post('{id}/terima', 'terima')->name('pesanan.terima');
         Route::post('{id}/tolak', 'tolak')->name('pesanan.tolak');
     });
-    Route::controller(PengirimanController::class)->prefix('pengiriman')->group(function() {
+    Route::controller(PengirimanController::class)->prefix('pengiriman')->group(function () {
         Route::get('/', 'index')->name('pengiriman.index');
+        Route::get('create', 'create')->name('pengiriman.create');
+        Route::post('store', 'store')->name('pengiriman.store');
+        Route::post('tiba/{id}', 'tiba')->name('pengiriman.tiba');
+        Route::get('edit/{id}', 'edit')->name('pengiriman.edit');
+        Route::put('edit/{id}', 'update')->name('pengiriman.update');
+        Route::delete('destroy/{id}', 'destroy')->name('pengiriman.destroy');
     });
 });
 
 Route::controller(ShopController::class)->prefix('shop')->group(function () {
+    Route::middleware(['auth', 'verified', 'user'])->group(function () {
+        Route::get('{produk}/detail', 'detail')->name('shop.detail');
+        Route::post('{produk_id}/order', 'order')->name('shop.order');
+    });
     Route::get('/', 'index')->name('shop.index');
-    Route::get('{produk}/detail', 'detail')->name('shop.detail');
-    Route::post('{produk_id}/order', 'order')->name('shop.order');
 });
 
-Route::controller(CartController::class)->prefix('shop')->group(function () {
-    Route::get('cart', 'index')->name('cart');
-    Route::delete('cart/{id}', 'destroy')->name('cart.destroy');
+Route::middleware(['auth', 'verified', 'user'])->group(function () {
+    Route::controller(CartController::class)->prefix('shop')->group(function () {
+        Route::get('cart', 'index')->name('cart');
+        Route::delete('cart/{id}', 'destroy')->name('cart.destroy');
+    });
+    Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(function () {
+        Route::get('/{id}', 'index')->name('checkout.index');
+        Route::post('/checkout', 'store')->name('checkout');
+        Route::post('/bayar/{id}', 'bayar')->name('bayar');
+    });
+    Route::controller(OrderController::class)->prefix('order')->group(function () {
+        Route::get('order', 'index')->name('order');
+        Route::get('{id}/detail', 'show')->name('order.detail');
+        Route::delete('order/{id}', 'destroy')->name('order.destroy');
+    });
 });
-Route::controller(CheckoutController::class)->prefix('shop/checkout')->group(function () {
-    Route::get('/', 'index')->name('checkout.index');
-    Route::post('/checkout', 'store')->name('checkout');
-});
-Route::controller(OrderController::class)->prefix('order')->group(function () {
-    Route::get('order', 'index')->name('order');
-    Route::delete('order/{id}', 'destroy')->name('order.destroy');
 
-});
 // Route::prefix('user')->group(function () {
 //     Route::get('shop', function () {return view('user.pages.shop');})->name('shop');
 //     Route::get('shop-details', function () {return view('user.pages.shop-details');})->name('shop-details');

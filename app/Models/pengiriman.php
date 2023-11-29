@@ -12,6 +12,8 @@ class Pengiriman extends Model
 
     protected $table = 'tb_pengiriman';
 
+    protected $guarded = ['id'];
+
     public function pesanan() : BelongsTo
     {
         return $this->belongsTo(Pesanan::class);

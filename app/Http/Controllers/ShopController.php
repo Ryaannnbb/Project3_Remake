@@ -18,31 +18,36 @@ class ShopController extends Controller
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $sortOption = $request->input('sort');
         $category = $request->input('category');
-        $produk = Produk::paginate(3);
-        $order = Detailpesanan::where('status', 'checkout')->get()->count();
+        $produk = Produk::paginate(6);
+        $order = pesanan::where('user_id', auth()->user()->id)->get()->count();
 
 
-        if ($sortOption == 'price-low') {
-            $produk = Produk::orderBy('harga', 'asc')->get();
-        } elseif ($sortOption == 'price-high') {
-            $produk = Produk::orderBy('harga', 'desc')->get();
-        }
 
-        if($category) {
-            $produk = Produk::where('kategori_id', $category)->get();
+        if ($request->has('category')) {
+            // Mendapatkan nilai 'category' dari permintaan
+            $category = $request->input('category');
+
+            // Menyimpan nilai 'category' dalam sesi
+            session(['current_category' => $category]);
+
+            // Mencari produk berdasarkan 'category'
+            $produk = Produk::where('kategori_id', $category)->paginate(6);
+
+            // Paginasi dengan menyertakan parameter 'page'
+            $produk->appends(['category' => $category])->links();
         }
 
         $kategoris = Kategori::all();
         $pesanan = Detailpesanan::where('status', 'keranjang');
         // return dd($pesanan);
-        return view("user.pages.shop", compact('produk','kategoris', 'totalpesanan', 'order'));
+        return view("user.pages.shop", compact('produk', 'kategoris', 'totalpesanan', 'order'));
     }
 
     public function detail($produk)
     {
         $produk = Produk::findOrFail($produk);
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        $order = Detailpesanan::where('status', 'checkout')->get()->count();
+        $order = pesanan::where('user_id', auth()->user()->id)->get()->count();
         return view("user.pages.shop-details", compact('produk', 'totalpesanan', 'order'));
     }
     /**
@@ -56,7 +61,8 @@ class ShopController extends Controller
             "produk_id" => $produk->id,
             "jumlah" => $request->jumlah,
             "total" => $produk->harga * $request->jumlah,
-            "status" => 'keranjang'
+            "status" => 'keranjang',
+            "user_id" => auth()->user()->id
         ]);
 
         return redirect()->route('cart');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detailpesanan;
+use App\Models\Pembayaran;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 
@@ -11,19 +12,27 @@ class CheckoutController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index($id)
     {
-        $ids = $request->pesanan_id;
-        $pesanan = Detailpesanan::find($ids);
+        $pesanan_id = $id;
+        $pesanan = Detailpesanan::where('pesanan_id', $id)->get();
+        // foreach($pesanan as $pesan) {
+        //     echo $pesan->id;
+        // }
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
+        $order = Detailpesanan::where('status', 'checkout')->get()->count();
+        $payments = Pembayaran::all();
+
         // return dd($pesanan);
-        return view('user.pages.checkout', compact('pesanan'));
-    }
+        return view('user.pages.checkout', compact('pesanan', 'totalpesanan', 'order', 'payments', 'pesanan_id'));
+    }   
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function bayar(Request $request, $id)
     {
-        //
+        $pesanan = Pesanan::findOrfail($id);
+        return dd($pesanan);
     }
 
     /**
@@ -42,6 +51,8 @@ class CheckoutController extends Controller
         }
 
         return redirect()->route('shop.index');
+
+
     }
 
     /**

@@ -12,9 +12,9 @@
                 <p class="text-sm">See information about all Product</p>
               </div>
               <div class="ms-auto d-flex">
-                <a href="{{ route('produk.create') }}">
+                <a href="{{ route('pengiriman.create') }}">
                     <button type="button" class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">
-                      <span class="btn-inner--text">Add Product</span>
+                      <span class="btn-inner--text">Add Shipping</span>
                     </button>
                 </a>
               </div>
@@ -44,23 +44,30 @@
                                     <span>{{ $pengiriman->pesanan->user->name }}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span>{{ $pengiriman->tanggal_pengiriman }}</span>
+                                    <span>{{ date('d F Y', strtotime( $pengiriman->tanggal_pengiriman)) }}</span>
                                 </td>
+                                @if ($pengiriman->tanggal_menerima != null)
                                 <td class="align-middle text-center text-sm">
-                                    <span>{{ $pengiriman->tanggal_menerima }}</span>
+                                  <span>{{ date('d F Y', strtotime( $pengiriman->tanggal_menerima)) }}</span>
                                 </td>
+                                @else
+                                <td class="align-middle text-center text-sm">-</td>
+                                @endif
+                                @if ($pengiriman->pesanan->status == 'dikirim')
+                                    
                                 <td class="align-middle text-center text-sm">
-                                    <a href="{{ route('produk.edit', $pengiriman->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
+                                    {{-- <a href="{{ route('produk.edit', $pengiriman->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="fa-regular fa-pen-to-square"></i>
-                                    </a>
-                                    <form id="deleteform{{ $pengiriman->id }}" method="POST" action="{{ route('produk.destroy', $pengiriman->id) }}" style="display: inline;">
+                                    </a> --}}
+                                    <form id="deleteform{{ $pengiriman->id }}" method="POST" action="{{ route('pengiriman.tiba', $pengiriman->pesanan->id) }}" style="display: inline;">
                                         @csrf
-                                        @method('delete')
                                         <button type="submit" class="btn btn-secondary mb-n1 mt-n1 p-2" data-bs-toggle="tooltip" data-original-title="Delete user">
-                                            <i class="fa-solid fa-trash"></i>
+                                            {{-- <i class="fa-solid fa-trash"></i> --}}
+                                            arrive at the destination
                                         </button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         @endif

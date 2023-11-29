@@ -28,6 +28,7 @@
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">No</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">User</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Total</th>
+                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Status</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
                   </tr>
                 </thead>
@@ -45,6 +46,10 @@
                         <td class="align-middle text-center text-sm">
                           <span class="text-secondary text-xs font-weight-bold">Rp.
                             {{ number_format($pesanan->total, 0, ',', '.') }}</span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span
+                            class="text-secondary text-xs font-weight-bold">{{ $pesanan->status }}</span>
                         </td>
                         <td class="align-middle text-center text-sm">
                           <a href="{{ url("pesanan/$pesanan->id/detail") }}" class="btn btn-secondary mb-n1 mt-n1 p-2" >

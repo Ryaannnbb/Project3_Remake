@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
             $table->integer('total');
-            $table->enum('status', ['menunggu', 'diterima', 'ditolak', 'dikirim', 'selesai'])->default('menunggu');
+            $table->enum('status', ['menunggu', 'diterima','dibayar', 'menunggu dibayar', 'ditolak', 'dikirim', 'sampai', 'selesai'])->default('menunggu');
             $table->string('pesan_tolak')->default('');
             $table->string('address')->default('');
             $table->timestamps();

@@ -60,8 +60,17 @@
                       <input type="email" class="form-control @error('email') is-invalid @enderror"
                         placeholder="Enter your email address" aria-label="Email" aria-describedby="email-addon"
                         name="email" value="{{ old('email') }}" autocomplete="email">
-
                       @error('email')
+                        <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                        </span>
+                      @enderror
+                    </div>
+                    <label>Alamat</label>
+                    <div class="mb-3">
+                      <textarea class="form-control @error('address') is-invalid @enderror"
+                        name="address">{{ old('address') }}</textarea>
+                      @error('address')
                         <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                         </span>

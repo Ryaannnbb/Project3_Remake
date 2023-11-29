@@ -24,9 +24,18 @@
             <div class="table-responsive p-0">
                 <div class="card-body">
                         <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">Category Name</label>
-                            <input class="form-control  @error('nama_pembayaran') is-invalid @enderror" name="nama_pembayaran" type="text" placeholder="Category Name" value="{{ old('nama_pembayaran') }}" id="example-text-input">
-                            @error('nama_pembayaran')
+                            <label for="example-text-input" class="form-control-label">Payment Method</label>
+                            <input class="form-control  @error('nama_pembayaran') is-invalid @enderror" name="metode_pembayaran" type="text" value="{{ old('metode_pembayaran') }}" id="example-text-input">
+                            @error('metode_pembayaran')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="example-text-input" class="form-control-label">Account Number</label>
+                            <input class="form-control  @error('no_rekening') is-invalid @enderror" name="no_rekening" type="number" value="{{ old('no_rekening') }}" id="example-text-input">
+                            @error('no_rekening')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
