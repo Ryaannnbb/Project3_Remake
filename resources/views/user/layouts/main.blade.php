@@ -2,55 +2,61 @@
 <html lang="zxx">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Ogani Template">
-  <meta name="keywords" content="Ogani, unica, creative, html">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ogani | Template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
 
-  <!-- Google Font -->
-  <!-- resources/views/layouts/app.blade.php -->
+    <!-- Google Font -->
+    <!-- resources/views/layouts/app.blade.php -->
 
-<!-- Tambahkan ini di dalam tag <head> -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Tambahkan ini di dalam tag <head> -->
+    <script src="
+        https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js
+        "></script>
+    <link href="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
+    " rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
-  <!-- Css Styles -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}" type="text/css">
-  <link rel="stylesheet" href="{{ asset('user/css/font-awesome.min.css') }}" type="text/css">
-  <link rel="stylesheet" href="{{ asset('user/css/elegant-icons.css') }}" type="text/css">
-  <link rel="stylesheet" href="{{ asset('user/css/nice-select.css') }}" type="text/css">
-  <link rel="stylesheet" href="{{ asset('user/css/jquery-ui.min.css') }}" type="text/css">
-  <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}" type="text/css">
-  <link rel="stylesheet" href="{{ asset('user/css/slicknav.min.css') }}" type="text/css">
-  <link rel="stylesheet" href="{{ asset('user/css/style.css') }}" type="text/css">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('user/css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('user/css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('user/css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('user/css/jquery-ui.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('user/css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('user/css/style.css') }}" type="text/css">
 </head>
 
 <body>
-  <!-- Page Preloder -->
-  <div id="preloder">
-    <div class="loader"></div>
-  </div>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
 
-  <!-- Humberger Begin -->
-  <div class="humberger__menu__overlay"></div>
-  <div class="humberger__menu__wrapper">
-    <div class="humberger__menu__logo">
-      <a href="#"><img src="img/logo.png" alt=""></a>
-    </div>
-    <div class="humberger__menu__cart">
-      <ul>
-        <li><a href="{{ route('cart') }}"><i class="fa fa-heart"></i> <span>1</span></a></li>
-        <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-      </ul>
-      <div class="header__cart__price">item: <span>$150.00</span></div>
-    </div>
-    {{-- <div class="humberger__menu__widget">
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            {{-- <a href="#"><img src="img/logo.png" alt=""></a> --}}
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="{{ route('cart') }}"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
+        </div>
+        {{-- <div class="humberger__menu__widget">
       <div class="header__top__right__language">
         <img src="img/language.png" alt="">
         <div>English</div>
@@ -64,24 +70,24 @@
         <a href="#"><i class="fa fa-user"></i> Login</a>
       </div>
     </div> --}}
-    <nav class="humberger__menu__nav mobile-menu">
-      <ul>
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="./shop-grid.html">Shop</a></li>
-        <li><a href="#">Pages</a>
-          <ul class="header__menu__dropdown">
-            <li><a href="./shop-details.html">Shop Details</a></li>
-            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-            <li><a href="./checkout.html">Check Out</a></li>
-            <li><a href="./blog-details.html">Blog Details</a></li>
-          </ul>
-        </li>
-        <li><a href="./blog.html">Blog</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div id="mobile-menu-wrap"></div>
-    {{-- <div class="header__top__right__social">
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="#">Pages</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./shop-details.html">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        {{-- <div class="header__top__right__social">
       <a href="#"><i class="fa fa-facebook"></i></a>
       <a href="#"><i class="fa fa-twitter"></i></a>
       <a href="#"><i class="fa fa-linkedin"></i></a>
@@ -93,12 +99,12 @@
         <li>Free Shipping for all Order of $99</li>
       </ul>
     </div> --}}
-  </div>
-  <!-- Humberger End -->
+    </div>
+    <!-- Humberger End -->
 
-  <!-- Header Section Begin -->
-  <header class="header">
-    {{-- <div class="header__top">
+    <!-- Header Section Begin -->
+    <header class="header">
+        {{-- <div class="header__top">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6">
@@ -134,60 +140,61 @@
         </div>
       </div>
     </div> --}}
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="header__logo">
-            <a href="{{ route('shop.index') }}"><img src="{{ asset('assets/img/1700714057840.png') }}" height="70" alt=""></a>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="{{ route('shop.index') }}"><img src="{{ asset('assets/img/1700714057840.png') }}"
+                                height="70" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" style="border: none; background: none; cursor: pointer;">
+                                        <i class="fa-solid fa-user"></i>
+                                    </button>
+                                </form>
+                            </li>
+                            <ul class="list-inline">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item mr-4">
+                                        <a href="{{ route('cart') }}">
+                                            <i class="fa fa-shopping-bag"></i>
+                                            @if ($totalpesanan > 0)
+                                                <span>{{ $totalpesanan }}</span>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="{{ route('order') }}">
+                                            <i class="fas fa-bell"></i>
+                                            @if ($order > 0)
+                                                <span>{{ $order }}</span>
+                                            @endif
+                                        </a>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
         </div>
-        <div class="col-lg-6">
-        </div>
-        <div class="col-lg-3">
-          <div class="header__cart">
-            <ul>
-                <li>
-                  <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" style="border: none; background: none; cursor: pointer;">
-                      <i class="fa-solid fa-user"></i>
-                    </button>
-                  </form>
-                </li>
-                <ul class="list-inline">
-                    <ul class="list-inline">
-                        <li class="list-inline-item mr-4">
-                            <a href="{{ route('cart') }}">
-                                <i class="fa fa-shopping-bag"></i>
-                                @if($totalpesanan > 0)
-                                    <span>{{ $totalpesanan }}</span>
-                                @endif
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="{{ route('order') }}">
-                                <i class="fas fa-bell"></i>
-                                @if($order > 0)
-                                    <span>{{ $order }}</span>
-                                @endif
-                            </a>
-                        </li>
-                    </ul>
-                </ul>
-              </ul>
-          </div>
-        </div>
-      </div>
-      <div class="humberger__open">
-        <i class="fa fa-bars"></i>
-      </div>
-    </div>
-  </header>
-  <!-- Header Section End -->
+    </header>
+    <!-- Header Section End -->
 
-  @yield('content')
+    @yield('content')
 
-  {{-- <!-- Footer Section Begin -->
+    {{-- <!-- Footer Section Begin -->
   <footer class="footer spad">
     <div class="container">
       <div class="row">
@@ -262,16 +269,18 @@
   </footer>
   <!-- Footer Section End --> --}}
 
-  <!-- Js Plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <script src="{{ asset('user/js/jquery-3.3.1.min.js') }}"></script>
-  <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('user/js/jquery.nice-select.min.js') }}"></script>
-  <script src="{{ asset('user/js/jquery-ui.min.js') }}"></script>
-  <script src="{{ asset('user/js/jquery.slicknav.js') }}"></script>
-  <script src="{{ asset('user/js/mixitup.min.js') }}"></script>
-  <script src="{{ asset('user/js/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('/user/js/main.js') }}"></script>
+    <!-- Js Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('user/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('user/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('user/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('user/js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('user/js/mixitup.min.js') }}"></script>
+    <script src="{{ asset('user/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('/user/js/main.js') }}"></script>
 
 </body>
 

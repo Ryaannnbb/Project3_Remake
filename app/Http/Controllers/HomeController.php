@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\produk;
+use App\Models\pesanan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $produks = produk::all();
+        $pesanan_menunggu = pesanan::where('status', 'menunggu');
+        $pesanan_diterima = pesanan::where('status', 'diterima');
+        $pesanan_ditolak = pesanan::where('status', 'ditolak');
+        return view('dashboard', compact('produks', 'pesanan_menunggu', 'pesanan_diterima', 'pesanan_ditolak'));
     }
 }
