@@ -69,6 +69,9 @@
                                     <span class="text-secondary text-xs font-weight-bold">{{$pg->kategori->nama_kategori}}</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
+                                    <span class="text-secondary text-xs font-weight-bold">{{$pg->supplier->nama_supplier}}</span>
+                                </td>
+                                <td class="align-middle text-center text-sm">
                                     <a href="{{ route('produk.edit', $pg->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </a>
