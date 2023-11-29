@@ -39,13 +39,17 @@ class PengirimanController extends Controller
         $pesanan = Pesanan::find($request->pesanan);
         $pesanan->status = 'shipped';
         $pesanan->update();
-        return redirect()->route('pengiriman.index');
+        return redirect()->route('pengiriman.index')->with("success", "Delivery data has been successfully added!");
     }
 
     public function tiba($id) {
         $pesanan = Pesanan::find($id);
+        $pengiriman = Pengiriman::where('pesanan_id', $id)->first();
+
         $pesanan->status = 'delivered';
-        $pesanan->update();
+        $pesanan->save();
+        $pengiriman->tanggal_menerima = now();
+        $pengiriman->save();
         return redirect()->back();
     }
 

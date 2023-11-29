@@ -30,7 +30,6 @@
                     {{-- <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Status</th> --}}
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Date Delivery</th>
                     <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Date Received</th>
-                    <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Action</th>
                   </tr>
                 </thead>
                     <tbody>
@@ -54,7 +53,7 @@
                                 <td class="align-middle text-center text-sm">-</td>
                                 @endif
                                 @if ($pengiriman->pesanan->status == 'dikirim')
-                                    
+
                                 <td class="align-middle text-center text-sm">
                                     {{-- <a href="{{ route('produk.edit', $pengiriman->id) }}" class="btn btn-secondary mb-n1 mt-n1 p-2" data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="fa-regular fa-pen-to-square"></i>
