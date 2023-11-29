@@ -1,5 +1,8 @@
 @extends('layout.app')
 
+
+
+@section('content')
 @if (session('success'))
     <script>
         Swal.fire({
@@ -9,9 +12,6 @@
         });
     </script>
 @endif
-
-
-@section('content')
 <div class="container-fluid py-4 px-5">
     <div class="row">
       <div class="col-12">

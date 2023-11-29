@@ -79,7 +79,7 @@ class KategoriController extends Controller
             return redirect()->route("kategori")->with("success","Category data has been successfully deleted!");
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect()->route("kategori")->with("error","Cannot delete category!");
+            return redirect()->route("kategori")->with("error","Failed because it is currently in use!");
         }
     }
 }
