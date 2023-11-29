@@ -68,16 +68,16 @@
                     <div class="filter__item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
-                                {{-- <div class="filter__sort">
-                                    <span>Sort By</span>
+                                <div class="filter__sort">
+                                    {{-- <span>Sort By</span>
                                     <form id="Filter">
                                         <select name="sort" id="sort-by" >
                                             <option value="default">Default</option>
                                             <option value="price-low">Price: Low to High</option>
                                             <option value="price-high">Price: High to Low</option>
                                         </select>
-                                    </form>
-                                </div> --}}
+                                    </form> --}}
+                                </div>
                             </div>
                             <div class="col-lg-4 col-md-3 offset-md-4">
                                 <div class="filter__found text-right">
@@ -134,7 +134,7 @@
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {{-- <script>
+    <script>
         $(document).ready(function(){
             $('#sort-by').change(function(){
                 var form = document.getElementById('Filter');
@@ -145,16 +145,16 @@
     <script>
         $(document).ready(function() {
             document.querySelectorAll('#sort-by').forEach(function(element) {
-            element.style.display = 'none';
+            element.style.display = 'block';
             });
         });
     </script>
     <script>
         $(document).ready(function() {
             document.querySelectorAll('.nice-select').forEach(function(element) {
-            element.style.display = 'block';
+            element.style.display = 'none';
             });
         });
-    </script> --}}
+    </script>
     <!-- Product Section End -->
 @endsection

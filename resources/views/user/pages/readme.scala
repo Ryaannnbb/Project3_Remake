@@ -1,8 +1,9 @@
-Thank you for using our template!
+import slick.jdbc.MySQLProfile.api._
 
-For more awesome templates please visit https://colorlib.com/wp/templates/
+class Users(tag: Tag) extends Table[User](tag, "users") {
+  def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
+  def name = column[String]("name")
+  def email = column[String]("email")
 
-Copyright information for the template can't be altered/removed unless you purchase a license.
-More information about the license is available here: https://colorlib.com/wp/licence/
-
-Removing copyright information without the license will result in suspension of your hosting and/or domain name(s).
+  def * = (id.?, name, email) <> (User.tupled, User.unapply)
+}
