@@ -14,8 +14,6 @@
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/349ee9c857.js" crossorigin="anonymous"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
@@ -25,17 +23,17 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
-@if (session('success'))
-<script>
-    Swal.fire({
-        icon:'success',
-        title: 'Success',
-        text: '{{ session("success") }}'
-    });
-</script>
-@endif
 
 <body class="">
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            icon:'success',
+            title: 'Success',
+            text: '{{ session("success") }}'
+        });
+    </script>
+    @endif
     <main class="main-content mt-0">
         <section>
             <div class="page-header min-vh-100">
