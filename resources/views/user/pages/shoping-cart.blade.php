@@ -107,14 +107,13 @@
                                             <td class="shoping__cart__quantity">
                                                 <b>{{ number_format($pesanan->jumlah, 0, ',', '.') }}</b>
                                                 {{-- <div class="quantity">
-                        <div class="pro-qty">
-                          <span type="text" value="{{ $pesanan->jumlah }}" id="jumlah-{{ $pesanan->id }}" readonly>{{ $pesanan->jumlah }}</span>
-                        </div>
-                      </div> --}}
+                                                    <div class="pro-qty">
+                                                    <span type="text" value="{{ $pesanan->jumlah }}" id="jumlah-{{ $pesanan->id }}" readonly>{{ $pesanan->jumlah }}</span>
+                                                    </div>
+                                                </div> --}}
                                             </td>
                                             <td class="shoping__cart__total">
-                                                Rp.
-                                                {{ number_format($pesanan->produk->harga * $pesanan->jumlah, 0, ',', '.') }}
+                                                Rp.{{ number_format($pesanan->produk->harga * $pesanan->jumlah, 0, ',', '.') }}
                                             </td>
                                             <td class="shoping__cart__item__close">
                                                 <form action="{{ route('cart.destroy', $pesanan->id) }}" method="POST">

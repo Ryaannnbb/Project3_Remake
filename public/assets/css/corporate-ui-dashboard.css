@@ -24998,6 +24998,19 @@ a {
   line-height: 1.5;
 }
 
+/* Untuk menyembunyikan tombol pada input dengan type "number" */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Untuk menyembunyikan tombol pada Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
 .text-xs {
   line-height: 1.25;
 }
