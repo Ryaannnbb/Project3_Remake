@@ -157,7 +157,7 @@
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button type="submit" style="border: none; background: none; cursor: pointer;">
-                                        <i class="fa-solid fa-user"></i>
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     </button>
                                 </form>
                             </li>

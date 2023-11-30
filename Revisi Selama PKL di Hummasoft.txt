@@ -1,0 +1,53 @@
+=======================================================================================================
+24/10/2023 Selasa
+1.Password harus di hash (v)
+2.Username Unik (v)
+3.Alert Berhasil Register (v)
+4.Colom Dibetulkan (v)
+5.Tambah Alert saat tambah dan edit dan tambah berhasil dihapus (v)
+6.Tambah auto select saat edit data clasroom (v)
+7.perbaiki bagian learning outcomes (v)
+8.Perbaiki jika sudah masuk tidak bisa mengakses halaman login dan sebaliknya (v)
+=======================================================================================================
+Solo Project Mengunakan Laravel
+1. 5 Tabel 3 Relasi
+2. Topiknya Sama (Sekolah)
+3. Ada upload file
+4. CRUD Sama dengan tabelnya (5)
+6. Menggunakan validasi
+7. Pakai login register dan log out memakai package namanya laravel ui
+8. Menggunakan migration
+Paling lambat Jum'at
+=======================================================================================================
+7//11/2023 Senin
+1. Harus menampilkan id saat di navbar (v)
+2. Gambar di hash (v)
+3. Jika edit gambar lama harus tampil (v)
+4. Menampilkan old value (v)
+5. Tanggal harus di format (v)
+6. ISBN harus unique (v)
+7. Hapus fitur saat ingin meminjam buku harus bisa memminjam lagi (v)
+=======================================================================================================
+list 10 tema
+2. minimal 2 role user
+3. 8 tabel dan 3 relasi
+4. registrasi ada kirim email
+5. dashboard admin
+deadlinenya 2 minggu
+=======================================================================================================
+29/11/2023 Rabu
+1. menambahkan stok produk
+2. menggabungkan jumlah pesanan dengan produk yang sama (v) -A
+3. total produk yang dipesan di halaman order tidak sesuai (v) -A
+4. jumlah pesanan tidak boleh 0 saat pesan (v) -A
+5. fitur edit jumlah keranjang
+6. tambah keterangan keranjang masih kosong (v) -A
+7. ganti icon sidebar (v) -R
+8. tambah fitur searching (v) -A
+9. menghapus delete pada order
+10. atur besar gambar di halaman order admin (v) -R
+11. mengganti tombol next pada modal reject (v) -R
+12. menambahkan alert berhasil tolak/acc (v) -R
+13. menambahkan warna untuk status (v) -R
+14. menambahkan konfirmasi untuk accept & reject -R
+15. ganti icon logout (v) -R

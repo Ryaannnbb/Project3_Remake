@@ -1,8 +1,8 @@
 @extends('user.layouts.main')
 
 @section('content')
-  <!-- Hero Section Begin -->
-  {{-- <section class="hero hero-normal">
+    <!-- Hero Section Begin -->
+    {{-- <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </section> --}}
-  <!-- Hero Section End -->
+    <!-- Hero Section End -->
 
   <!-- Breadcrumb Section Begin -->
   <section class="breadcrumb-section set-bg">

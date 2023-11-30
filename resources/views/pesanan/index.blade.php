@@ -1,6 +1,30 @@
 @extends('layout.app')
 
 @section('content')
+@if (session('reject'))
+    <script>
+        Swal.fire({
+            icon:'success',
+            title: 'Success',
+            text: '{{ session("reject") }}'
+        });
+    </script>
+@endif
+
+@if (session('acc'))
+    <script>
+        Swal.fire({
+            icon:'success',
+            title: 'Success',
+            text: '{{ session("acc") }}'
+        });
+    </script>
+@endif
+
+<script>
+
+</script>
+
     <div class="container-fluid py-4 px-5">
         <div class="row">
             <div class="col-12">
@@ -54,20 +78,20 @@
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <a href="{{ url("pesanan/$pesanan->id/detail") }}"
-                                                        class="btn btn-secondary mb-n1 mt-n1 p-2">
+                                                        class="btn btn-info mb-n1 mt-n1 p-2">
                                                         Detail
                                                     </a>
                                                     @if ($pesanan->status == 'pending')
                                                         <form action="{{ route('pesanan.terima', $pesanan->id) }}"
                                                             method="POST" style="display: inline">
                                                             @csrf
-                                                            <button class="btn btn-secondary mb-n1 mt-n1 p-2"
+                                                            <button type="button" class="btn btn-success btn-acc mb-n1 mt-n1 p-2"
                                                                 data-toggle="tooltip" data-original-title="Edit user">
                                                                 Accept
                                                             </button>
                                                         </form>
-                                                        <button type="submit" class="btn btn-secondary mb-n1 mt-n1 p-2"
-                                                            data-original-title="Delete user" data-bs-toggle="modal"
+                                                        <button class="btn btn-danger mb-n1 mt-n1 p-2"
+                                                            data-bs-toggle="modal"
                                                             data-bs-target="#exampleModal{{ $pesanan->id }}">
                                                             Reject
                                                         </button>
@@ -93,8 +117,8 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary">Next</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-danger btn-reject">Reject</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -111,6 +135,40 @@
                 </div>
             </div>
         </div>
+        <script>
+            $('.btn-reject').click(function () {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).closest('form').submit();
+                    }
+                });
+            })
+        </script>
+        <script>
+            $('.btn-acc').click(function () {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).closest('form').submit();
+                    }
+                });
+            })
+        </script>
         @include('layout.footer')
     </div>
     <!-- Button trigger modal -->

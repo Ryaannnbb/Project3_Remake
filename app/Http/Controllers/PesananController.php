@@ -23,7 +23,7 @@ class PesananController extends Controller
         $pesanan->status = 'waiting payment';
         $pesanan->update();
 
-        return redirect()->route('pesanan.index');
+        return redirect()->route('pesanan.index')->with("acc", "Successfully approved user`s order!");
 
     }
     public function tolak(Request $request, string $id)
@@ -33,7 +33,7 @@ class PesananController extends Controller
         $pesanan->pesan_tolak = $request->pesan_tolak;
         $pesanan->update();
 
-        return redirect()->route('pesanan.index');
+        return redirect()->route('pesanan.index')->with("reject", "Rejection message sent successfully!");
 
     }
 
