@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    @if (session('message'))
+    {{-- @if (session('message'))
         <script>
             Swal.fire({
                 icon: 'error',
@@ -9,7 +9,7 @@
                 text: "{{ session('message') }}",
             });
         </script>
-    @endif
+    @endif --}}
     @if (session('success'))
         <script>
             Swal.fire({

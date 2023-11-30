@@ -86,14 +86,30 @@ class ShopController extends Controller
      */
     public function order(Request $request, $produk)
     {
-        $request->validate(['jumlah' => 'numeric|min:1']);
-
-        $detailPesanan = Detailpesanan::where('produk_id', $produk)->where('status', 'keranjang')->first();
         $produk = Produk::findOrFail($produk);
+        $request->validate(
+            [
+                'jumlah' => 'numeric|min:1|max:' . $produk->stok
+            ],
+            [
+                'jumlah.max' => "quantity exceeds product stock"
+            ]
+        );
+
+        $detailPesanan = Detailpesanan::where('produk_id', $produk->id)->where('status', 'keranjang')->first();
+        // return dd($detailPesanan);
+
         if ($detailPesanan) {
-            $detailPesanan->jumlah += $request->jumlah;
-            $detailPesanan->total = $produk->harga * $request->jumlah;
-            $detailPesanan->save();
+            if ($detailPesanan->jumlah > $produk->stok) {
+                return redirect()->back()->withErrors('jumlah', "quantity exceeds product's stock");
+            } else {
+                $detailPesanan->jumlah += $request->jumlah;
+                $detailPesanan->total = $produk->harga * $request->jumlah;
+                $detailPesanan->save();
+
+                $produk->stok -= $request->jumlah;
+                $produk->save();
+            }
             // return dd($detailPesanan);
         } else {
             Detailpesanan::create([
@@ -103,6 +119,9 @@ class ShopController extends Controller
                 "status" => 'keranjang',
                 "user_id" => auth()->user()->id
             ]);
+
+            $produk->stok -= $request->jumlah;
+            $produk->save();
         }
         return redirect()->route('cart');
     }

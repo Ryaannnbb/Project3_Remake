@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\detailpesanan;
 use App\Models\Pesanan;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -63,10 +64,23 @@ class CartController extends Controller
             //code...
             foreach ($quantities as $orderId => $quantity) {
                 $pesanan = detailpesanan::find($orderId);
+                $oldQuantity = $pesanan->jumlah;
+                // return dd($quantity);
+                
+                if ($quantity - $oldQuantity > $pesanan->produk->stok) {
+                    return redirect()->back()->with('update_failed', "Quantity exceeds product stock");
+                }
                 $harga = $pesanan->produk->harga;
                 $pesanan->jumlah = $quantity;
                 $pesanan->total = $quantity * $harga;
                 $pesanan->save();
+
+                // $pesanan->produk->stok -= $quantity - $oldQuantity;
+                // $pesanan->save();
+
+                $produk = Produk::find($pesanan->produk_id);
+                $produk->stok -= $quantity - $oldQuantity;
+                $produk->save();
             }
             return redirect()->route('cart')->with('update_success', 'Cart Updated Successfully');
         } catch (\Throwable $th) {
@@ -83,7 +97,11 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        detailpesanan::findOrFail($id)->delete();
+        $detailPesanan = detailpesanan::findOrFail($id);
+        $produk = Produk::find($detailPesanan->produk_id);
+        $produk->stok += $detailPesanan->jumlah;
+        $produk->save();
+        $detailPesanan->delete();
         return redirect()->back();
     }
 }

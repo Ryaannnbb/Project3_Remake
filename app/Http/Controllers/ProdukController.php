@@ -42,6 +42,7 @@ class ProdukController extends Controller
             'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'nama_produk' => 'required|regex:/^[a-zA-Z ]+$/|max:255', // Only alphabetic characters and spaces allowed
             'harga' => 'required|numeric|min:1',
+            'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required|string',
             'kategori_id' => 'required|exists:tb_kategori,id',
             'supplier_id' => 'required|exists:tb_supplier,id',
@@ -58,6 +59,10 @@ class ProdukController extends Controller
             'harga.required' => 'Product price is required.',
             'harga.numeric' => 'Product price must be a number.',
             'harga.min' => 'Product price must be at least :min.',
+
+            'stok.numeric' => 'Product stock must be a number.',
+            'stok.required' => 'Product stock is required.',
+            'stok.min' => 'Product stock must be at least :min.',
         
             'deskripsi.required' => 'Description is required.',
             'deskripsi.string' => 'Description must be a string.',
@@ -84,6 +89,7 @@ class ProdukController extends Controller
             "nama_produk" => $request->nama_produk,
             "deskripsi"=> $request->deskripsi,
             "harga"=> $request->harga,
+            "stok"=> $request->stok,
             "kategori_id"=> $request->kategori_id,
             "supplier_id"=> $request->supplier_id,
         ]);
@@ -120,6 +126,7 @@ class ProdukController extends Controller
             'path_produk' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Max size is 2MB
             'nama_produk' => 'required|string|max:255',
             'harga' => 'required|numeric|min:1',
+            'stok' => 'required|numeric|min:0',
             'deskripsi' => 'required|string',
             'kategori_id' => 'required|exists:tb_kategori,id',
             'supplier_id' => 'required|exists:tb_supplier,id',
@@ -136,7 +143,11 @@ class ProdukController extends Controller
             'harga.required' => 'Product price is required.',
             'harga.numeric' => 'Product price must be a number.',
             'harga.min' => 'Product price must be at least :min.',
-
+            
+            'stok.numeric' => 'Product stock must be a number.',
+            'stok.required' => 'Product stock is required.',
+            'stok.min' => 'Product stock must be at least :min.',
+            
             'deskripsi.required' => 'Description is required.',
             'deskripsi.string' => 'Description must be a string.',
 

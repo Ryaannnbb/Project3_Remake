@@ -66,7 +66,16 @@
                       </div>
                     @enderror
                   </div>
-
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Product Stock</label>
+                    <input class="form-control  @error('stok') is-invalid @enderror" name="stok" type="number"
+                      value="{{ old('stok') }}" id="example-text-input">
+                    @error('stok')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Description</label>
                     <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" type="text"

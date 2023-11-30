@@ -15,25 +15,31 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'user@example.com',
-        //     'password' => bcrypt('password'),
-        // ]);
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'admin@example.com',
-        //     'password' => bcrypt('password'),
-        //     'role' => 'admin'
-        // ]);
-        // \App\Models\Pembayaran::factory()->create([
-        //     'metode_pembayaran' => 'Dana',
-        //     'no_rekening' => '12345678'
-        // ]);
-        // \App\Models\Pembayaran::factory()->create([
-        //     'metode_pembayaran' => 'Gopay',
-        //     'no_rekening' => '87654321'
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'user@example.com',
+            'password' => bcrypt('password'),
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('password'),
+            'role' => 'admin'
+        ]);
+        \App\Models\kategori::factory()->create([
+            'nama_kategori' => 'Makanan'
+        ]);
+        \App\Models\kategori::factory()->create([
+            'nama_kategori' => 'Minuman'
+        ]);
+        \App\Models\Pembayaran::factory()->create([
+            'metode_pembayaran' => 'Dana',
+            'no_rekening' => '12345678'
+        ]);
+        \App\Models\Pembayaran::factory()->create([
+            'metode_pembayaran' => 'Gopay',
+            'no_rekening' => '87654321'
+        ]);
 
         // \App\Models\kategori::factory(3)->create();
         \App\Models\supplier::factory(3)->create();
