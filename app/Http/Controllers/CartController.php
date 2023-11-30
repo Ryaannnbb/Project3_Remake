@@ -56,6 +56,22 @@ class CartController extends Controller
      */
     public function update(Request $request)
     {
+        $quantities = json_decode($request->input('quantities'));
+
+        // return dd($quantities);
+        try {
+            //code...
+            foreach ($quantities as $orderId => $quantity) {
+                $pesanan = detailpesanan::find($orderId);
+                $harga = $pesanan->produk->harga;
+                $pesanan->jumlah = $quantity;
+                $pesanan->total = $quantity * $harga;
+                $pesanan->save();
+            }
+            return redirect()->route('cart')->with('update_success', 'Cart Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->route('cart')->with('update_failed', 'Cart Updated Failed');
+        }
         // $detailPesanan = $request->pesanan_id;
         // foreach ($detailPesanan as $value) {
         //     Detailpesanan::findOrFail($value)->update(["jumlah" == ]);

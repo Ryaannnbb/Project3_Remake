@@ -105,18 +105,18 @@
                         Rp. {{ number_format($pesanan->produk->harga, 0, ',', '.') }}
                       </td>
                       <td class="shoping__cart__quantity">
-                        <b>{{ number_format($pesanan->jumlah, 0, ',', '.') }}</b>
-                        {{-- <div class="quantity">
-                        <div class="pro-qty">
-                          <span type="text" value="{{ $pesanan->jumlah }}" id="jumlah-{{ $pesanan->id }}" readonly>{{ $pesanan->jumlah }}</span>
+                        <div class="quantity">
+                          <div class="pro-qty">
+                            <input type="number" name="jumlah[{{ $pesanan->id }}]" value="{{ $pesanan->jumlah }}"
+                              min="1">
+                          </div>
                         </div>
-                      </div> --}}
                       </td>
                       <td class="shoping__cart__total">
                         Rp. {{ number_format($pesanan->produk->harga * $pesanan->jumlah, 0, ',', '.') }}
                       </td>
                       <td class="shoping__cart__item__close">
-                        <form action="{{ route('cart.destroy', $pesanan->id) }}" method="POST">
+                        <form action="{{ route('cart.destroy', $pesanan->id) }}" method="post">
                           @csrf
                           @method('delete')
                           <button type="submit" class="btn njir"><i class="fa-solid fa-xmark fa-lg"></i></button>
@@ -137,15 +137,15 @@
           <div class="shoping__cart__btns">
             <a href="{{ route('shop.index') }}"
               class="custom-btn cart-btn-continue-shopping primary-btn cart-btn">CONTINUE SHOPPING</a>
-            {{-- <form action="{{ route('cart.update') }}" method="POST">
+            <form id="updateCartForm" action="{{ route('cart.update') }}" method="POST">
               @csrf
-              @foreach ($pesanan_id as $id)
-                <input type="hidden" name="pesanan_id[]" value="{{ $id }}">
-              @endforeach
-              <button type="submit" class="custom-btn cart-btn-update primary-btn cart-btn cart-btn-right"><span
-                  class="icon_loading"></span>
-                Upadate Cart</button>
-            </form> --}}
+              <!-- other form fields -->
+              <input type="hidden" name="quantities" value="">
+              <button type="submit" class="custom-btn cart-btn-update primary-btn cart-btn cart-btn-right"
+                onclick="updateCart()">
+                <span class="icon_loading"></span> Update Cart
+              </button>
+            </form>
           </div>
         </div>
         <div class="col-lg-12">
@@ -165,12 +165,45 @@
         </div>
       </div>
     </div>
-    @else
+  @else
     <h3 class="col-12 text-center mb-3">There are no item in the cart</h3>
     <div class="col-12 text-center">
       <a href="{{ route('shop.index') }}" class="btn primary-btn">Shop Now</a>
     </div>
-  @endif
+    @endif
   </section>
   <!-- Shoping Cart Section End -->
+  @if (session('update_success'))
+    <script>
+      Swal.fire({
+        title: "Success!",
+        text: "{{ session('update_success') }}",
+        icon: "success"
+      });
+    </script>
+  @elseif (session('update_failed'))
+    <script>
+      Swal.fire({
+        title: "Failed!",
+        text: "{{ session('update_failed') }}",
+        icon: "error"
+      });
+    </script>
+  @endif
+  <script>
+    function updateCart() {
+      // Collect the values of quantity inputs and order IDs
+      var quantities = {};
+      $('input[name^="jumlah"]').each(function() {
+        var id = $(this).attr('name').match(/\[(\d+)\]/)[1];
+        quantities[id] = $(this).val();
+      });
+
+      // Assign the object of quantities to a hidden input field
+      $('input[name="quantities"]').val(JSON.stringify(quantities));
+
+      // Submit the form
+      $('#updateCartForm').submit();
+    }
+  </script>
 @endsection

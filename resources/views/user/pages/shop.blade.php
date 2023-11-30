@@ -62,7 +62,7 @@
               <ul>
                 <li class="active"><a href="{{ route('shop.index') }}">All</a></li>
                 @foreach ($kategoris as $kategori)
-                  <li><a href="?category={{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
+                  <li><a href="#" class="category-link" data-category="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
                 @endforeach
               </ul>
             </div>
@@ -162,5 +162,42 @@
       });
     });
   </script>
+
+<script>
+    $(document).ready(function () {
+        // Tambahkan parameter kategori ke URL saat mengklik tautan kategori
+        $('.category-link').on('click', function (e) {
+            e.preventDefault();
+            var category = $(this).data('category');
+            addParameter('kategori', category);
+        });
+
+        // Tambahkan parameter pencarian ke URL saat mengklik tautan pencarian
+        $('.search-link').on('click', function (e) {
+            e.preventDefault();
+            var search = $(this).data('search');
+            addParameter('search', search);
+        });
+
+        // Fungsi untuk menambahkan parameter ke URL menggunakan Ajax
+        function addParameter(key, value) {
+            $.ajax({
+                type: 'GET',
+                url: '/add-parameter', // Ganti dengan URL endpoint yang sesuai di server Anda
+                data: {
+                    key: key,
+                    value: value
+                },
+                success: function () {
+                    // Lakukan sesuatu setelah parameter ditambahkan (opsional)
+                    console.log('Parameter ditambahkan!');
+                },
+                error: function () {
+                    console.error('Gagal menambahkan parameter.');
+                }
+            });
+        }
+    });
+</script>
   <!-- Product Section End -->
 @endsection

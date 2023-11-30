@@ -23,25 +23,41 @@ class ShopController extends Controller
 
 
 
-        if ($request->has('category')) {
-            // Mendapatkan nilai 'category' dari permintaan
-            $category = $request->input('category');
+        // Mendapatkan nilai 'category' dari permintaan
+        $category = $request->input('category');
 
-            // Menyimpan nilai 'category' dalam sesi
-            session(['current_category' => $category]);
+        // Mendapatkan nilai 'search' dari permintaan
+        $keyword = $request->input('search');
 
-            // Mencari produk berdasarkan 'category'
-            $produk = Produk::where('kategori_id', $category)->paginate(6);
+        // Inisialisasi query builder untuk model Produk
+        $query = Produk::query();
 
-            // Paginasi dengan menyertakan parameter 'page'
-            $produk->appends(['category' => $category])->links();
+        // Filter berdasarkan 'category' jika tersedia
+        if ($category) {
+            $query->where('kategori_id', $category);
         }
 
-        if($request->has('search')) {
-            // return dd($request->search);
-            $keyword = $request->search;
-            $produk = Produk::where('nama_produk', 'like', "%".$keyword."%")->paginate(6);
+        // Filter berdasarkan 'search' jika tersedia
+        if ($keyword) {
+            $query->where('nama_produk', 'like', "%{$keyword}%");
         }
+
+        // return dd($query);   
+        // Ambil hasil query
+        $produk = $query->paginate(6);
+
+        // Paginasi dengan menyertakan parameter 'category' dan 'search'
+        $produk->appends(['category' => $category, 'search' => $keyword]);
+
+        // Tampilkan link paginasi
+        $links = $produk->render();
+
+
+        // if($request->has('search')) {
+        //     // return dd($request->search);
+        //     $keyword = $request->search;
+        //     $produk = Produk::where('nama_produk', 'like', "%".$keyword."%")->paginate(6);
+        // }
 
         $kategoris = Kategori::all();
         $pesanan = Detailpesanan::where('status', 'keranjang');
@@ -59,6 +75,7 @@ class ShopController extends Controller
 
     public function detail($produk)
     {
+        // return dd($produk);
         $produk = Produk::findOrFail($produk);
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $order = pesanan::where('user_id', auth()->user()->id)->get()->count();
@@ -69,10 +86,9 @@ class ShopController extends Controller
      */
     public function order(Request $request, $produk)
     {
-
         $request->validate(['jumlah' => 'numeric|min:1']);
 
-        $detailPesanan = Detailpesanan::where('produk_id', $produk)->first();
+        $detailPesanan = Detailpesanan::where('produk_id', $produk)->where('status', 'keranjang')->first();
         $produk = Produk::findOrFail($produk);
         if ($detailPesanan) {
             $detailPesanan->jumlah += $request->jumlah;
