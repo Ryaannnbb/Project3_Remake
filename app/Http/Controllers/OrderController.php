@@ -72,6 +72,6 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         pesanan::findOrFail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with("co", "Successfully canceled the item for checkout");
     }
 }

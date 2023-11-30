@@ -112,7 +112,12 @@
                                                                             aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <textarea name="pesan_tolak" id="" cols="30" rows="5" class="form-control"></textarea>
+                                                                        <textarea name="pesan_tolak" id="" cols="30" rows="5" class="form-control @error('pesan_tolak') is-invalid @enderror">{{ old('pesan_tolak') }}</textarea>
+                                                                        @error('pesan_tolak')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
@@ -139,12 +144,12 @@
             $('.btn-reject').click(function () {
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    text: "You are about to reject this order. This action cannot be undone!",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
+                    confirmButtonText: "Yes, reject it!"
                     }).then((result) => {
                     if (result.isConfirmed) {
                         $(this).closest('form').submit();
@@ -156,12 +161,12 @@
             $('.btn-acc').click(function () {
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    text: "You are about to accept this order. This action cannot be undone!",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
+                    confirmButtonText: "Yes, accept it!"
                     }).then((result) => {
                     if (result.isConfirmed) {
                         $(this).closest('form').submit();

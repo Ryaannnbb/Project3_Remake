@@ -42,7 +42,7 @@ class ShopController extends Controller
             $query->where('nama_produk', 'like', "%{$keyword}%");
         }
 
-        // return dd($query);   
+        // return dd($query);
         // Ambil hasil query
         $produk = $query->paginate(6);
 
