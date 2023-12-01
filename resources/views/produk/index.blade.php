@@ -18,7 +18,7 @@
                         <div class="d-sm-flex align-items-center">
                             <div>
                                 <h6 class="font-weight-semibold text-lg mb-0">Product list</h6>
-                                <p class="text-sm">See information about all Product</p>
+                                <p class="text-sm">See information about all product</p>
                             </div>
                             <div class="ms-auto d-flex">
                                 <a href="{{ route('produk.create') }}">

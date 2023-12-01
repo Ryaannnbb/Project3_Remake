@@ -12,7 +12,7 @@
               <div class="d-sm-flex align-items-center">
                 <div>
                   <h6 class="font-weight-semibold text-lg mb-0">Edit Supplier</h6>
-                  {{-- <p class="text-sm">See information about all category</p> --}}
+                  <p class="text-sm">See information about all supplier</p>
                 </div>
                 <div class="ms-auto d-flex">
                   <button class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">

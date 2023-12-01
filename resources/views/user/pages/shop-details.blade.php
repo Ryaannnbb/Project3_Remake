@@ -55,6 +55,9 @@
                         </div> --}}
                         <div class="product__details__pr">Rp. {{ number_format($produk->harga, 0, ',', '.') }}</div>
                         <p>{{ $produk->deskripsi }}</p>
+                        <p>Stock <span class="@if ($produk->stok <= 0)
+                            text-danger
+                        @endif">{{ $produk->stok }}</span></p>
                         <form action="{{ route('shop.order', $produk->id) }}" method="POST">
                             @csrf
                             <div class="row">
@@ -66,7 +69,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn primary-btn">ADD TO CARD</button>
+                                    <button class="btn primary-btn" @if ($produk->stok <= 0)
+                                        @disabled(true)
+                                    @endif>ADD TO CARD</button>
                                 </div>
                                 <div class="col-12">
                                     @error('jumlah')
@@ -77,11 +82,11 @@
                         </form>
                         {{-- <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a> --}}
                         <ul>
-                            <li><b>Availability</b> <span>@if ($produk->stok > 0 )
-                                In Stock
+                            <li><b>Availability</b> @if ($produk->stok > 0 )
+                                <span>In Stock</span>
                                 @else
-                                Sold Out
-                            @endif</span></li>
+                                <span class="text-danger">Sold Out</span>
+                            @endif</li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                             <li><b>Weight</b> <span>0.5 kg</span></li>
                         </ul>

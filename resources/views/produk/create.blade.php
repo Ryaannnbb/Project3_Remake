@@ -11,7 +11,7 @@
               <div class="d-sm-flex align-items-center">
                 <div>
                   <h6 class="font-weight-semibold text-lg mb-0">Add Product</h6>
-                  <p class="text-sm">See information about all category</p>
+                  <p class="text-sm">See information about all product</p>
                 </div>
                 <div class="ms-auto d-flex">
                   <button type="submit" action="{{ route('kategori.store') }}" method="POST"

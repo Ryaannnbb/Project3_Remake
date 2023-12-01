@@ -10,8 +10,8 @@
             <div class="card-header border-bottom pb-0">
               <div class="d-sm-flex align-items-center">
                 <div>
-                  <h6 class="font-weight-semibold text-lg mb-0">Add Delivey</h6>
-                  <p class="text-sm">See information about all category</p>
+                  <h6 class="font-weight-semibold text-lg mb-0">Add Delivery</h6>
+                  <p class="text-sm">See information about all delivery</p>
                 </div>
                 <div class="ms-auto d-flex">
                   <button type="submit" method="POST"
