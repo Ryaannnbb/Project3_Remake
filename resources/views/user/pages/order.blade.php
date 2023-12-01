@@ -57,6 +57,17 @@
     </section> --}}
     <!-- Hero Section End -->
 
+    @if (session('co'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: "{{ session('co') }}"
+        });
+    </script>
+    @endif
+
+
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg">
         <div class="container">

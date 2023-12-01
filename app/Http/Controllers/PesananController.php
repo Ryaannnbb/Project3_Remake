@@ -28,6 +28,10 @@ class PesananController extends Controller
     }
     public function tolak(Request $request, string $id)
     {
+        $request->validate([
+            'pesan_tolak' => 'required|string|max:255', // Sesuaikan dengan kebutuhan Anda
+        ]);
+        
         $pesanan = Pesanan::find($id);
         $pesanan->status = 'rejected';
         $pesanan->pesan_tolak = $request->pesan_tolak;
