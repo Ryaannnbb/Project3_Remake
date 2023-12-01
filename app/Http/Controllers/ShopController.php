@@ -18,9 +18,9 @@ class ShopController extends Controller
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $sortOption = $request->input('sort');
         $category = $request->input('category');
-        $produk = Produk::paginate(6);
         $order = pesanan::where('user_id', auth()->user()->id)->get()->count();
-
+        
+        $produk = Produk::paginate(6);
 
 
         // Mendapatkan nilai 'category' dari permintaan

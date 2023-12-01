@@ -27,9 +27,6 @@ use App\Http\Controllers\PengirimanController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 Auth::routes(['verify' => true]);
@@ -105,6 +102,7 @@ Route::controller(ShopController::class)->prefix('shop')->group(function () {
 });
 
 Route::middleware(['auth', 'verified', 'user'])->group(function () {
+Route::get('/', [ShopController::class, 'index']);
     Route::put('tiba/{id}', [PengirimanController::class, 'tiba'])->name('pengiriman.tiba');
     Route::controller(CartController::class)->prefix('shop')->group(function () {
         Route::get('cart', 'index')->name('cart');

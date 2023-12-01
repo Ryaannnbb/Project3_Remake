@@ -69,7 +69,7 @@
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Stock</label>
                     <input class="form-control  @error('stok') is-invalid @enderror" name="stok" type="number"
-                      value="{{ old('stok') }}" id="example-text-input">
+                      value="{{ old('stok', $produk->stok) }}" id="example-text-input">
                     @error('stok')
                       <div class="invalid-feedback">
                         {{ $message }}
