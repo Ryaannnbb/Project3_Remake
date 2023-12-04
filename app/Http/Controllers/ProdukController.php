@@ -123,7 +123,7 @@ class ProdukController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'path_produk' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'nama_produk' => 'required|regex:/^[a-zA-Z ]+$/|max:255', // Hanya karakter alfabet dan spasi yang diperbolehkan
             'harga' => 'required|numeric|min:1',
             'stok' => 'required|numeric|min:1',
