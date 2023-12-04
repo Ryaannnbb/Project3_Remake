@@ -35,12 +35,13 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kategori' => 'required|string|max:255', // Add any other rules as needed
+            'nama_kategori' => 'required|string|max:255', // Tambahkan aturan lain sesuai kebutuhan
         ], [
-            'nama_kategori.required' => 'The Category Name field is required.',
-            'nama_kategori.string' => 'The Category Name must be a string.',
-            'nama_kategori.max' => 'The Category Name may not be greater than :max characters.',
+            'nama_kategori.required' => 'Kolom Nama Kategori wajib diisi.',
+            'nama_kategori.string' => 'Nama Kategori harus berupa teks.',
+            'nama_kategori.max' => 'Nama Kategori tidak boleh lebih dari :max karakter.',
         ]);
+
         kategori::create($request->all());
         return redirect()->route('kategori')->with("success", "Category data has been successfully added!");
     }
@@ -69,11 +70,11 @@ class KategoriController extends Controller
     {
 
         $request->validate([
-            'nama_kategori' => 'required|string|max:255', // Add any other rules as needed
+            'nama_kategori' => 'required|string|max:255', // Tambahkan aturan lain sesuai kebutuhan
         ], [
-            'nama_kategori.required' => 'The Category Name field is required.',
-            'nama_kategori.string' => 'The Category Name must be a string.',
-            'nama_kategori.max' => 'The Category Name may not be greater than :max characters.',
+            'nama_kategori.required' => 'Kolom Nama Kategori wajib diisi.',
+            'nama_kategori.string' => 'Nama Kategori harus berupa teks.',
+            'nama_kategori.max' => 'Nama Kategori tidak boleh lebih dari :max karakter.',
         ]);
 
         $kategori = kategori::find($id);

@@ -34,12 +34,12 @@ class PembayaranController extends Controller
             'metode_pembayaran' => 'required|string|max:255',
             'no_rekening' => 'required|numeric',
         ], [
-            'metode_pembayaran.required' => 'The Payment Method field is required.',
-            'metode_pembayaran.string' => 'The Payment Method must be a string.',
-            'metode_pembayaran.max' => 'The Payment Method may not be greater than :max characters.',
+            'metode_pembayaran.required' => 'Kolom Metode Pembayaran wajib diisi.',
+            'metode_pembayaran.string' => 'Metode Pembayaran harus berupa teks.',
+            'metode_pembayaran.max' => 'Metode Pembayaran tidak boleh lebih dari :max karakter.',
 
-            'no_rekening.required' => 'The Account Number field is required.',
-            'no_rekening.numeric' => 'The Account Number must be a number.',
+            'no_rekening.required' => 'Kolom Nomor Rekening wajib diisi.',
+            'no_rekening.numeric' => 'Nomor Rekening harus berupa angka.',
         ]);
 
         Pembayaran::create($request->all());
@@ -72,12 +72,12 @@ class PembayaranController extends Controller
             'metode_pembayaran' => 'required|string|max:255',
             'no_rekening' => 'required|numeric',
         ], [
-            'metode_pembayaran.required' => 'The Payment Method field is required.',
-            'metode_pembayaran.string' => 'The Payment Method must be a string.',
-            'metode_pembayaran.max' => 'The Payment Method may not be greater than :max characters.',
+            'metode_pembayaran.required' => 'Kolom Metode Pembayaran wajib diisi.',
+            'metode_pembayaran.string' => 'Metode Pembayaran harus berupa teks.',
+            'metode_pembayaran.max' => 'Metode Pembayaran tidak boleh lebih dari :max karakter.',
 
-            'no_rekening.required' => 'The Account Number field is required.',
-            'no_rekening.numeric' => 'The Account Number must be a number.',
+            'no_rekening.required' => 'Kolom Nomor Rekening wajib diisi.',
+            'no_rekening.numeric' => 'Nomor Rekening harus berupa angka.',
         ]);
 
         $pembayaran = Pembayaran::find($id);

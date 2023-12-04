@@ -35,15 +35,15 @@ class SupplierController extends Controller
             'alamat_supplier' => 'required|string',
             'nomor_telepon_supplier' => 'required|numeric',
         ], [
-            'nama_supplier.required' => 'The Name field is required.',
-            'nama_supplier.string' => 'The Name must be a string.',
-            'nama_supplier.max' => 'The Name may not be greater than :max characters.',
-            
-            'alamat_supplier.required' => 'The Address field is required.',
-            'alamat_supplier.string' => 'The Address must be a string.',
-            
-            'nomor_telepon_supplier.required' => 'The Phone field is required.',
-            'nomor_telepon_supplier.numeric' => 'The Phone must be a number.',
+            'nama_supplier.required' => 'Kolom Nama wajib diisi.',
+            'nama_supplier.string' => 'Nama harus berupa teks.',
+            'nama_supplier.max' => 'Nama tidak boleh lebih dari :max karakter.',
+
+            'alamat_supplier.required' => 'Kolom Alamat wajib diisi.',
+            'alamat_supplier.string' => 'Alamat harus berupa teks.',
+
+            'nomor_telepon_supplier.required' => 'Kolom Nomor Telepon wajib diisi.',
+            'nomor_telepon_supplier.numeric' => 'Nomor Telepon harus berupa angka.',
         ]);
 
         $supplier = supplier::create($request->all());
@@ -80,15 +80,15 @@ class SupplierController extends Controller
             'alamat_supplier' => 'required|string',
             'nomor_telepon_supplier' => 'required|numeric',
         ], [
-            'nama_supplier.required' => 'The Name field is required.',
-            'nama_supplier.string' => 'The Name must be a string.',
-            'nama_supplier.max' => 'The Name may not be greater than :max characters.',
-            
-            'alamat_supplier.required' => 'The Address field is required.',
-            'alamat_supplier.string' => 'The Address must be a string.',
-            
-            'nomor_telepon_supplier.required' => 'The Phone field is required.',
-            'nomor_telepon_supplier.numeric' => 'The Phone must be a number.',
+            'nama_supplier.required' => 'Kolom Nama wajib diisi.',
+            'nama_supplier.string' => 'Nama harus berupa teks.',
+            'nama_supplier.max' => 'Nama tidak boleh lebih dari :max karakter.',
+
+            'alamat_supplier.required' => 'Kolom Alamat wajib diisi.',
+            'alamat_supplier.string' => 'Alamat harus berupa teks.',
+
+            'nomor_telepon_supplier.required' => 'Kolom Nomor Telepon wajib diisi.',
+            'nomor_telepon_supplier.numeric' => 'Nomor Telepon harus berupa angka.',
         ]);
 
         $supplier = supplier::find($id);

@@ -40,38 +40,38 @@ class ProdukController extends Controller
         // return dd($request);
         $request->validate([
             'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'nama_produk' => 'required|regex:/^[a-zA-Z ]+$/|max:255', // Only alphabetic characters and spaces allowed
+            'nama_produk' => 'required|regex:/^[a-zA-Z ]+$/|max:255', // Hanya karakter alfabet dan spasi yang diperbolehkan
             'harga' => 'required|numeric|min:1',
             'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required|string',
             'kategori_id' => 'required|exists:tb_kategori,id',
             'supplier_id' => 'required|exists:tb_supplier,id',
         ], [
-            'path_produk.required' => 'Product image is required.',
-            'path_produk.image' => 'The file must be an image.',
-            'path_produk.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
-            'path_produk.max' => 'The image may not be greater than 2 megabytes.',
-        
-            'nama_produk.required' => 'Product name is required.',
-            'nama_produk.regex' => 'Product name must contain only alphabetic characters and spaces.',
-            'nama_produk.max' => 'Product name may not be greater than :max characters.',
-        
-            'harga.required' => 'Product price is required.',
-            'harga.numeric' => 'Product price must be a number.',
-            'harga.min' => 'Product price must be at least :min.',
+            'path_produk.required' => 'Gambar produk wajib diunggah.',
+            'path_produk.image' => 'Berkas harus berupa gambar.',
+            'path_produk.mimes' => 'Gambar harus berupa berkas dengan tipe: jpeg, png, jpg, gif.',
+            'path_produk.max' => 'Gambar tidak boleh lebih dari 2 megabita.',
 
-            'stok.numeric' => 'Product stock must be a number.',
-            'stok.required' => 'Product stock is required.',
-            'stok.min' => 'Product stock must be at least :min.',
-        
-            'deskripsi.required' => 'Description is required.',
-            'deskripsi.string' => 'Description must be a string.',
-        
-            'kategori_id.required' => 'Category is required.',
-            'kategori_id.exists' => 'Selected category is invalid.',
-        
-            'supplier_id.required' => 'Supplier is required.',
-            'supplier_id.exists' => 'Selected supplier is invalid.',
+            'nama_produk.required' => 'Nama produk wajib diisi.',
+            'nama_produk.regex' => 'Nama produk hanya boleh mengandung karakter alfabet dan spasi.',
+            'nama_produk.max' => 'Nama produk tidak boleh lebih dari :max karakter.',
+
+            'harga.required' => 'Harga produk wajib diisi.',
+            'harga.numeric' => 'Harga produk harus berupa angka.',
+            'harga.min' => 'Harga produk minimal harus :min.',
+
+            'stok.numeric' => 'Stok produk harus berupa angka.',
+            'stok.required' => 'Stok produk wajib diisi.',
+            'stok.min' => 'Stok produk minimal harus :min.',
+
+            'deskripsi.required' => 'Deskripsi wajib diisi.',
+            'deskripsi.string' => 'Deskripsi harus berupa teks.',
+
+            'kategori_id.required' => 'Kategori wajib diisi.',
+            'kategori_id.exists' => 'Kategori yang dipilih tidak valid.',
+
+            'supplier_id.required' => 'Pemasok wajib diisi.',
+            'supplier_id.exists' => 'Pemasok yang dipilih tidak valid.',
         ]);
 
         if ($image = $request->file('path_produk')) {
@@ -123,40 +123,41 @@ class ProdukController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'path_produk' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Max size is 2MB
-            'nama_produk' => 'required|string|max:255',
+            'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'nama_produk' => 'required|regex:/^[a-zA-Z ]+$/|max:255', // Hanya karakter alfabet dan spasi yang diperbolehkan
             'harga' => 'required|numeric|min:1',
-            'stok' => 'required|numeric|min:0',
+            'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required|string',
             'kategori_id' => 'required|exists:tb_kategori,id',
             'supplier_id' => 'required|exists:tb_supplier,id',
         ], [
-            'path_produk.required' => 'Product image is required.',
-            'path_produk.image' => 'The file must be an image.',
-            'path_produk.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
-            'path_produk.max' => 'The image may not be greater than 2 megabytes.',
+            'path_produk.required' => 'Gambar produk wajib diunggah.',
+            'path_produk.image' => 'Berkas harus berupa gambar.',
+            'path_produk.mimes' => 'Gambar harus berupa berkas dengan tipe: jpeg, png, jpg, gif.',
+            'path_produk.max' => 'Gambar tidak boleh lebih dari 2 megabita.',
 
-            'nama_produk.required' => 'Product name is required.',
-            'nama_produk.string' => 'Product name must be a string.',
-            'nama_produk.max' => 'Product name may not be greater than :max characters.',
+            'nama_produk.required' => 'Nama produk wajib diisi.',
+            'nama_produk.regex' => 'Nama produk hanya boleh mengandung karakter alfabet dan spasi.',
+            'nama_produk.max' => 'Nama produk tidak boleh lebih dari :max karakter.',
 
-            'harga.required' => 'Product price is required.',
-            'harga.numeric' => 'Product price must be a number.',
-            'harga.min' => 'Product price must be at least :min.',
-            
-            'stok.numeric' => 'Product stock must be a number.',
-            'stok.required' => 'Product stock is required.',
-            'stok.min' => 'Product stock must be at least :min.',
-            
-            'deskripsi.required' => 'Description is required.',
-            'deskripsi.string' => 'Description must be a string.',
+            'harga.required' => 'Harga produk wajib diisi.',
+            'harga.numeric' => 'Harga produk harus berupa angka.',
+            'harga.min' => 'Harga produk minimal harus :min.',
 
-            'kategori_id.required' => 'Category is required.',
-            'kategori_id.exists' => 'Selected category is invalid.',
+            'stok.numeric' => 'Stok produk harus berupa angka.',
+            'stok.required' => 'Stok produk wajib diisi.',
+            'stok.min' => 'Stok produk minimal harus :min.',
 
-            'supplier_id.required' => 'Supplier is required.',
-            'supplier_id.exists' => 'Selected supplier is invalid.',
+            'deskripsi.required' => 'Deskripsi wajib diisi.',
+            'deskripsi.string' => 'Deskripsi harus berupa teks.',
+
+            'kategori_id.required' => 'Kategori wajib diisi.',
+            'kategori_id.exists' => 'Kategori yang dipilih tidak valid.',
+
+            'supplier_id.required' => 'Pemasok wajib diisi.',
+            'supplier_id.exists' => 'Pemasok yang dipilih tidak valid.',
         ]);
+
         $produk = produk::find($id);
 
         // Memeriksa apakah data yang akan diubah sama dengan data sebelumnya

@@ -210,7 +210,7 @@
         }
 
         $(document).ready(function() {
-                $('.nice-select').css('display', 'none');
+            $('.nice-select').css('display', 'none');
         });
     </script>
 @endsection

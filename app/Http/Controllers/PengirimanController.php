@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengiriman;
+use Carbon\Carbon;
 use App\Models\Pesanan;
+use App\Models\Pengiriman;
 use Illuminate\Http\Request;
 
 class PengirimanController extends Controller
@@ -31,6 +32,16 @@ class PengirimanController extends Controller
      */
     public function store(Request $request)
     {
+        // Validasi input
+        $request->validate([
+            'tanggal_pengiriman' => 'required|date|before:today|after:today'
+        ], [
+            'tanggal_pengiriman.required' => 'Tanggal pengiriman wajib diisi.',
+            'tanggal_pengiriman.before' => 'Tanggal pengiriman harus diisi tanggal yang hari ini.',
+            'tanggal_pengiriman.after' => 'Tanggal pengiriman harus diisi tanggal yang hari ini.',
+        ]);
+
+        // Proses penyimpanan data
         $pengiriman = new Pengiriman;
         $pengiriman->pesanan_id = $request->pesanan;
         $pengiriman->tanggal_pengiriman = $request->tanggal_pengiriman;
@@ -39,6 +50,7 @@ class PengirimanController extends Controller
         $pesanan = Pesanan::find($request->pesanan);
         $pesanan->status = 'shipped';
         $pesanan->update();
+
         return redirect()->route('pengiriman.index')->with("success", "Delivery data has been successfully added!");
     }
 
