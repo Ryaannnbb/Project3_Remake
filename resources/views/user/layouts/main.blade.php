@@ -156,8 +156,9 @@
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" style="border: none; background: none; cursor: pointer;">
-                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    <button type="submit" style="border: none; background: none; cursor: pointer; display: flex; align-items: center;">
+                                        <p style="font-weight: bold; color: #000000; margin-right: 5px; margin-top: 5px;">Logout</p>
+                                        <i class="fa-solid fa-arrow-right-from-bracket" style="margin-top: -9px"></i>
                                     </button>
                                 </form>
                             </li>
