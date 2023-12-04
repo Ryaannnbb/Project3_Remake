@@ -43,7 +43,7 @@ class KategoriController extends Controller
         ]);
 
         kategori::create($request->all());
-        return redirect()->route('kategori')->with("success", "Category data has been successfully added!");
+        return redirect()->route('kategori')->with("success", "Data kategori berhasil ditambahkan!");
     }
 
     /**
@@ -79,7 +79,7 @@ class KategoriController extends Controller
 
         $kategori = kategori::find($id);
         $kategori->update($request->all());
-        return redirect()->route('kategori')->with("success", "Category data has been successfully updated!");
+        return redirect()->route('kategori')->with("success", "Data kategori berhasil diperbarui!");
     }
 
     /**
