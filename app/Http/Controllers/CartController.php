@@ -66,9 +66,12 @@ class CartController extends Controller
                 $pesanan = detailpesanan::find($orderId);
                 $oldQuantity = $pesanan->jumlah;
                 // return dd($quantity);
-                
+
                 if ($quantity - $oldQuantity > $pesanan->produk->stok) {
                     return redirect()->back()->with('update_failed', "Quantity exceeds product stock");
+                }
+                if ($quantity <= 0 ) {
+                    return redirect()->back()->with('update_failed', "Quantity cannot beloy zero");
                 }
                 $harga = $pesanan->produk->harga;
                 $pesanan->jumlah = $quantity;

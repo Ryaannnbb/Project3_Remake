@@ -18,10 +18,8 @@ class ShopController extends Controller
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $sortOption = $request->input('sort');
         $category = $request->input('category');
-        $produk = Produk::paginate(6);
+        $produk = Produk::paginate(3);
         $order = pesanan::where('user_id', auth()->user()->id)->get()->count();
-
-
 
         // Mendapatkan nilai 'category' dari permintaan
         $category = $request->input('category');
@@ -44,14 +42,13 @@ class ShopController extends Controller
 
         // return dd($query);
         // Ambil hasil query
-        $produk = $query->paginate(6);
+        $produk = $query->paginate(3);
 
         // Paginasi dengan menyertakan parameter 'category' dan 'search'
         $produk->appends(['category' => $category, 'search' => $keyword]);
 
         // Tampilkan link paginasi
         $links = $produk->render();
-
 
         // if($request->has('search')) {
         //     // return dd($request->search);

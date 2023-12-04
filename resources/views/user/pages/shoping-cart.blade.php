@@ -195,6 +195,7 @@
     <script>
         function updateCart() {
             // Collect the values of quantity inputs and order IDs
+            event.preventDefault();
             var quantities = {};
             $('input[name^="jumlah"]').each(function() {
                 var id = $(this).attr('name').match(/\[(\d+)\]/)[1];
@@ -207,5 +208,9 @@
             // Submit the form
             $('#updateCartForm').submit();
         }
+
+        $(document).ready(function() {
+                $('.nice-select').css('display', 'none');
+        });
     </script>
 @endsection
