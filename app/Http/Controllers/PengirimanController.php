@@ -23,7 +23,7 @@ class PengirimanController extends Controller
      */
     public function create()
     {
-        $pesanan = Pesanan::all();
+        $pesanan = Pesanan::where('status', 'paid');
         return view('pengiriman.create', compact('pesanan'));
     }
 
@@ -34,7 +34,8 @@ class PengirimanController extends Controller
     {
         // Validasi input
         $request->validate([
-            'tanggal_pengiriman' => 'required|date'
+            'tanggal_pengiriman' => 'required|date',
+            'pesanan' => 'required'
         ], [
             'tanggal_pengiriman.required' => 'Tanggal pengiriman wajib diisi.',
             'tanggal_pengiriman.before' => 'Tanggal pengiriman harus diisi tanggal yang hari ini.',

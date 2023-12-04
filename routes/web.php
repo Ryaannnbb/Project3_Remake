@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
@@ -90,6 +91,13 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
         Route::post('store', 'store')->name('pengiriman.store');
         Route::get('edit/{id}', 'edit')->name('pengiriman.edit');
         Route::delete('destroy/{id}', 'destroy')->name('pengiriman.destroy');
+    });
+    Route::controller(HistoryController::class)->prefix('histori')->group(function () {
+        Route::get('/', 'index')->name('histori.index');
+        Route::get('create', 'create')->name('histori.create');
+        Route::post('store', 'store')->name('histori.store');
+        Route::get('edit/{id}', 'edit')->name('histori.edit');
+        Route::delete('destroy/{id}', 'destroy')->name('histori.destroy');
     });
 });
 

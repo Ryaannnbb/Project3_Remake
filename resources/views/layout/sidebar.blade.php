@@ -20,6 +20,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link {{ request()->is('histori/*') ? 'active' : ( request()->is('histori') ? 'active' : '') }}" href="{{ route('histori.index') }}">
+                <i class="fa-solid fa-clock-rotate-left icon icon-sm px-0 text-center d-flex align-items-center justify-content-center" style="color: white;"></i>
+                <span class="nav-link-text ms-1">History</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link {{ request()->is('pengiriman/*') ? 'active' : ( request()->is('pengiriman') ? 'active' : '') }}" href="{{ route('pengiriman.index') }}">
                 <i class="fa-solid fa-truck icon icon-sm px-0 text-center d-flex align-items-center justify-content-center" style="color: white;"></i>
                 <span class="nav-link-text ms-1">Delivery</span>

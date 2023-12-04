@@ -30,7 +30,7 @@
           <div class="card-header border-bottom pb-0">
             <div class="d-sm-flex align-items-center">
               <div>
-                <h6 class="font-weight-semibold text-lg mb-0">Order list</h6>
+                <h6 class="font-weight-semibold text-lg mb-0">Order History</h6>
                 <p class="text-sm">See information about all order</p>
               </div>
               <div class="ms-auto d-flex">
@@ -55,8 +55,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @if ($pesanans->count() > 0)
-                    @foreach ($pesanans as $pesanan)
+                  @if ($histories->count() > 0)
+                    @foreach ($histories as $pesanan)
                       <tr>
                         <td class="align-middle text-center text-sm">
                           <span class="text-secondary text-xs font-weight-bold text-center">{{ $loop->iteration }}</span>
@@ -80,6 +80,8 @@
                           @elseif ($pesanan->status == 'shipped')
                             <span class="badge bg-warning text-dark">{{ ucfirst($pesanan->status) }}</span>
                           @elseif ($pesanan->status == 'delivered')
+                            <span class="badge bg-success text-dark">{{ ucfirst($pesanan->status) }}</span>
+                          @elseif ($pesanan->status == 'completed')
                             <span class="badge bg-success text-dark">{{ ucfirst($pesanan->status) }}</span>
                           @endif
                         </td>

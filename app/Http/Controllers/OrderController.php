@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $pesanans = pesanan::where('user_id', auth()->user()->id)->get();
+        $pesanans = pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get();
         $detailpesanans = Detailpesanan::where('status', 'checkout')->get();
         // return dd($detailpesanans);
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
@@ -25,12 +25,11 @@ class OrderController extends Controller
 
     public function delivered($id) {
         try {
-            $pesanan = Pesanan::findOrFail($id)->Update(['status' => 'completed']);
+            $pesanan = Pesanan::findOrFail($id)->update(['status' => 'completed']);
             // $pesanan->delete();
-
             return redirect()->back()->with("ok", "Pesanan berhasil ditandai sebagai sudah diterima. Terima kasih atas pembelian Anda!");
         } catch (\Throwable $th) {
-            // Proses penanganan kesalahan
+        //     // Proses penanganan kesalahan
             return redirect()->back()->with("ko", "Gagal menandai pesanan sebagai sudah diterima. Mohon coba lagi.");
         }
     }

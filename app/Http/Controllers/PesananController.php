@@ -13,7 +13,7 @@ class PesananController extends Controller
      */
     public function index()
     {
-        $pesanans = pesanan::all();
+        $pesanans = Pesanan::whereNot('status', 'rejected')->whereNot('status', 'completed')->get();
         return view("pesanan.index", compact("pesanans"));
     }
 
@@ -23,7 +23,7 @@ class PesananController extends Controller
         $pesanan->status = 'waiting payment';
         $pesanan->update();
 
-        return redirect()->route('pesanan.index')->with("acc", "Pesanan pengguna berhasil disetujui!");
+        return redirect()->route('pesanan.index')->with("acc", "Pesanan berhasil disetujui!");
 
     }
     public function tolak(Request $request, string $id)

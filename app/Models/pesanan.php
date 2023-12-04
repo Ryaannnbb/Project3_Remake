@@ -12,7 +12,7 @@ class Pesanan extends Model
     use HasFactory;
 
     protected $table = "tb_pesanan";
-    protected $guarded = "id";
+    protected $guarded = ["id"];
 
     // public function produk() : BelongsTo
     // {
