@@ -54,9 +54,7 @@ class CheckoutController extends Controller
             Detailpesanan::findOrFail($value)->update(['pesanan_id' => $pesanan->id, 'status' => 'checkout']);
         }
 
-        return redirect()->route('shop.index')->with("cart", "Berhasil membuat pesanan");
-
-
+        return redirect()->route('shop.index')->with("cart", "Pesanan berhasil dibuat. Terima kasih atas pembeliannya!");
     }
 
     /**

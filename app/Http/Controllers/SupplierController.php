@@ -47,7 +47,7 @@ class SupplierController extends Controller
         ]);
 
         $supplier = supplier::create($request->all());
-        return redirect()->route("supplier.index")->with("success","Successfully added product");
+        return redirect()->route("supplier.index")->with("success","Data supplier berhasil ditambahkan");
     }
 
     /**
@@ -97,12 +97,12 @@ class SupplierController extends Controller
             $request->alamat_supplier == $supplier->alamat_supplier &&
             $request->nomor_telepon_supplier == $supplier->nomor_telepon_supplier
         ) {
-            return redirect()->back()->with("error", "The data you're trying to edit is the same as before.");
+            return redirect()->back()->with("error", "Data yang Anda coba edit sama dengan sebelumnya.");
         }
 
         $supplier->update($request->all());
 
-        return redirect()->route('supplier.index')->with('success','Data updated successfully');
+        return redirect()->route('supplier.index')->with('success','Data berhasil diperbarui.');
     }
 
     /**
@@ -112,6 +112,6 @@ class SupplierController extends Controller
     {
         supplier::find($id)->delete();
 
-        return redirect()->route('supplier.index')->with('success','Data deleted successfully');
+        return redirect()->route('supplier.index')->with('success','Data berhasil dihapus.');
     }
 }

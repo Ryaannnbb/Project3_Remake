@@ -24,8 +24,15 @@ class OrderController extends Controller
     }
 
     public function delivered($id) {
-        pesanan::findOrFail($id)->delete();
-        return redirect()->back()->with("ok", "Pesanan sidah diterima");
+        try {
+            $pesanan = Pesanan::findOrFail($id);
+            $pesanan->delete();
+
+            return redirect()->back()->with("ok", "Pesanan berhasil ditandai sebagai sudah diterima. Terima kasih atas pembelian Anda!");
+        } catch (\Throwable $th) {
+            // Proses penanganan kesalahan
+            return redirect()->back()->with("ko", "Gagal menandai pesanan sebagai sudah diterima. Mohon coba lagi.");
+        }
     }
 
     /**
