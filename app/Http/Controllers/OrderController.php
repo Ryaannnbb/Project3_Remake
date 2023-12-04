@@ -22,6 +22,11 @@ class OrderController extends Controller
         return view("user.pages.order", compact('pesanans', 'detailpesanans', 'totalpesanan', 'order'));
     }
 
+    public function delivered($id) {
+        pesanan::findOrFail($id)->delete();
+        return redirect()->back()->with("ok", "Order successfully received");
+    }
+
     /**
      * Show the form for creating a new resource.
      */

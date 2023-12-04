@@ -67,6 +67,16 @@
     </script>
     @endif
 
+    @if (session('ok'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: "{{ session('ok') }}"
+        });
+    </script>
+    @endif
+
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg">
@@ -110,7 +120,19 @@
                                                 <b>Rp. {{ number_format($pesanan->total, 0, ',', '.') }}</b>
                                             </td>
                                             <td>
-                                                <span class="badge bg-secondary">{{ ucfirst($pesanan->status) }}</span>
+                                                @if ($pesanan->status == 'pending')
+                                                <span class="badge bg-warning text-dark">{{ ucfirst($pesanan->status) }}</span>
+                                                @elseif ($pesanan->status == 'waiting payment')
+                                                <span class="badge text-dark" style="background-color: rgb(251, 124, 124)">{{ ucfirst($pesanan->status) }}</span>
+                                                @elseif ($pesanan->status == 'rejected')
+                                                <span class="badge bg-danger">{{ ucfirst($pesanan->status) }}</span>
+                                                @elseif ($pesanan->status == 'paid')
+                                                <span class="badge bg-success">{{ ucfirst($pesanan->status) }}</span>
+                                                @elseif ($pesanan->status == 'shipped')
+                                                <span class="badge bg-warning">{{ ucfirst($pesanan->status) }}</span>
+                                                @elseif ($pesanan->status == 'delivered')
+                                                <span class="badge bg-success">{{ ucfirst($pesanan->status) }}</span>
+                                                @endif
                                             </td>
                                             <td class="shoping__cart__item__close" style="text-align: center">
                                                 <div class="njir m-0 d-flex justify-content-center"
@@ -121,13 +143,13 @@
                                                         </button>
                                                     </a>
                                                     @if ($pesanan->status == 'pending')
-                                                        <form action="{{ route('order.destroy', $pesanan->id) }}"
+                                                        {{-- <form action="{{ route('order.destroy', $pesanan->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('delete')
                                                             <button type="submit" class="btn soasik njir"><i
                                                                     class="fa-solid fa-xmark fa-lg"></i></button>
-                                                        </form>
+                                                        </form> --}}
                                                     @elseif ($pesanan->status == 'waiting payment')
                                                         <a href="{{ route('checkout.index', $pesanan->id) }}">
                                                             <button type="button" class="btn">
@@ -145,8 +167,7 @@
                                                             tabindex="-1" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered">
-                                                                <form class="modal-content"
-                                                                    action="{{ route('order.destroy', $pesanan->id) }}"
+                                                                <form class="modal-content" action="{{ route('order.destroy', $pesanan->id) }}"
                                                                     method="POST">
                                                                     @method('delete')
                                                                     @csrf
@@ -172,7 +193,7 @@
                                                             </div>
                                                         </div>
                                                     @elseif ($pesanan->status == 'delivered')
-                                                        <form action="{{ route('order.destroy', $pesanan->id) }}"
+                                                        <form action="{{ route('order.delivered', $pesanan->id) }}"
                                                             method="POST" style="display: inline">
                                                             @csrf
                                                             @method('delete')

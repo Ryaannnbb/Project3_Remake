@@ -9,7 +9,7 @@
                         <div class="d-sm-flex align-items-center">
                             <div>
                                 <h6 class="font-weight-semibold text-lg mb-0">Orders Detail</h6>
-                                <p class="text-sm">See information about all category</p>
+                                <p class="text-sm">See information about all order</p>
                             </div>
                             <div class="ms-auto d-flex">
                                 <a href="{{ route('pesanan.index') }}">

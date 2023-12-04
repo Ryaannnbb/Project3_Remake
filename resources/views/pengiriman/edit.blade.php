@@ -12,8 +12,8 @@
             <div class="card-header border-bottom pb-0">
               <div class="d-sm-flex align-items-center">
                 <div>
-                  <h6 class="font-weight-semibold text-lg mb-0">Add Product</h6>
-                  <p class="text-sm">See information about all category</p>
+                  <h6 class="font-weight-semibold text-lg mb-0">Add Payment</h6>
+                  <p class="text-sm">See information about all payment</p>
                 </div>
                 <div class="ms-auto d-flex">
                   <button type="submit" class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">

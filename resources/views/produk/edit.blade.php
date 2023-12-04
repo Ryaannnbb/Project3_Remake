@@ -12,8 +12,8 @@
             <div class="card-header border-bottom pb-0">
               <div class="d-sm-flex align-items-center">
                 <div>
-                  <h6 class="font-weight-semibold text-lg mb-0">Add Product</h6>
-                  <p class="text-sm">See information about all category</p>
+                  <h6 class="font-weight-semibold text-lg mb-0">Edit Product</h6>
+                  <p class="text-sm">See information about all product</p>
                 </div>
                 <div class="ms-auto d-flex">
                   <button type="submit" class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">
@@ -69,7 +69,7 @@
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Stock</label>
                     <input class="form-control  @error('stok') is-invalid @enderror" name="stok" type="number"
-                      value="{{ old('stok') }}" id="example-text-input">
+                      value="{{ old('stok', $produk->stok) }}" id="example-text-input">
                     @error('stok')
                       <div class="invalid-feedback">
                         {{ $message }}

@@ -36,18 +36,23 @@ list 10 tema
 deadlinenya 2 minggu
 =======================================================================================================
 29/11/2023 Rabu
-1. menambahkan stok produk
+1. menambahkan stok produk (V) -A
 2. menggabungkan jumlah pesanan dengan produk yang sama (v) -A
 3. total produk yang dipesan di halaman order tidak sesuai (v) -A
 4. jumlah pesanan tidak boleh 0 saat pesan (v) -A
-5. fitur edit jumlah keranjang
+5. fitur edit jumlah keranjang (V)
 6. tambah keterangan keranjang masih kosong (v) -A
-7. ganti icon sidebar (v) -R
+7. ganti icon sidebar -R
 8. tambah fitur searching (v) -A
 9. menghapus delete pada order
-10. atur besar gambar di halaman order admin (v) -R
-11. mengganti tombol next pada modal reject (v) -R
-12. menambahkan alert berhasil tolak/acc (v) -R
-13. menambahkan warna untuk status (v) -R
+10. atur besar gambar di halaman order admin -R
+11. mengganti tombol next pada modal reject -R
+12. menambahkan alert berhasil tolak/acc -R
+13. menambahkan warna status pesanan -R									
 14. menambahkan konfirmasi untuk accept & reject -R
-15. ganti icon logout (v) -R
+15. ganti icon logout -R
+
+
+revisi baru 
+1. jumlah update cart tidak boleh minus
+2. ganti bahasa ke indonesia

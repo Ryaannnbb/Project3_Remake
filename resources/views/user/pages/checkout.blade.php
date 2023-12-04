@@ -84,7 +84,7 @@
       <div class="checkout__form">
         <h4>Billing Details</h4>
           <div class="row">
-            <div class="col-lg-8 col-md-6">
+            <div class="col-lg-6 col-md-6">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="checkout__input">
@@ -98,7 +98,7 @@
                 <p type="text" class="checkout__input__add" value="">{{ auth()->user()->address }}</p>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-6 col-md-6">
               <div class="checkout__order">
                 <h4>Your Order</h4>
                 <div class="checkout__order__products">Products <span>Total</span></div>
