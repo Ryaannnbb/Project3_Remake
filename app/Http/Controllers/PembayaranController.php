@@ -43,7 +43,7 @@ class PembayaranController extends Controller
         ]);
 
         Pembayaran::create($request->all());
-        return redirect()->route('pembayaran')->with("success","Payment data has been successfully added!");
+        return redirect()->route('pembayaran')->with("success","Data pembayaran berhasil ditambahkan.");
     }
 
     /**
@@ -82,7 +82,7 @@ class PembayaranController extends Controller
 
         $pembayaran = Pembayaran::find($id);
         $pembayaran->update($request->all());
-        return redirect()->route('pembayaran')->with("success", "Payment data has been successfully updated!");
+        return redirect()->route('pembayaran')->with("success", "Data pembayaran berhasil diperbarui.");
     }
 
     /**
@@ -92,9 +92,9 @@ class PembayaranController extends Controller
     {
         try {
             Pembayaran::find($id)->delete();
-            return redirect()->route('pembayaran')->with("success", "Payment data has been successfully deleted!");
+            return redirect()->route('pembayaran')->with("success", "Data pembayaran berhasil dihapus!");
         } catch (\Throwable $th) {
-            return redirect()->route('pembayaran')->with("error", "Failed because it is currently in use!");
+            return redirect()->route('pembayaran')->with("error", "Gagal menghapus karena data pembayaran sedang digunakan!");
         }
     }
 }

@@ -51,7 +51,7 @@ class PengirimanController extends Controller
         $pesanan->status = 'shipped';
         $pesanan->update();
 
-        return redirect()->route('pengiriman.index')->with("success", "Delivery data has been successfully added!");
+        return redirect()->route('pengiriman.index')->with("success", "Data pengiriman berhasil ditambahkan!");
     }
 
     public function tiba($id) {

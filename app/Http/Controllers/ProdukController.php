@@ -94,7 +94,7 @@ class ProdukController extends Controller
             "supplier_id"=> $request->supplier_id,
         ]);
 
-        return redirect()->route("produk.index")->with("success", "Product data has been successfully added.");
+        return redirect()->route("produk.index")->with("success", "Data produk berhasil ditambahkan.");
     }
 
     /**
@@ -194,7 +194,7 @@ class ProdukController extends Controller
 
         $produk->update($produkData);
 
-        return redirect()->route('produk.index')->with("success", "Product data has been successfully updated.");
+        return redirect()->route('produk.index')->with("success", "Data produk berhasil diperbarui.");
     }
 
     /**
@@ -217,7 +217,7 @@ class ProdukController extends Controller
 
             $produk->delete();
 
-            return redirect()->route("produk.index")->with("success", "Produk data has been successfully deleted.");
+            return redirect()->route("produk.index")->with("success", "Data produk berhasil dihapus!");
         }
 
         return redirect()->route("produk.index")->with("warning", "Produk not found or already deleted.");
