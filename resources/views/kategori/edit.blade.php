@@ -17,7 +17,7 @@
                                 <div class="ms-auto d-flex">
                                     <button type="submit"
                                         class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">
-                                        <span class="btn-inner--text">Submut</span>
+                                        <span class="btn-inner--text">Submit</span>
                                     </button>
                                 </div>
                             </div>

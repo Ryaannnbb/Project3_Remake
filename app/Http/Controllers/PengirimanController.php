@@ -34,11 +34,10 @@ class PengirimanController extends Controller
     {
         // Validasi input
         $request->validate([
-            'tanggal_pengiriman' => 'required|date'
+            'tanggal_pengiriman' => 'required|date|after_or_equal:today',
         ], [
             'tanggal_pengiriman.required' => 'Tanggal pengiriman wajib diisi.',
-            'tanggal_pengiriman.before' => 'Tanggal pengiriman harus diisi tanggal yang hari ini.',
-            'tanggal_pengiriman.after' => 'Tanggal pengiriman harus diisi tanggal yang hari ini.',
+            'tanggal_pengiriman.after_or_equal' => 'Tanggal pengiriman harus sama atau setelah tanggal hari ini.',
         ]);
 
         // Proses penyimpanan data

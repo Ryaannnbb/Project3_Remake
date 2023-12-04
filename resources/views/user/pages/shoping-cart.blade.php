@@ -169,6 +169,7 @@
         </div>
     @else
         <h3 class="col-12 text-center mb-3">There are no item in the cart</h3>
+        <img src="{{ asset('assets/img/No data-amico.svg') }}" alt="" style="width: 350px; height: auto; max-width: 100%; display: block; margin: 0 auto;">
         <div class="col-12 text-center">
             <a href="{{ route('shop.index') }}" class="btn primary-btn">Shop Now</a>
         </div>

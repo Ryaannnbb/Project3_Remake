@@ -27,6 +27,14 @@
     </script>
     @endif
 
+    <style>
+        /* Style for active class (customize as needed) */
+        .active {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -75,8 +83,13 @@
                             <ul>
                                 <li class="active"><a href="{{ route('shop.index') }}">All</a></li>
                                 @foreach ($kategoris as $kategori)
-                                    <li><a href="?category={{ $kategori->id }}" class="category-link"
-                                            data-category="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
+                                    <li>
+                                        <a href="?category={{ $kategori->id }}"
+                                            class="category-link {{ request()->get('category') == $kategori->id ? 'active' : '' }}"
+                                            data-category="{{ $kategori->id }}">
+                                            {{ $kategori->nama_kategori }}
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
