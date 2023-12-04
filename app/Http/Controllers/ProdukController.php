@@ -41,7 +41,7 @@ class ProdukController extends Controller
         $request->validate([
             'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'nama_produk' => 'required|regex:/^[a-zA-Z ]+$/|max:255', // Hanya karakter alfabet dan spasi yang diperbolehkan
-            'harga' => 'required|numeric|min:1',
+            'harga' => 'required|numeric|min:1|max:1000000000',
             'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required|string',
             'kategori_id' => 'required|exists:tb_kategori,id',
@@ -59,6 +59,7 @@ class ProdukController extends Controller
             'harga.required' => 'Harga produk wajib diisi.',
             'harga.numeric' => 'Harga produk harus berupa angka.',
             'harga.min' => 'Harga produk minimal harus :min.',
+            'harga.max' => 'Harga produk maksimal: 1000000000.',
 
             'stok.numeric' => 'Stok produk harus berupa angka.',
             'stok.required' => 'Stok produk wajib diisi.',
@@ -125,7 +126,7 @@ class ProdukController extends Controller
         $request->validate([
             'path_produk' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'nama_produk' => 'required|regex:/^[a-zA-Z ]+$/|max:255', // Hanya karakter alfabet dan spasi yang diperbolehkan
-            'harga' => 'required|numeric|min:1',
+            'harga' => 'required|numeric|min:1|max:1000000000',
             'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required|string',
             'kategori_id' => 'required|exists:tb_kategori,id',
@@ -142,11 +143,12 @@ class ProdukController extends Controller
 
             'harga.required' => 'Harga produk wajib diisi.',
             'harga.numeric' => 'Harga produk harus berupa angka.',
-            'harga.min' => 'Harga produk minimal harus :min.',
+            'harga.min' => 'Harga produk minimal harus :1.',
+            'harga.max' => 'Harga produk maksimal: 1000000000.',
 
             'stok.numeric' => 'Stok produk harus berupa angka.',
             'stok.required' => 'Stok produk wajib diisi.',
-            'stok.min' => 'Stok produk minimal harus :min.',
+            'stok.min' => 'Stok produk minimal harus :1.',
 
             'deskripsi.required' => 'Deskripsi wajib diisi.',
             'deskripsi.string' => 'Deskripsi harus berupa teks.',

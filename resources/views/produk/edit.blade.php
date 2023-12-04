@@ -38,7 +38,7 @@
                         @enderror
                       </div>
                       <div class="col-md-4">
-                        <img src="{{ asset(old('path_produk', $produk->path_produk)) }}" id="preview-image"
+                        <img src="{{ asset($produk->path_produk) }}" id="preview-image"
                           alt="Current Product Photo" class="w-100">
                       </div>
                     </div>
@@ -59,7 +59,7 @@
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Price</label>
                     <input class="form-control @error('harga') is-invalid @enderror" name="harga" type="number"
-                      placeholder="Price" value="{{ old('harga', $produk->harga) }}" id="example-text-input">
+                      placeholder="Price" value="{{ $produk->harga }}" id="example-text-input">
                     @error('harga')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -69,7 +69,7 @@
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Product Stock</label>
                     <input class="form-control  @error('stok') is-invalid @enderror" name="stok" type="number"
-                      value="{{ old('stok', $produk->stok) }}" id="example-text-input">
+                      value="{{ $produk->stok }}" id="example-text-input">
                     @error('stok')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -79,7 +79,7 @@
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Description</label>
                     <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" type="text"
-                      placeholder="Description" id="example-text-input">{{ old('deskripsi', $produk->deskripsi) }}</textarea>
+                      placeholder="Description" id="example-text-input">{{ $produk->deskripsi }}</textarea>
                     @error('deskripsi')
                       <div class="invalid-feedback">
                         {{ $message }}
@@ -92,7 +92,7 @@
                     <select class="form-select @error('kategori_id') is-invalid @enderror" name="kategori_id"
                       type="text" placeholder="Category Name" id="example-text-input">
                       @foreach ($kategoris as $kategori)
-                        <option value="{{ $kategori->id }}" @if (old('kategori_id', $produk->kategori_id) == $kategori->id) selected @endif>
+                        <option value="{{ $kategori->id }}" @if ($produk->kategori_id == $kategori->id) selected @endif>
                           {{ $kategori->nama_kategori }}
                         </option>
                       @endforeach
@@ -109,7 +109,7 @@
                     <select class="form-select @error('supplier_id') is-invalid @enderror" name="supplier_id"
                       type="text" placeholder="Supplier" id="example-text-input">
                       @foreach ($suppliers as $supplier)
-                        <option value="{{ $supplier->id }}" @if (old('supplier_id', $produk->supplier_id) == $supplier->id) selected @endif>
+                        <option value="{{ $supplier->id }}" @if ($produk->supplier_id == $supplier->id) selected @endif>
                           {{ $supplier->nama_supplier }}
                         </option>
                       @endforeach

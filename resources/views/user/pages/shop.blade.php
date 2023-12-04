@@ -75,7 +75,7 @@
                             <ul>
                                 <li class="active"><a href="{{ route('shop.index') }}">All</a></li>
                                 @foreach ($kategoris as $kategori)
-                                    <li><a href="#" class="category-link"
+                                    <li><a href="?category={{ $kategori->id }}" class="category-link"
                                             data-category="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</a></li>
                                 @endforeach
                             </ul>
@@ -133,23 +133,23 @@
     </section>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $(document).on('click', '#pagination-links a', function(e) {
-                e.preventDefault();
+        // $(document).ready(function() {
+        //     $(document).on('click', '#pagination-links a', function(e) {
+        //         e.preventDefault();
 
-                var page = $(this).attr('href').split('page=')[1];
+        //         var page = $(this).attr('href').split('page=')[1];
 
-                fetchProduks(page);
-            });
+        //         fetchProduks(page);
+        //     });
 
-            function fetchProduks(page) {
-                $.ajax({
-                    url: '/produk/fetch?page=' + page,
-                    success: function(data) {
-                        $('#produk-list').html(data);
-                    },
-                });
-            }
+        //     function fetchProduks(page) {
+        //         $.ajax({
+        //             url: '/produk/fetch?page=' + page,
+        //             success: function(data) {
+        //                 $('#produk-list').html(data);
+        //             },
+        //         });
+        //     }
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -178,7 +178,7 @@
         });
     </script>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             // Tambahkan parameter kategori ke URL saat mengklik tautan kategori
             $('.category-link').on('click', function(e) {
@@ -213,6 +213,6 @@
                 });
             }
         });
-    </script>
+    </script> --}}
     <!-- Product Section End -->
 @endsection

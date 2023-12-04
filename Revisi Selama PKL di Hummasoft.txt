@@ -55,4 +55,12 @@ deadlinenya 2 minggu
 
 revisi baru 
 1. jumlah update cart tidak boleh minus
-2. ganti bahasa ke indonesia
+2. ganti message ke bahasa indonesia
+
+revisi baru 
+tambah gambar pada halaman cart saat kosong
+harga produk minimal 10000
+tambah active link kategori
+menabahkan history pesanan
+tambah text logout pada icon logout
+old value pada edit produk

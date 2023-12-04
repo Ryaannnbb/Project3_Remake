@@ -23,7 +23,7 @@ class PesananController extends Controller
         $pesanan->status = 'waiting payment';
         $pesanan->update();
 
-        return redirect()->route('pesanan.index')->with("acc", "Successfully approved user`s order!");
+        return redirect()->route('pesanan.index')->with("acc", "Pesanan pengguna berhasil disetujui!");
 
     }
     public function tolak(Request $request, string $id)
@@ -37,7 +37,7 @@ class PesananController extends Controller
         $pesanan->pesan_tolak = $request->pesan_tolak;
         $pesanan->update();
 
-        return redirect()->route('pesanan.index')->with("reject", "Rejection message sent successfully!");
+        return redirect()->route('pesanan.index')->with("reject", "Pesan penolakan berhasil dikirim!");
 
     }
 
