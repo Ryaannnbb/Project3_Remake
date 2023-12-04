@@ -141,14 +141,14 @@
                               <i class="fa-solid fa-eye fa-lg"></i>
                             </button>
                           </a>
-                          @if ($pesanan->status == 'pending')
+                          {{-- @if ($pesanan->status == 'pending')
                             <form action="{{ route('order.destroy', $pesanan->id) }}" method="POST">
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn soasik njir"><i
                                   class="fa-solid fa-xmark fa-lg"></i></button>
                             </form>
-                          @elseif ($pesanan->status == 'waiting payment')
+                          @elseif ($pesanan->status == 'waiting payment') --}}
                             <a href="{{ route('checkout.index', $pesanan->id) }}">
                               <button type="button" class="btn">
                                 <i class="fa-solid fa-money-bill-1-wave fa-lg"></i>

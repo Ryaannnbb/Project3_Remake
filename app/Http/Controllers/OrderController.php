@@ -78,8 +78,19 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         $pesanan = Pesanan::findOrFail($id);
-        // $produk = ($pesanan->detailpesanan->produk_id);
-        // return dd($pesanan->detailpesanan->produk);
+        $detailPesanan = $pesanan->detailpesanan;
+        foreach ($detailPesanan as $ps) {
+
+            // echo $produk . '<br>';
+            $produk = Produk::findOrfail($ps->produk_id);
+            $jumlah = $ps->jumlah;
+            $produk->stok = $produk->stok + $jumlah;
+            $produk->save();
+            // echo $val->jumlah . '<br>';
+            // return dd($produk->stok, $jumlah);
+
+
+        }
         $pesanan->delete();
         return redirect()->back()->with("co", "Berhasil membatalkan pesanan");
     }
