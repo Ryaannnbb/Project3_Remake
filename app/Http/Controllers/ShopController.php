@@ -89,7 +89,7 @@ class ShopController extends Controller
                 'jumlah' => 'numeric|min:1|max:' . $produk->stok
             ],
             [
-                'jumlah.max' => "quantity exceeds product stock"
+                'jumlah.max' => "Jumlah melebihi stok yang tersedia"
             ]
         );
 
@@ -98,7 +98,7 @@ class ShopController extends Controller
 
         if ($detailPesanan) {
             if ($detailPesanan->jumlah > $produk->stok) {
-                return redirect()->back()->withErrors('jumlah', "quantity exceeds product's stock");
+                return redirect()->back()->withErrors('jumlah', "Jumlah melebihi stok yang tersedia");
             } else {
                 $detailPesanan->jumlah += $request->jumlah;
                 $detailPesanan->total = $produk->harga * $request->jumlah;

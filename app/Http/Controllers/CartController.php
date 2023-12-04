@@ -68,10 +68,10 @@ class CartController extends Controller
                 // return dd($quantity);
 
                 if ($quantity - $oldQuantity > $pesanan->produk->stok) {
-                    return redirect()->back()->with('update_failed', "Quantity exceeds product stock");
+                    return redirect()->back()->with('update_failed', "Jumlah melebihi stok yang tersedia");
                 }
                 if ($quantity <= 0 ) {
-                    return redirect()->back()->with('update_failed', "Quantity cannot beloy zero");
+                    return redirect()->back()->with('update_failed', "Jumlah tidak boleh nol");
                 }
                 $harga = $pesanan->produk->harga;
                 $pesanan->jumlah = $quantity;
@@ -85,9 +85,9 @@ class CartController extends Controller
                 $produk->stok -= $quantity - $oldQuantity;
                 $produk->save();
             }
-            return redirect()->route('cart')->with('update_success', 'Cart Updated Successfully');
+            return redirect()->route('cart')->with('update_success', 'Berhasl memperbarui keranjang');
         } catch (\Throwable $th) {
-            return redirect()->route('cart')->with('update_failed', 'Cart Updated Failed');
+            return redirect()->route('cart')->with('update_failed', 'Gagal memberbarui keranjang');
         }
         // $detailPesanan = $request->pesanan_id;
         // foreach ($detailPesanan as $value) {

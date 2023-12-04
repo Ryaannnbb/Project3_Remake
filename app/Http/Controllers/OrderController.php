@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\pesanan;
 use Illuminate\Http\Request;
 use App\Models\Detailpesanan;
+use App\Models\Produk;
 
 class OrderController extends Controller
 {
@@ -24,7 +25,7 @@ class OrderController extends Controller
 
     public function delivered($id) {
         pesanan::findOrFail($id)->delete();
-        return redirect()->back()->with("ok", "Order successfully received");
+        return redirect()->back()->with("ok", "Pesanan sidah diterima");
     }
 
     /**
@@ -76,7 +77,10 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        pesanan::findOrFail($id)->delete();
-        return redirect()->back()->with("co", "Successfully canceled the item for checkout");
+        $pesanan = Pesanan::findOrFail($id);
+        // $produk = ($pesanan->detailpesanan->produk_id);
+        // return dd($pesanan->detailpesanan->produk);
+        $pesanan->delete();
+        return redirect()->back()->with("co", "Berhasil membatalkan pesanan");
     }
 }

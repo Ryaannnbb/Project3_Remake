@@ -29,7 +29,7 @@
     <script>
         Swal.fire({
             icon:'success',
-            title: 'Success',
+            title: 'Berhasil',
             text: '{{ session("success") }}'
         });
     </script>

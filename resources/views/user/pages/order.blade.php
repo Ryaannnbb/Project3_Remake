@@ -1,11 +1,11 @@
 @extends('user.layouts.main')
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 @section('content')
-    <!-- Hero Section Begin -->
-    {{-- <section class="hero hero-normal">
+  <!-- Hero Section Begin -->
+  {{-- <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -55,186 +55,178 @@
             </div>
         </div>
     </section> --}}
-    <!-- Hero Section End -->
+  <!-- Hero Section End -->
 
-    @if (session('co'))
+  @if (session('co'))
     <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: "{{ session('co') }}"
-        });
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil',
+        text: "{{ session('co') }}"
+      });
     </script>
-    @endif
+  @endif
 
-    @if (session('ok'))
+  @if (session('ok'))
     <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: "{{ session('ok') }}"
-        });
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil',
+        text: "{{ session('ok') }}"
+      });
     </script>
-    @endif
+  @endif
 
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2 style="color: black">Order</h2>
-                    </div>
-                </div>
-            </div>
+  <!-- Breadcrumb Section Begin -->
+  <section class="breadcrumb-section set-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="breadcrumb__text">
+            <h2 style="color: black">Order</h2>
+          </div>
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+      </div>
+    </div>
+  </section>
+  <!-- Breadcrumb Section End -->
 
-    <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad">
-        <div class="container">
-            @if ($pesanans->count() > 0)
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="shoping__cart__table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Total Products</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($pesanans as $pesanan)
-                                        {{-- {{ dd($pesanan->detailPesanan->id) }} --}}
-                                        <tr>
-                                            <td>
-                                                <b>{{ $pesanan->detailPesanan->count() }}</b>
-                                            </td>
-                                            <td>
-                                                <b>Rp. {{ number_format($pesanan->total, 0, ',', '.') }}</b>
-                                            </td>
-                                            <td>
-                                                @if ($pesanan->status == 'pending')
-                                                <span class="badge bg-warning text-dark">{{ ucfirst($pesanan->status) }}</span>
-                                                @elseif ($pesanan->status == 'waiting payment')
-                                                <span class="badge text-dark" style="background-color: rgb(251, 124, 124)">{{ ucfirst($pesanan->status) }}</span>
-                                                @elseif ($pesanan->status == 'rejected')
-                                                <span class="badge bg-danger">{{ ucfirst($pesanan->status) }}</span>
-                                                @elseif ($pesanan->status == 'paid')
-                                                <span class="badge bg-success">{{ ucfirst($pesanan->status) }}</span>
-                                                @elseif ($pesanan->status == 'shipped')
-                                                <span class="badge bg-warning">{{ ucfirst($pesanan->status) }}</span>
-                                                @elseif ($pesanan->status == 'delivered')
-                                                <span class="badge bg-success">{{ ucfirst($pesanan->status) }}</span>
-                                                @endif
-                                            </td>
-                                            <td class="shoping__cart__item__close" style="text-align: center">
-                                                <div class="njir m-0 d-flex justify-content-center"
-                                                    style="align-items: center;">
-                                                    <a href="{{ route('order.detail', $pesanan->id) }}">
-                                                        <button type="button" class="btn">
-                                                            <i class="fa-solid fa-eye fa-lg"></i>
-                                                        </button>
-                                                    </a>
-                                                    @if ($pesanan->status == 'pending')
-                                                        {{-- <form action="{{ route('order.destroy', $pesanan->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn soasik njir"><i
-                                                                    class="fa-solid fa-xmark fa-lg"></i></button>
-                                                        </form> --}}
-                                                    @elseif ($pesanan->status == 'waiting payment')
-                                                        <a href="{{ route('checkout.index', $pesanan->id) }}">
-                                                            <button type="button" class="btn">
-                                                                <i class="fa-solid fa-money-bill-1-wave fa-lg"></i>
-                                                            </button>
-                                                        </a>
-                                                    @elseif ($pesanan->status == 'rejected')
-                                                        <button type="button" class="btn"
-                                                            data-original-title="Delete user" data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal{{ $pesanan->id }}">
-                                                            <i class="fa-regular fa-eye fa-lg"></i>
-                                                        </button>
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="exampleModal{{ $pesanan->id }}"
-                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <form class="modal-content" action="{{ route('order.destroy', $pesanan->id) }}"
-                                                                    method="POST">
-                                                                    @method('delete')
-                                                                    @csrf
-                                                                    <div class="modal-header">
-                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                                            Pesan Tolak</h1>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <h4 class="text-center mt-2">
-                                                                            {{ $pesanan->pesan_tolak }}
-                                                                            </h3>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Delete</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    @elseif ($pesanan->status == 'delivered')
-                                                        <form action="{{ route('order.delivered', $pesanan->id) }}"
-                                                            method="POST" style="display: inline">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn hadeh njir mt-3"
-                                                                data-original-title="Delete user" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal{{ $pesanan->id }}">
-                                                                <i class="fa-solid fa-check"></i>
-                                                            </button>
-                                                        </form>
-                                                    @elseif ($pesanan->status == 'shipped')
-                                                        <form action="{{ route('pengiriman.tiba', $pesanan->id) }}"
-                                                            method="POST" style="display: inline">
-                                                            @csrf
-                                                            @method('put')
-                                                            <button type="submit" class="btn hadeh njir mt-3"
-                                                                data-original-title="Delete user" data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal{{ $pesanan->id }}">
-                                                                <i class="fa-solid fa-check"></i>
-                                                            </button>
-                                                        </form>
-                                                    @endif
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+  <!-- Shoping Cart Section Begin -->
+  <section class="shoping-cart spad">
+    <div class="container">
+      @if ($pesanans->count() > 0)
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="shoping__cart__table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Total Products</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($pesanans as $pesanan)
+                    {{-- {{ dd($pesanan->detailPesanan->id) }} --}}
+                    <tr>
+                      <td>
+                        <b>{{ $pesanan->detailPesanan->count() }}</b>
+                      </td>
+                      <td>
+                        <b>Rp. {{ number_format($pesanan->total, 0, ',', '.') }}</b>
+                      </td>
+                      <td>
+                        @if ($pesanan->status == 'pending')
+                          <span class="badge bg-warning text-dark">{{ ucfirst($pesanan->status) }}</span>
+                        @elseif ($pesanan->status == 'waiting payment')
+                          <span class="badge text-dark"
+                            style="background-color: rgb(251, 124, 124)">{{ ucfirst($pesanan->status) }}</span>
+                        @elseif ($pesanan->status == 'rejected')
+                          <span class="badge bg-danger">{{ ucfirst($pesanan->status) }}</span>
+                        @elseif ($pesanan->status == 'paid')
+                          <span class="badge bg-success">{{ ucfirst($pesanan->status) }}</span>
+                        @elseif ($pesanan->status == 'shipped')
+                          <span class="badge bg-warning">{{ ucfirst($pesanan->status) }}</span>
+                        @elseif ($pesanan->status == 'delivered')
+                          <span class="badge bg-success">{{ ucfirst($pesanan->status) }}</span>
+                        @endif
+                      </td>
+                      <td class="shoping__cart__item__close" style="text-align: center">
+                        <div class="njir m-0 d-flex justify-content-center" style="align-items: center;">
+                          <a href="{{ route('order.detail', $pesanan->id) }}">
+                            <button type="button" class="btn">
+                              <i class="fa-solid fa-eye fa-lg"></i>
+                            </button>
+                          </a>
+                          @if ($pesanan->status == 'pending')
+                            <form action="{{ route('order.destroy', $pesanan->id) }}" method="POST">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn soasik njir"><i
+                                  class="fa-solid fa-xmark fa-lg"></i></button>
+                            </form>
+                          @elseif ($pesanan->status == 'waiting payment')
+                            <a href="{{ route('checkout.index', $pesanan->id) }}">
+                              <button type="button" class="btn">
+                                <i class="fa-solid fa-money-bill-1-wave fa-lg"></i>
+                              </button>
+                            </a>
+                          @elseif ($pesanan->status == 'rejected')
+                            <button type="button" class="btn" data-original-title="Delete user" data-bs-toggle="modal"
+                              data-bs-target="#exampleModal{{ $pesanan->id }}">
+                              <i class="fa-regular fa-eye fa-lg"></i>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{ $pesanan->id }}" tabindex="-1"
+                              aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <form class="modal-content" action="{{ route('order.destroy', $pesanan->id) }}"
+                                  method="POST">
+                                  @method('delete')
+                                  @csrf
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                      Pesan Tolak</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <h4 class="text-center mt-2">
+                                      {{ $pesanan->pesan_tolak }}
+                                      </h3>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                      data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          @elseif ($pesanan->status == 'delivered')
+                            <form action="{{ route('order.delivered', $pesanan->id) }}" method="POST"
+                              style="display: inline">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn hadeh njir mt-3" data-original-title="Delete user"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pesanan->id }}">
+                                <i class="fa-solid fa-check"></i>
+                              </button>
+                            </form>
+                          @elseif ($pesanan->status == 'shipped')
+                            <form action="{{ route('pengiriman.tiba', $pesanan->id) }}" method="POST"
+                              style="display: inline">
+                              @csrf
+                              @method('put')
+                              <button type="submit" class="btn hadeh njir mt-3" data-original-title="Delete user"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pesanan->id }}">
+                                <i class="fa-solid fa-check"></i>
+                              </button>
+                            </form>
+                          @endif
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="shoping__cart__btns">
-                            <a href="{{ route('shop.index') }}"
-                                class="custom-btn cart-btn-continue-shopping primary-btn cart-btn">Back</a>
-                            {{-- <a href="#" class="custom-btn cart-btn-update primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                      </td>
+                    </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="shoping__cart__btns">
+              <a href="{{ route('shop.index') }}"
+                class="custom-btn cart-btn-continue-shopping primary-btn cart-btn">Back</a>
+              {{-- <a href="#" class="custom-btn cart-btn-update primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             Upadate Cart
                         </a> --}}
-                        </div>
-                    </div>
-                    {{-- <div class="col-lg-6">
+            </div>
+          </div>
+          {{-- <div class="col-lg-6">
                     <div class="shoping__continue">
                         <div class="shoping__discount">
                             <h5>Discount Codes</h5>
@@ -245,7 +237,7 @@
                         </div>
                     </div>
                 </div> --}}
-                    {{-- <div class="col-lg-12">
+          {{-- <div class="col-lg-12">
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
@@ -255,14 +247,22 @@
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div> --}}
-                </div>
-            @else
-                <h3 class="col-12 text-center mb-3">There are no order</h3>
-                <div class="col-12 text-center">
-                    <a href="{{ route('shop.index') }}" class="btn primary-btn">Shop Now</a>
-                </div>
-            @endif
         </div>
-    </section>
-    <!-- Shoping Cart Section End -->
+      @else
+        <h3 class="col-12 text-center mb-3">There are no order</h3>
+        <div class="col-12 text-center">
+          <a href="{{ route('shop.index') }}" class="btn primary-btn">Shop Now</a>
+        </div>
+      @endif
+    </div>
+  </section>
+  <!-- Shoping Cart Section End -->
+@endsection
+
+@section('script')
+  <script>
+    $(document).ready(function() {
+      $('.nice-select').css('display', 'none');
+    });
+  </script>
 @endsection
