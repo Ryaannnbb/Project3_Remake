@@ -23,7 +23,7 @@ class PengirimanController extends Controller
      */
     public function create()
     {
-        $pesanan = Pesanan::where('status', 'paid');
+        $pesanan = Pesanan::where('status', 'paid')->get();
         return view('pengiriman.create', compact('pesanan'));
     }
 
