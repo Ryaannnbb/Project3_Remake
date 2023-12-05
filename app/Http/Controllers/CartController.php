@@ -16,7 +16,7 @@ class CartController extends Controller
     {
         $pesanans = Detailpesanan::where('status', 'keranjang')->get();
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        $order = Pesanan::where('user_id', auth()->user()->id)->get()->count();
+        $order = Pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get()->count();
         return view("user.pages.shoping-cart", compact('pesanans', 'totalpesanan', 'order'));
     }
 

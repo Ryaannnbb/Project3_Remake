@@ -72,12 +72,12 @@
     }
   </script>
   {{-- {{ dd(session()->all()) }} --}}
-  {{-- {{ dd(session('message')) }} --}}
+  {{-- {{ dd($pesanan) }} --}}
   @if ($pesanan->count() <= 0)
     <script>
       swal.fire({
         icon: "warning",
-        text: "Belum ada pesanan",
+        text: "Belum ada pesanan / belum ada pesanan yang sudah dibayar",
         confirmButtonText: "Ya"
       }).then((result) => {
         if (result.isConfirmed) {

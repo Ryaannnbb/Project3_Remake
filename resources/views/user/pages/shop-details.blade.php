@@ -19,12 +19,16 @@
         </div>
     </section> --}}
     <!-- Breadcrumb Section End -->
+    <!-- Add Back Button -->
 
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-2">
+                    <a href="{{ route('shop.index') }}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
+                </div>
+                <div class="col-lg-5 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large" src="{{ asset($produk->path_produk) }}"
@@ -42,7 +46,7 @@
                         </div> --}}
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-5 col-md-6">
                     <div class="product__details__text">
                         <h3>{{ $produk->nama_produk }}</h3>
                         {{-- <div class="product__details__rating">

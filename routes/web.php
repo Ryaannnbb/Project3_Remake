@@ -123,7 +123,7 @@ Route::get('/', [ShopController::class, 'index']);
         Route::post('/bayar/{id}', 'bayar')->name('bayar');
     });
     Route::controller(OrderController::class)->prefix('order')->group(function () {
-        Route::get('order', 'index')->name('order');
+        Route::get('/', 'index')->name('order');
         Route::get('{id}/detail', 'show')->name('order.detail');
         Route::delete('order/{id}/destroy', 'destroy')->name('order.destroy');
         Route::delete('order/{id}', 'delivered')->name('order.delivered');

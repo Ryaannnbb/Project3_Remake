@@ -98,6 +98,6 @@ class OrderController extends Controller
 
         }
         $pesanan->delete();
-        return redirect()->back()->with("co", "Berhasil membatalkan pesanan");
+        return redirect()->back()->with("co", "Berhasil menghapus pesanan");
     }
 }

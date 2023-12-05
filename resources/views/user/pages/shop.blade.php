@@ -73,15 +73,18 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Product Section Begin -->
-    <section class="product spad">
+    <section class="product spad" id="product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
                             <h4>Category</h4>
+                            {{-- {{ dd(empty(Request::all())) }} --}}
                             <ul>
-                                <li class="active"><a href="{{ route('shop.index') }}">All</a></li>
+                                <li class="@if (empty(Request::all()))
+                                    active
+                                @endif"><a href="{{ route('shop.index') }}">All</a></li>
                                 @foreach ($kategoris as $kategori)
                                     <li>
                                         <a href="?category={{ $kategori->id }}"

@@ -19,7 +19,7 @@ class ShopController extends Controller
         $sortOption = $request->input('sort');
         $category = $request->input('category');
         $produk = Produk::paginate(2);
-        $order = pesanan::where('user_id', auth()->user()->id)->get()->count();
+        $order = Pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get()->count();
 
         // Mendapatkan nilai 'category' dari permintaan
         $category = $request->input('category');
@@ -75,7 +75,7 @@ class ShopController extends Controller
         // return dd($produk);
         $produk = Produk::findOrFail($produk);
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        $order = pesanan::where('user_id', auth()->user()->id)->get()->count();
+        $order = Pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get()->count();
         return view("user.pages.shop-details", compact('produk', 'totalpesanan', 'order'));
     }
     /**
