@@ -54,13 +54,13 @@ deadlinenya 2 minggu
 
 
 revisi baru jum'at
-1. jumlah update cart tidak boleh minus
-2. ganti message ke bahasa indonesia
+1. jumlah update cart tidak boleh minus v
+2. ganti message ke bahasa indonesia v
 
 revisi baru senin
 - tambah gambar pada halaman cart saat kosong
 - harga produk minimal 10000
-- tambah active link kategori
+- tambah active link kategori v
 - menabahkan history pesanan
 - tambah text logout pada icon logout
 - old value pada edit produk

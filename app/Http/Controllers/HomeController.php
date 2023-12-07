@@ -26,9 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $produks = produk::all();
-        $pesanan_menunggu = pesanan::where('status', 'menunggu');
-        $pesanan_diterima = pesanan::where('status', 'diterima');
-        $pesanan_ditolak = pesanan::where('status', 'ditolak');
+        $pesanan_menunggu = pesanan::where('status', 'pending');
+        $pesanan_diterima = pesanan::where('status', 'completed');
+        $pesanan_ditolak = pesanan::where('status', 'rejected');
         return view('dashboard', compact('produks', 'pesanan_menunggu', 'pesanan_diterima', 'pesanan_ditolak'));
     }
 }

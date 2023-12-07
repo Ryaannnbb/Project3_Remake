@@ -58,7 +58,7 @@ class ProdukController extends Controller
 
             'harga.required' => 'Harga produk wajib diisi.',
             'harga.numeric' => 'Harga produk harus berupa angka.',
-            'harga.min' => 'Harga produk minimal harus :min.',
+            'harga.min' => 'Harga produk minimal harus :10000.',
             'harga.max' => 'Harga produk maksimal: 1000000000.',
 
             'stok.numeric' => 'Stok produk harus berupa angka.',

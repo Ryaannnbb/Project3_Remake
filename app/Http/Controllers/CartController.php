@@ -59,18 +59,22 @@ class CartController extends Controller
     {
         $quantities = json_decode($request->input('quantities'));
 
-        // return dd($quantities);
+        // dd($quantities);
         try {
             //code...
             foreach ($quantities as $orderId => $quantity) {
                 $pesanan = detailpesanan::find($orderId);
+                if (intval(substr($quantity, 0, 1))  === 0) {
+                    // return dd($quantity);
+                    return redirect()->back()->with('update_failed', 'nominal jumlah tidak valid');
+                }
                 $oldQuantity = $pesanan->jumlah;
                 // return dd($quantity);
 
                 if ($quantity - $oldQuantity > $pesanan->produk->stok) {
                     return redirect()->back()->with('update_failed', "Jumlah yang diminta melebihi stok yang tersedia untuk produk ini.");
                 }
-                if ($quantity <= 0 ) {
+                if ($quantity <= 0) {
                     return redirect()->back()->with('update_failed', "Jumlah yang diminta harus lebih dari nol.");
                 }
                 $harga = $pesanan->produk->harga;
