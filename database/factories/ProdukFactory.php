@@ -18,9 +18,10 @@ class ProdukFactory extends Factory
     {
         return [
             'nama_produk' => $this->faker->name(),
-            'path_produk' => $this->faker->imageUrl($width = 100, $height = 100),
+            'path_produk' => $this->faker->imageUrl($width = 2000, $height = 2000),
             'harga' => $this->faker->numberBetween($min = 1000, $max = 100000),
             'deskripsi' => $this->faker->paragraph(1),
+            'stok' => 10,
             'kategori_id' => 1,
             'supplier_id' => 1,
         ];
