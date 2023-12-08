@@ -18,56 +18,25 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::insert([
             [
-                'name' => Str::random(10),
-                'email' => Str::random(10) . '@gmail.com',
+                'name' => 'Admin',
+                'email' => 'Admin@gmail.com',
                 'password' => Hash::make('password'),
-                'address' => Str::random(10),
+                'address' => fake()->address(),
             ],
             [
-                'name' => Str::random(10),
-                'email' => Str::random(10) . '@gmail.com',
+                'name' => 'User',
+                'email' => 'User@gmail.com',
                 'password' => Hash::make('password'),
-                'address' => Str::random(10),
-            ]
+                'address' => fake()->address(),
+            ],
         ]);
 
-        // \App\Models\User::create([
-        //     [
-        //         'name' => 'Test User',
-        //         'email' => 'user@example.com',
-        //         'password' => bcrypt('password'),
-        //     ],
-        //     [
-        //         'name' => 'Test User',
-        //         'email' => 'user1@example.com',
-        //         'password' => bcrypt('password'),
-        //     ],
-        // ]);
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'admin@example.com',
-        //     'password' => bcrypt('password'),
-        //     'role' => 'admin'
-        // ]);
-        // \App\Models\kategori::factory()->create([
-        //     'nama_kategori' => 'Makanan'
-        // ]);
-        // \App\Models\kategori::factory()->create([
-        //     'nama_kategori' => 'Minuman'
-        // ]);
-        // \App\Models\Pembayaran::factory()->create([
-        //     'metode_pembayaran' => 'Dana',
-        //     'no_rekening' => '12345678'
-        // ]);
-        // \App\Models\Pembayaran::factory()->create([
-        //     'metode_pembayaran' => 'Gopay',
-        //     'no_rekening' => '87654321'
-        // ]);
-        // \App\Models\User::factory()
-
-        // \App\Models\kategori::factory(3)->create();
-        // \App\Models\supplier::factory(3)->create();
-        // \App\Models\produk::factory(3)->create();
-
+        \App\Models\User::create([
+            'name' => 'Test User',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('password'),
+            'address' => fake()->address(),
+            'role' => 'admin'
+        ]);
     }
 }
