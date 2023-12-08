@@ -46,13 +46,7 @@ class ShopController extends Controller
 
         // Paginasi dengan menyertakan parameter 'category' dan 'search'
         $produk->appends(['category' => $category, 'search' => $keyword]);
-
-        // if($request->has('search')) {
-        //     // return dd($request->search);
-        //     $keyword = $request->search;
-        //     $produk = Produk::where('nama_produk', 'like', "%".$keyword."%")->paginate(6);
-        // }
-
+        
         $kategoris = Kategori::all();
         $pesanan = Detailpesanan::where('status', 'keranjang');
         // return dd($pesanan);
