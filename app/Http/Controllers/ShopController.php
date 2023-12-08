@@ -47,8 +47,6 @@ class ShopController extends Controller
         // Paginasi dengan menyertakan parameter 'category' dan 'search'
         $produk->appends(['category' => $category, 'search' => $keyword]);
 
-        // Tampilkan link paginasi
-
         // if($request->has('search')) {
         //     // return dd($request->search);
         //     $keyword = $request->search;
