@@ -39,6 +39,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
         Route::get('create', 'create')->name('kategori.create');
         Route::post('store', 'store')->name('kategori.store');
         Route::get('edit/{id}', 'edit')->name('kategori.edit');
+        Route::get('show/{kategori}', 'show')->name('kategori.show');
         Route::put('edit/{id}', 'update')->name('kategori.update');
         Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
     });
@@ -47,6 +48,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
         Route::get('create', 'create')->name('pelanggan.create');
         Route::post('store', 'store')->name('pelanggan.store');
         Route::get('edit/{id}', 'edit')->name('pelanggan.edit');
+
         Route::put('edit/{id}', 'update')->name('pelanggan.update');
         Route::delete('destroy/{id}', 'destroy')->name('pelanggan.destroy');
     });

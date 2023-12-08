@@ -51,7 +51,7 @@ class KategoriController extends Controller
      */
     public function show(kategori $kategori)
     {
-        //
+        dd($kategori);
     }
 
     /**
@@ -60,6 +60,7 @@ class KategoriController extends Controller
     public function edit(string $id)
     {
         $kategori = kategori::find($id);
+        dd($kategori);
         return view('kategori.edit', compact('kategori'));
     }
 
@@ -78,6 +79,10 @@ class KategoriController extends Controller
         ]);
 
         $kategori = kategori::find($id);
+        kategori::insert([
+            ['nama_kategori' => $request->nama_kategori],
+            ['nama_kategori' => $request->nama_kategori],
+        ]);
         $kategori->update($request->all());
         return redirect()->route('kategori')->with("success", "Data kategori berhasil diperbarui!");
     }

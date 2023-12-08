@@ -29,6 +29,7 @@ class OrderController extends Controller
             // $pesanan->delete();
             return redirect()->back()->with("ok", "Pesanan berhasil ditandai sebagai sudah diterima. Terima kasih atas pembelian Anda!");
         } catch (\Throwable $th) {
+            dd($th);
         //     // Proses penanganan kesalahan
             return redirect()->back()->with("ko", "Gagal menandai pesanan sebagai sudah diterima. Mohon coba lagi.");
         }

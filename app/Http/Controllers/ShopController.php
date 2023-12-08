@@ -48,7 +48,6 @@ class ShopController extends Controller
         $produk->appends(['category' => $category, 'search' => $keyword]);
 
         // Tampilkan link paginasi
-        $links = $produk->render();
 
         // if($request->has('search')) {
         //     // return dd($request->search);
@@ -62,13 +61,13 @@ class ShopController extends Controller
         return view("user.pages.shop", compact('produk', 'kategoris', 'totalpesanan', 'order'));
     }
 
-    public function fetchProduks(Request $request)
-    {
-        if ($request->ajax()) {
-            $produks = Produk::paginate(2);
-            return view('user.pages.shop', compact('produk'))->render();
-        }
-    }
+    // public function fetchProduks(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $produks = Produk::paginate(2);
+    //         return view('user.pages.shop', compact('produk'))->render();
+    //     }
+    // }
 
     public function detail($produk)
     {

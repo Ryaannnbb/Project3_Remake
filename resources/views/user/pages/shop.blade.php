@@ -41,7 +41,7 @@
             <div class="hero__search d-flex justify-content-center">
                 <div class="hero__search__form">
                     <form action="">
-                        <input type="text" name="search" placeholder="What do yo u need?">
+                        <input type="text" name="search" placeholder="What do yo u need?" value="{{ request('search') }}">
                         <button type="submit" class="site-btn">SEARCH</button>
                     </form>
                 </div>
