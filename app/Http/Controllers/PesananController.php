@@ -21,7 +21,7 @@ class PesananController extends Controller
     {
         $pesanan = Pesanan::find($id);
         $pesanan->status = 'waiting payment';
-        $pesanan->update();
+        $pesanan->save();
 
         return redirect()->route('pesanan.index')->with("acc", "Pesanan berhasil disetujui!");
 
@@ -35,7 +35,7 @@ class PesananController extends Controller
         $pesanan = Pesanan::find($id);
         $pesanan->status = 'rejected';
         $pesanan->pesan_tolak = $request->pesan_tolak;
-        $pesanan->update();
+        $pesanan->save();
 
         return redirect()->route('pesanan.index')->with("reject", "Pesan penolakan berhasil dikirim!");
 
